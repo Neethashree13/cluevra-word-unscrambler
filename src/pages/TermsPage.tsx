@@ -1,0 +1,169 @@
+import { ArrowLeft, Scale, AlertTriangle, CheckCircle, RefreshCw, Megaphone } from 'lucide-react';
+import { SITE_CONFIG } from '../config/site.ts';
+
+interface PageProps {
+  onNavigateHome: () => void;
+}
+
+export default function TermsPage({ onNavigateHome }: PageProps) {
+  return (
+    <div className="w-full max-w-4xl mx-auto py-6 sm:py-10 px-4 sm:px-6">
+      {/* Navigation Breadcrumb */}
+      <div className="mb-6">
+        <button
+          type="button"
+          onClick={onNavigateHome}
+          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-indigo-600 hover:text-indigo-800 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-sm transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" aria-hidden="true" />
+          <span>Back to Word Unscrambler</span>
+        </button>
+      </div>
+
+      <article className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 sm:p-10 space-y-8">
+        <header className="border-b border-slate-100 pb-6">
+          <div className="flex items-center gap-2 text-indigo-600 text-xs font-bold uppercase tracking-wider mb-2">
+            <Scale className="w-4 h-4" aria-hidden="true" />
+            <span>Terms of Service</span>
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Terms of Use - Word Unscrambler
+          </h1>
+          <p className="mt-2 text-xs sm:text-sm text-slate-400">
+            Last Updated: January 2026
+          </p>
+        </header>
+
+        {/* 1. Agreement to Terms */}
+        <section aria-labelledby="terms-acceptance" className="space-y-3">
+          <h2 id="terms-acceptance" className="text-lg sm:text-xl font-bold text-slate-800">
+            1. Acceptance of Terms
+          </h2>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            By accessing or using Word Unscrambler, you agree to be bound by these Terms of Use. If you do not agree with any portion of these terms, please do not use the website or tool.
+          </p>
+        </section>
+
+        {/* 2. Informational & Tool Nature */}
+        <section aria-labelledby="terms-nature" className="space-y-3">
+          <h2 id="terms-nature" className="text-lg sm:text-xl font-bold text-slate-800">
+            2. Informational & Recreational Nature of the Service
+          </h2>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Word Unscrambler is an informational and educational utility designed for solving anagrams, exploring vocabulary, assisting crossword puzzle solving, and reviewing potential moves in word games.
+          </p>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            The service is provided free of charge for personal and recreational use. To support the ongoing operation, hosting, and maintenance of the site without charging subscription fees, Word Unscrambler may be supported by advertising, sponsored content, or affiliate partnerships now or in the future.
+          </p>
+        </section>
+
+        {/* 3. Advertising & External Links */}
+        <section aria-labelledby="terms-advertising" className="space-y-3">
+          <div className="flex items-center gap-2">
+            <Megaphone className="w-5 h-5 text-indigo-600" aria-hidden="true" />
+            <h2 id="terms-advertising" className="text-lg sm:text-xl font-bold text-slate-800">
+              3. Advertising & External Links
+            </h2>
+          </div>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            As a free website, Word Unscrambler may display third-party advertisements, promotional links, or references to external websites and services. We do not endorse, guarantee, or assume responsibility for any products, services, or content offered by third-party advertisers or external websites.
+          </p>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Any transactions, correspondence, or interactions with third-party advertisers found on or through Word Unscrambler are solely between you and the third party, governed by their respective terms and privacy policies.
+          </p>
+        </section>
+
+        {/* 4. User Responsibility & Fair Play */}
+        <section aria-labelledby="terms-responsibility" className="space-y-3">
+          <div className="flex items-center gap-2">
+            <CheckCircle className="w-5 h-5 text-indigo-600" aria-hidden="true" />
+            <h2 id="terms-responsibility" className="text-lg sm:text-xl font-bold text-slate-800">
+              4. User Responsibilities & Game Rules
+            </h2>
+          </div>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            You are solely responsible for how you choose to use the results generated by this tool.
+          </p>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Many competitive word games and tournaments have specific rules governing external assistance and fair play. Users are encouraged to respect the rules of their respective games, platforms, or opponent agreements when playing in competitive settings.
+          </p>
+        </section>
+
+        {/* 5. Dictionary Disclaimer */}
+        <section aria-labelledby="terms-dictionary" className="space-y-3">
+          <div className="flex items-center gap-2">
+            <AlertTriangle className="w-5 h-5 text-amber-600" aria-hidden="true" />
+            <h2 id="terms-dictionary" className="text-lg sm:text-xl font-bold text-slate-800">
+              5. No Guarantee of Specific Game Lexicons
+            </h2>
+          </div>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            While our word lists are drawn from authoritative English dictionaries, different board and mobile games (including Scrabble, Words with Friends, and Wordfeud) utilize different proprietary dictionaries (e.g., TWL06, CSW, NWL, or game-specific lexicons).
+          </p>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            We cannot guarantee that every word suggested by Word Unscrambler is accepted in every specific edition, club tournament, or localized word game.
+          </p>
+        </section>
+
+        {/* 6. Acceptable Use */}
+        <section aria-labelledby="terms-acceptable-use" className="space-y-3">
+          <h2 id="terms-acceptable-use" className="text-lg sm:text-xl font-bold text-slate-800">
+            6. Acceptable Use
+          </h2>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            You agree not to misuse Word Unscrambler. Prohibited activities include attempting to disrupt or overwhelm our hosting infrastructure, manipulating or blocking advertising mechanisms unfairly, reverse engineering the code maliciously, scraping results systematically via automated bots, or attempting unauthorized access to any backend server systems.
+          </p>
+        </section>
+
+        {/* 7. Service Availability & Changes */}
+        <section aria-labelledby="terms-availability" className="space-y-3">
+          <div className="flex items-center gap-2">
+            <RefreshCw className="w-5 h-5 text-indigo-600" aria-hidden="true" />
+            <h2 id="terms-availability" className="text-lg sm:text-xl font-bold text-slate-800">
+              7. Service Availability & Modifications
+            </h2>
+          </div>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            We continuously work to keep Word Unscrambler accessible, fast, and responsive. However, the service is provided on an "as is" and "as available" basis without warranties of any kind. We reserve the right to modify, update, monetize, or suspend features or the website at any time without prior notice.
+          </p>
+        </section>
+
+        {/* 8. Limitation of Liability */}
+        <section aria-labelledby="terms-liability" className="space-y-3">
+          <h2 id="terms-liability" className="text-lg sm:text-xl font-bold text-slate-800">
+            8. Limitation of Liability
+          </h2>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            To the maximum extent permitted by applicable law, Word Unscrambler and its operators shall not be liable for any direct, indirect, incidental, or consequential damages resulting from your use of or inability to use the service, including any reliance placed on word suggestions or scoring calculations.
+          </p>
+        </section>
+
+        {/* 9. Modifications to Terms */}
+        <section aria-labelledby="terms-updates" className="space-y-3 pt-4 border-t border-slate-100">
+          <h2 id="terms-updates" className="text-lg sm:text-xl font-bold text-slate-800">
+            9. Changes to These Terms
+          </h2>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            We may revise these Terms of Use at any time. Continued use of the website following any changes constitutes acceptance of the modified terms.
+          </p>
+        </section>
+
+        {/* 10. Contact Regarding Terms */}
+        <section aria-labelledby="terms-contact" className="space-y-3 pt-4 border-t border-slate-100">
+          <h2 id="terms-contact" className="text-lg sm:text-xl font-bold text-slate-800">
+            10. Inquiries Regarding Terms
+          </h2>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            If you have questions regarding these Terms of Use, please reach out to our team at{' '}
+            <a
+              href={`mailto:${SITE_CONFIG.contactEmail}`}
+              className="text-indigo-600 hover:text-indigo-800 underline font-semibold"
+            >
+              {SITE_CONFIG.contactEmail}
+            </a>.
+          </p>
+        </section>
+      </article>
+    </div>
+  );
+}

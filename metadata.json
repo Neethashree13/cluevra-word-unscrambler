@@ -1,0 +1,6 @@
+{
+  "name": "Word Unscrambler",
+  "description": "Unscramble letters into words with our free Word Unscrambler. Find words from letters, use wildcards, filter by length, sort results, and copy your answers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
