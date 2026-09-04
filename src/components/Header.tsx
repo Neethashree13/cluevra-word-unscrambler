@@ -8,27 +8,36 @@ interface HeaderProps {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { label: 'Word Unscrambler', href: '#tool' },
+  { label: 'Word Unscrambler', href: '/word-unscrambler' },
+  { label: '5 Letter Word Finder', href: '/5-letter-word-finder' },
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'FAQ', href: '#faq' },
 ];
 
 export default function Header({ currentRoute = 'home', onNavigate }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeNav, setActiveNav] = useState('Word Unscrambler');
 
-  const handleNavClick = (label: string, href: string) => {
-    setActiveNav(label);
+  const handleNavClick = (href: string) => {
     setMobileMenuOpen(false);
     if (onNavigate) {
       onNavigate(href);
     } else {
-      const targetId = href.replace('#', '');
-      const el = document.getElementById(targetId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
+      if (href.startsWith('#')) {
+        const targetId = href.replace('#', '');
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        window.location.href = href;
       }
     }
+  };
+
+  const isItemActive = (item: NavItem) => {
+    if (currentRoute === 'fiveLetterFinder' && item.href === '/5-letter-word-finder') return true;
+    if (currentRoute === 'home' && item.href === '/word-unscrambler') return true;
+    return false;
   };
 
   return (
@@ -44,7 +53,7 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
           onClick={(e) => {
             if (e.metaKey || e.ctrlKey || e.button === 1) return;
             e.preventDefault();
-            handleNavClick('Word Unscrambler', '/word-unscrambler');
+            handleNavClick('/word-unscrambler');
           }}
           className="flex items-center gap-2.5 text-slate-900 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-md"
         >
@@ -62,7 +71,7 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
         {/* Desktop Navigation */}
         <nav id="desktop-navigation" aria-label="Main Navigation" className="hidden md:flex items-center gap-8">
           {NAV_ITEMS.map((item) => {
-            const isActive = currentRoute === 'home' && activeNav === item.label;
+            const isActive = isItemActive(item);
             return (
               <a
                 key={item.label}
@@ -71,7 +80,7 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
                 onClick={(e) => {
                   if (e.metaKey || e.ctrlKey || e.button === 1) return;
                   e.preventDefault();
-                  handleNavClick(item.label, item.href);
+                  handleNavClick(item.href);
                 }}
                 className={`text-sm font-medium transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-sm ${
                   isActive
@@ -113,7 +122,7 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
         >
           <nav aria-label="Mobile Navigation" className="flex flex-col space-y-2">
             {NAV_ITEMS.map((item) => {
-              const isActive = currentRoute === 'home' && activeNav === item.label;
+              const isActive = isItemActive(item);
               return (
                 <a
                   key={item.label}
@@ -122,7 +131,7 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
                   onClick={(e) => {
                     if (e.metaKey || e.ctrlKey || e.button === 1) return;
                     e.preventDefault();
-                    handleNavClick(item.label, item.href);
+                    handleNavClick(item.href);
                   }}
                   className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                     isActive

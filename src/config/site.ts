@@ -25,6 +25,12 @@ export const SITE_CONFIG = {
       description:
         'Unscramble letters into words with our free Word Unscrambler. Find words from letters, use wildcards, filter by length, sort results, and copy your answers.',
     },
+    fiveLetterFinder: {
+      path: '/5-letter-word-finder',
+      title: '5 Letter Word Finder - Find 5 Letter Words',
+      description:
+        'Find 5 letter words from letters, patterns, and known positions. Use our free 5 letter word finder for Wordle, word games, puzzles, and more.',
+    },
     about: {
       path: '/about',
       title: 'About Word Unscrambler',

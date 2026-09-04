@@ -9,6 +9,7 @@ import AboutPage from './pages/AboutPage.tsx';
 import PrivacyPage from './pages/PrivacyPage.tsx';
 import TermsPage from './pages/TermsPage.tsx';
 import ContactPage from './pages/ContactPage.tsx';
+import FiveLetterWordFinderPage from './pages/FiveLetterWordFinderPage.tsx';
 import type { FilterState, DictionaryStatus, UnscrambleResult } from './types.ts';
 import { dictionaryService } from './lib/dictionary.ts';
 import { findWordsFromLetters } from './lib/unscrambler.ts';
@@ -181,7 +182,15 @@ export default function App() {
 
     let targetUrl = getPathFromRoute(newRoute);
     if (newRoute === 'home' && searchedLetters) {
-      targetUrl = buildShareUrl(searchedLetters, activeFilters) || targetUrl;
+      const shareUrl = buildShareUrl(searchedLetters, activeFilters);
+      if (shareUrl) {
+        try {
+          const parsed = new URL(shareUrl);
+          targetUrl = `${parsed.pathname}${parsed.search}`;
+        } catch {
+          targetUrl = shareUrl;
+        }
+      }
     }
 
     window.history.pushState(null, '', targetUrl);
@@ -252,6 +261,12 @@ export default function App() {
       {currentRoute === 'contact' && (
         <main id="main-content" className="flex-1 w-full">
           <ContactPage onNavigateHome={() => handleNavigate('/word-unscrambler')} />
+        </main>
+      )}
+
+      {currentRoute === 'fiveLetterFinder' && (
+        <main id="main-content" className="flex-1 w-full">
+          <FiveLetterWordFinderPage />
         </main>
       )}
 

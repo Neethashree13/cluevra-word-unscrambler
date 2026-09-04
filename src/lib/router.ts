@@ -1,6 +1,8 @@
 import { SITE_CONFIG } from '../config/site.ts';
+import { FIVE_LETTER_FAQS } from '../data/fiveLetterFaq.ts';
+import { FAQ_DATA } from '../data/faqData.ts';
 
-export type AppRoute = 'home' | 'about' | 'privacy' | 'terms' | 'contact';
+export type AppRoute = 'home' | 'fiveLetterFinder' | 'about' | 'privacy' | 'terms' | 'contact';
 
 /**
  * Normalizes window.location.pathname into an AppRoute identifier.
@@ -12,6 +14,8 @@ export function getRouteFromPath(pathname: string): AppRoute {
     : pathname;
 
   switch (cleanPath) {
+    case '/5-letter-word-finder':
+      return 'fiveLetterFinder';
     case '/about':
       return 'about';
     case '/privacy-policy':
@@ -32,6 +36,8 @@ export function getRouteFromPath(pathname: string): AppRoute {
  */
 export function getPathFromRoute(route: AppRoute): string {
   switch (route) {
+    case 'fiveLetterFinder':
+      return '/5-letter-word-finder';
     case 'about':
       return '/about';
     case 'privacy':
@@ -47,7 +53,7 @@ export function getPathFromRoute(route: AppRoute): string {
 }
 
 /**
- * Updates document.title, meta descriptions, canonical URLs, and social tags for the active page route.
+ * Updates document.title, meta descriptions, canonical URLs, social tags, and structured data JSON-LD.
  */
 export function updatePageSEO(route: AppRoute) {
   if (typeof document === 'undefined') return;
@@ -91,4 +97,47 @@ export function updatePageSEO(route: AppRoute) {
   if (twitterDesc) {
     twitterDesc.setAttribute('content', pageMeta.description);
   }
+
+  // Update JSON-LD WebApplication schema
+  const webAppScript = document.getElementById('schema-webapplication');
+  if (webAppScript) {
+    const webAppName = route === 'fiveLetterFinder' ? '5 Letter Word Finder' : 'Word Unscrambler';
+    const webAppSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      name: webAppName,
+      url: canonicalUrl,
+      description: pageMeta.description,
+      applicationCategory: 'UtilitiesApplication',
+      operatingSystem: 'All',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+    };
+    webAppScript.textContent = JSON.stringify(webAppSchema, null, 2);
+  }
+
+  // Update JSON-LD FAQPage schema (matches visible on-page content exactly)
+  const faqScript = document.getElementById('schema-faqpage');
+  if (faqScript) {
+    const activeFaqs = route === 'fiveLetterFinder' ? FIVE_LETTER_FAQS : (route === 'home' ? FAQ_DATA : []);
+    if (activeFaqs.length > 0) {
+      const faqSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: activeFaqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer,
+          },
+        })),
+      };
+      faqScript.textContent = JSON.stringify(faqSchema, null, 2);
+    }
+  }
 }
+

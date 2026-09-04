@@ -54,7 +54,36 @@ export default function Footer({ onNavigate }: FooterProps) {
           {/* Navigation Links */}
           <div className="md:col-span-6">
             <nav id="footer-navigation" aria-label="Footer Navigation">
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-3 gap-x-6">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-4 gap-x-4">
+                {/* Tools */}
+                <div className="space-y-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block">
+                    Tools
+                  </span>
+                  <ul className="space-y-2 text-xs sm:text-sm font-medium">
+                    <li>
+                      <a
+                        id="footer-link-word-unscrambler"
+                        href="/word-unscrambler"
+                        onClick={(e) => handleLinkClick(e, '/word-unscrambler')}
+                        className="text-slate-600 hover:text-indigo-600 transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-xs"
+                      >
+                        Word Unscrambler
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        id="footer-link-five-letter-finder"
+                        href="/5-letter-word-finder"
+                        onClick={(e) => handleLinkClick(e, '/5-letter-word-finder')}
+                        className="text-slate-600 hover:text-indigo-600 transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-xs"
+                      >
+                        5 Letter Finder
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
                 {/* Guide & Help */}
                 <div className="space-y-2">
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block">
@@ -149,7 +178,7 @@ export default function Footer({ onNavigate }: FooterProps) {
         {/* Bottom Bar / Copyright */}
         <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
           <p id="footer-copyright" className="text-slate-500 font-medium">
-            © {currentYear} Word Unscrambler. All rights reserved.
+            © {currentYear} ClueVra. All rights reserved.
           </p>
           <p className="text-slate-400">
             A free online word-solving and anagram reference utility.

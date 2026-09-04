@@ -109,7 +109,7 @@ export function buildShareUrl(
   filters: FilterState,
   baseUrl?: string
 ): string {
-  const base = baseUrl || (typeof window !== 'undefined' ? window.location.href : SITE_CONFIG.canonicalUrl);
+  const base = baseUrl || SITE_CONFIG.canonicalUrl;
 
   try {
     const url = new URL(base);

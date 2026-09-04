@@ -54,3 +54,20 @@ export interface RecentSearchItem {
   timestamp: number;
 }
 
+export interface FiveLetterFilterOptions {
+  pattern?: string | (string | null | undefined)[];
+  startsWith?: string;
+  endsWith?: string;
+  containsLetters?: string;
+  excludeLetters?: string;
+  availableLetters?: string;
+  sortBy?: 'alpha-asc' | 'alpha-desc';
+}
+
+export interface FiveLetterResult {
+  totalWords: number;
+  words: string[];
+  patternNormalized: string;
+  validationError?: string | null;
+}
+
