@@ -41,9 +41,12 @@ export default function HowItWorks() {
         >
           How Does a Word Unscrambler Work?
         </h2>
-        <p className="text-xs sm:text-sm text-indigo-900/80 leading-relaxed">
-          A word unscrambler rearranges supplied letters and compares letter frequency maps against an authoritative English dictionary. Rather than generating slow factorial permutations, the unscrambler verifies letter counts in linear time, ensuring duplicate letters and blank tiles are matched with 100% accuracy.
-        </p>
+      <p className="text-xs sm:text-sm text-indigo-900/80 leading-relaxed">
+  A word unscrambler rearranges the letters you enter and checks them against
+  the words available in its dictionary. It matches the letters you provide,
+  including duplicate letters and wildcard tiles, to find words that can be
+  formed from your letters.
+</p>
       </div>
 
       {/* How to Use Step-by-Step */}
