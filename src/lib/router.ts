@@ -1,8 +1,9 @@
 import { SITE_CONFIG } from '../config/site.ts';
 import { FIVE_LETTER_FAQS } from '../data/fiveLetterFaq.ts';
+import { SEVEN_LETTER_FAQS } from '../data/sevenLetterFaq.ts';
 import { FAQ_DATA } from '../data/faqData.ts';
 
-export type AppRoute = 'home' | 'fiveLetterFinder' | 'about' | 'privacy' | 'terms' | 'contact';
+export type AppRoute = 'home' | 'fiveLetterFinder' | 'sevenLetterUnscrambler' | 'about' | 'privacy' | 'terms' | 'contact';
 
 /**
  * Normalizes window.location.pathname into an AppRoute identifier.
@@ -16,6 +17,8 @@ export function getRouteFromPath(pathname: string): AppRoute {
   switch (cleanPath) {
     case '/5-letter-word-finder':
       return 'fiveLetterFinder';
+    case '/7-letter-word-unscrambler':
+      return 'sevenLetterUnscrambler';
     case '/about':
       return 'about';
     case '/privacy-policy':
@@ -38,6 +41,8 @@ export function getPathFromRoute(route: AppRoute): string {
   switch (route) {
     case 'fiveLetterFinder':
       return '/5-letter-word-finder';
+    case 'sevenLetterUnscrambler':
+      return '/7-letter-word-unscrambler';
     case 'about':
       return '/about';
     case 'privacy':
@@ -101,7 +106,12 @@ export function updatePageSEO(route: AppRoute) {
   // Update JSON-LD WebApplication schema
   const webAppScript = document.getElementById('schema-webapplication');
   if (webAppScript) {
-    const webAppName = route === 'fiveLetterFinder' ? '5 Letter Word Finder' : 'Word Unscrambler';
+    const webAppName =
+      route === 'sevenLetterUnscrambler'
+        ? '7 Letter Word Unscrambler'
+        : route === 'fiveLetterFinder'
+        ? '5 Letter Word Finder'
+        : 'Word Unscrambler';
     const webAppSchema = {
       '@context': 'https://schema.org',
       '@type': 'WebApplication',
@@ -122,7 +132,14 @@ export function updatePageSEO(route: AppRoute) {
   // Update JSON-LD FAQPage schema (matches visible on-page content exactly)
   const faqScript = document.getElementById('schema-faqpage');
   if (faqScript) {
-    const activeFaqs = route === 'fiveLetterFinder' ? FIVE_LETTER_FAQS : (route === 'home' ? FAQ_DATA : []);
+    const activeFaqs =
+      route === 'sevenLetterUnscrambler'
+        ? SEVEN_LETTER_FAQS
+        : route === 'fiveLetterFinder'
+        ? FIVE_LETTER_FAQS
+        : route === 'home'
+        ? FAQ_DATA
+        : [];
     if (activeFaqs.length > 0) {
       const faqSchema = {
         '@context': 'https://schema.org',

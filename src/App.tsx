@@ -10,6 +10,7 @@ import PrivacyPage from './pages/PrivacyPage.tsx';
 import TermsPage from './pages/TermsPage.tsx';
 import ContactPage from './pages/ContactPage.tsx';
 import FiveLetterWordFinderPage from './pages/FiveLetterWordFinderPage.tsx';
+import SevenLetterWordUnscramblerPage from './pages/SevenLetterWordUnscramblerPage.tsx';
 import type { FilterState, DictionaryStatus, UnscrambleResult } from './types.ts';
 import { dictionaryService } from './lib/dictionary.ts';
 import { findWordsFromLetters } from './lib/unscrambler.ts';
@@ -237,6 +238,35 @@ export default function App() {
               <FAQ />
             </div>
           </div>
+
+          <section
+            id="related-word-tools"
+            aria-labelledby="related-word-tools-heading"
+            className="mt-8 rounded-xl border border-slate-200 bg-white p-6 sm:p-8"
+          >
+            <div className="max-w-3xl">
+              <h2
+                id="related-word-tools-heading"
+                className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900"
+              >
+                Related Word Tools
+              </h2>
+              <p className="mt-2 text-sm sm:text-base leading-relaxed text-slate-600">
+                Looking for a specific type of word puzzle help? Try our 5 Letter Word Finder to find five-letter words from letters, patterns, and known positions.
+              </p>
+              <a
+                href="/5-letter-word-finder"
+                onClick={(e) => {
+                  if (e.metaKey || e.ctrlKey || e.button === 1) return;
+                  e.preventDefault();
+                  handleNavigate('/5-letter-word-finder');
+                }}
+                className="mt-4 inline-flex items-center font-semibold text-indigo-600 hover:text-indigo-700 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-sm"
+              >
+                Try the 5 Letter Word Finder →
+              </a>
+            </div>
+          </section>
         </main>
       )}
 
@@ -268,6 +298,10 @@ export default function App() {
         <main id="main-content" className="flex-1 w-full">
           <FiveLetterWordFinderPage />
         </main>
+      )}
+
+      {currentRoute === 'sevenLetterUnscrambler' && (
+        <SevenLetterWordUnscramblerPage onNavigate={handleNavigate} />
       )}
 
       {/* Footer */}

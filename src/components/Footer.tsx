@@ -73,6 +73,16 @@ export default function Footer({ onNavigate }: FooterProps) {
                     </li>
                     <li>
                       <a
+                        id="footer-link-seven-letter-unscrambler"
+                        href="/7-letter-word-unscrambler"
+                        onClick={(e) => handleLinkClick(e, '/7-letter-word-unscrambler')}
+                        className="text-slate-600 hover:text-indigo-600 transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-xs"
+                      >
+                        7 Letter Unscrambler
+                      </a>
+                    </li>
+                    <li>
+                      <a
                         id="footer-link-five-letter-finder"
                         href="/5-letter-word-finder"
                         onClick={(e) => handleLinkClick(e, '/5-letter-word-finder')}

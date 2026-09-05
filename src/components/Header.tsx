@@ -9,6 +9,7 @@ interface HeaderProps {
 
 const NAV_ITEMS: NavItem[] = [
   { label: 'Word Unscrambler', href: '/word-unscrambler' },
+  { label: '7 Letter Unscrambler', href: '/7-letter-word-unscrambler' },
   { label: '5 Letter Word Finder', href: '/5-letter-word-finder' },
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'FAQ', href: '#faq' },
@@ -35,6 +36,7 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
   };
 
   const isItemActive = (item: NavItem) => {
+    if (currentRoute === 'sevenLetterUnscrambler' && item.href === '/7-letter-word-unscrambler') return true;
     if (currentRoute === 'fiveLetterFinder' && item.href === '/5-letter-word-finder') return true;
     if (currentRoute === 'home' && item.href === '/word-unscrambler') return true;
     return false;

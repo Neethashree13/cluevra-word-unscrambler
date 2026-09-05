@@ -3,27 +3,27 @@ export default function HowItWorks() {
     {
       num: '1',
       title: 'Enter your letters',
-      desc: 'Type or paste your letters into the search field.',
+      desc: 'Type or paste letters in any order into the search field.',
     },
     {
       num: '2',
-      title: 'Optionally use wildcard tiles',
-      desc: 'Add ? or * for blank tiles (up to 3 wildcards).',
+      title: 'Optionally add wildcards',
+      desc: 'Use ? or * for blank tiles (up to 3 wildcards supported).',
     },
     {
       num: '3',
-      title: 'Choose minimum & maximum word lengths',
-      desc: 'Filter by letter count and pick your sort order.',
+      title: 'Set length & sort filters',
+      desc: 'Choose minimum & maximum word lengths and pick your preferred sort order.',
     },
     {
       num: '4',
       title: 'Click Unscramble',
-      desc: 'Press Enter or click the Unscramble button.',
+      desc: 'Press Enter or tap the Unscramble button to search.',
     },
     {
       num: '5',
-      title: 'Review and copy the results',
-      desc: 'Browse words with scores and copy with one click.',
+      title: 'Review and copy results',
+      desc: 'Browse matching words grouped by length with scores and copy with one click.',
     },
   ];
 
@@ -41,12 +41,9 @@ export default function HowItWorks() {
         >
           How Does a Word Unscrambler Work?
         </h2>
-      <p className="text-xs sm:text-sm text-indigo-900/80 leading-relaxed">
-  A word unscrambler rearranges the letters you enter and checks them against
-  the words available in its dictionary. It matches the letters you provide,
-  including duplicate letters and wildcard tiles, to find words that can be
-  formed from your letters.
-</p>
+        <p className="text-xs sm:text-sm text-indigo-900/80 leading-relaxed">
+          The solver accepts letters entered in any order and compares their frequency counts against an extensive English dictionary. It strictly respects duplicate letter counts and accommodates wildcard or blank tiles to find matching words from the loaded dictionary. You can filter results by word length from 2 to 15 letters, sort words by length or alphabetically, and quickly copy matching answers for your puzzle.
+        </p>
       </div>
 
       {/* How to Use Step-by-Step */}
@@ -80,6 +77,36 @@ export default function HowItWorks() {
         </ol>
       </section>
 
+      {/* What Words Can You Make From These Letters? */}
+      <section
+        id="what-words-can-you-make"
+        aria-labelledby="what-words-heading"
+        className="pt-4 border-t border-indigo-100"
+      >
+        <h3
+          id="what-words-heading"
+          className="text-xs font-bold uppercase tracking-wider text-indigo-900 mb-1.5"
+        >
+          What Words Can You Make From These Letters?
+        </h3>
+        <p className="text-xs sm:text-sm text-indigo-900/80 leading-relaxed">
+          Cluevra checks your entered letters against its loaded English dictionary to display matching words that can be constructed from those letters. You can uncover words of varying lengths based on your chosen minimum and maximum length filters. Exact letter quantities are strictly respected, meaning a letter cannot be used more times than provided unless a blank wildcard tile (<code className="font-mono bg-white px-1 py-0.5 rounded text-indigo-700 font-bold border border-indigo-200">?</code> or <code className="font-mono bg-white px-1 py-0.5 rounded text-indigo-700 font-bold border border-indigo-200">*</code>) is used to substitute for missing letters (up to 3 wildcards supported). All results are generated directly from the loaded dictionary and can be sorted by length or alphabetically for easy scanning.
+        </p>
+      </section>
+
+      {/* When Should You Use a Word Unscrambler? */}
+      <section id="when-to-use" aria-labelledby="when-to-use-heading" className="pt-4 border-t border-indigo-100">
+        <h3
+          id="when-to-use-heading"
+          className="text-xs font-bold uppercase tracking-wider text-indigo-900 mb-1.5"
+        >
+          When Should You Use a Word Unscrambler?
+        </h3>
+        <p className="text-xs sm:text-sm text-indigo-900/80 leading-relaxed">
+          This tool is helpful whenever you encounter scrambled-letter puzzles, want to explore valid words from a specific tile rack, or need hints for word games and vocabulary exercises. Whether you are solving daily anagrams, deciphering jumbles, or studying letter combinations, it delivers rapid suggestions organized by length.
+        </p>
+      </section>
+
       {/* What Is a Word Unscrambler? */}
       <section id="what-is-unscrambler" aria-labelledby="what-is-heading" className="pt-4 border-t border-indigo-100">
         <h3
@@ -89,7 +116,7 @@ export default function HowItWorks() {
           What Is a Word Unscrambler?
         </h3>
         <p className="text-xs sm:text-sm text-indigo-900/80 leading-relaxed">
-          A word unscrambler is an online anagram solver and word finder. It takes jumbled letters and identifies every legitimate word that can be formed from them. It is an essential companion for word games like Scrabble, Words with Friends, Boggle, Jumble, and crossword puzzles.
+          A word unscrambler is an online anagram solver and word finder. It takes a pool of jumbled letters and identifies matching words that can be formed from them using its loaded dictionary. It serves as an intuitive companion for word games, anagram challenges, daily jumbles, and crossword puzzles.
         </p>
       </section>
 
@@ -102,7 +129,7 @@ export default function HowItWorks() {
           What Are Wildcard / Blank Tiles?
         </h3>
         <p className="text-xs sm:text-sm text-indigo-900/80 leading-relaxed">
-          Wildcards (typed as <code className="font-mono bg-white px-1 py-0.5 rounded text-indigo-700 font-bold border border-indigo-200">?</code> or <code className="font-mono bg-white px-1 py-0.5 rounded text-indigo-700 font-bold border border-indigo-200">*</code>) represent blank tiles in board games. Each wildcard substitutes for any letter from A to Z, helping you solve tricky letter combinations and discover high-scoring plays.
+          Wildcards (typed as <code className="font-mono bg-white px-1 py-0.5 rounded text-indigo-700 font-bold border border-indigo-200">?</code> or <code className="font-mono bg-white px-1 py-0.5 rounded text-indigo-700 font-bold border border-indigo-200">*</code>) represent blank tiles in board games. Each wildcard substitutes for any letter from A to Z, helping you solve tricky letter combinations and find possible word-game plays.
         </p>
       </section>
     </article>
