@@ -1,9 +1,26 @@
 import { SITE_CONFIG } from '../config/site.ts';
 import { FIVE_LETTER_FAQS } from '../data/fiveLetterFaq.ts';
+import { SIX_LETTER_FAQS } from '../data/sixLetterFaq.ts';
 import { SEVEN_LETTER_FAQS } from '../data/sevenLetterFaq.ts';
+import { EIGHT_LETTER_FAQS } from '../data/eightLetterFaq.ts';
+import { WORD_FINDER_FAQS } from '../data/wordFinderFaq.ts';
+import { WORDS_WITH_LETTERS_FAQS } from '../data/wordsWithLettersFaq.ts';
+import { ANAGRAM_SOLVER_FAQS } from '../data/anagramSolverFaq.ts';
 import { FAQ_DATA } from '../data/faqData.ts';
 
-export type AppRoute = 'home' | 'fiveLetterFinder' | 'sevenLetterUnscrambler' | 'about' | 'privacy' | 'terms' | 'contact';
+export type AppRoute =
+  | 'home'
+  | 'wordFinder'
+  | 'wordsWithLetters'
+  | 'anagramSolver'
+  | 'fiveLetterFinder'
+  | 'sixLetterUnscrambler'
+  | 'sevenLetterUnscrambler'
+  | 'eightLetterUnscrambler'
+  | 'about'
+  | 'privacy'
+  | 'terms'
+  | 'contact';
 
 /**
  * Normalizes window.location.pathname into an AppRoute identifier.
@@ -15,10 +32,21 @@ export function getRouteFromPath(pathname: string): AppRoute {
     : pathname;
 
   switch (cleanPath) {
+    case '/word-finder':
+      return 'wordFinder';
+    case '/words-with-letters':
+      return 'wordsWithLetters';
+    case '/anagram-solver':
+      return 'anagramSolver';
     case '/5-letter-word-finder':
+    case '/5-letter-word-unscrambler':
       return 'fiveLetterFinder';
+    case '/6-letter-word-unscrambler':
+      return 'sixLetterUnscrambler';
     case '/7-letter-word-unscrambler':
       return 'sevenLetterUnscrambler';
+    case '/8-letter-word-unscrambler':
+      return 'eightLetterUnscrambler';
     case '/about':
       return 'about';
     case '/privacy-policy':
@@ -39,10 +67,20 @@ export function getRouteFromPath(pathname: string): AppRoute {
  */
 export function getPathFromRoute(route: AppRoute): string {
   switch (route) {
+    case 'wordFinder':
+      return '/word-finder';
+    case 'wordsWithLetters':
+      return '/words-with-letters';
+    case 'anagramSolver':
+      return '/anagram-solver';
     case 'fiveLetterFinder':
       return '/5-letter-word-finder';
+    case 'sixLetterUnscrambler':
+      return '/6-letter-word-unscrambler';
     case 'sevenLetterUnscrambler':
       return '/7-letter-word-unscrambler';
+    case 'eightLetterUnscrambler':
+      return '/8-letter-word-unscrambler';
     case 'about':
       return '/about';
     case 'privacy':
@@ -107,8 +145,18 @@ export function updatePageSEO(route: AppRoute) {
   const webAppScript = document.getElementById('schema-webapplication');
   if (webAppScript) {
     const webAppName =
-      route === 'sevenLetterUnscrambler'
+      route === 'wordFinder'
+        ? 'Word Finder'
+        : route === 'wordsWithLetters'
+        ? 'Words With Letters'
+        : route === 'anagramSolver'
+        ? 'Anagram Solver'
+        : route === 'eightLetterUnscrambler'
+        ? '8 Letter Word Unscrambler'
+        : route === 'sevenLetterUnscrambler'
         ? '7 Letter Word Unscrambler'
+        : route === 'sixLetterUnscrambler'
+        ? '6 Letter Word Unscrambler'
         : route === 'fiveLetterFinder'
         ? '5 Letter Word Finder'
         : 'Word Unscrambler';
@@ -133,8 +181,18 @@ export function updatePageSEO(route: AppRoute) {
   const faqScript = document.getElementById('schema-faqpage');
   if (faqScript) {
     const activeFaqs =
-      route === 'sevenLetterUnscrambler'
+      route === 'wordFinder'
+        ? WORD_FINDER_FAQS
+        : route === 'wordsWithLetters'
+        ? WORDS_WITH_LETTERS_FAQS
+        : route === 'anagramSolver'
+        ? ANAGRAM_SOLVER_FAQS
+        : route === 'eightLetterUnscrambler'
+        ? EIGHT_LETTER_FAQS
+        : route === 'sevenLetterUnscrambler'
         ? SEVEN_LETTER_FAQS
+        : route === 'sixLetterUnscrambler'
+        ? SIX_LETTER_FAQS
         : route === 'fiveLetterFinder'
         ? FIVE_LETTER_FAQS
         : route === 'home'

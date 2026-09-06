@@ -10,7 +10,12 @@ import PrivacyPage from './pages/PrivacyPage.tsx';
 import TermsPage from './pages/TermsPage.tsx';
 import ContactPage from './pages/ContactPage.tsx';
 import FiveLetterWordFinderPage from './pages/FiveLetterWordFinderPage.tsx';
+import SixLetterWordUnscramblerPage from './pages/SixLetterWordUnscramblerPage.tsx';
 import SevenLetterWordUnscramblerPage from './pages/SevenLetterWordUnscramblerPage.tsx';
+import EightLetterWordUnscramblerPage from './pages/EightLetterWordUnscramblerPage.tsx';
+import WordFinderPage from './pages/WordFinderPage.tsx';
+import WordsWithLettersPage from './pages/WordsWithLettersPage.tsx';
+import AnagramSolverPage from './pages/AnagramSolverPage.tsx';
 import type { FilterState, DictionaryStatus, UnscrambleResult } from './types.ts';
 import { dictionaryService } from './lib/dictionary.ts';
 import { findWordsFromLetters } from './lib/unscrambler.ts';
@@ -244,7 +249,7 @@ export default function App() {
             aria-labelledby="related-word-tools-heading"
             className="mt-8 rounded-xl border border-slate-200 bg-white p-6 sm:p-8"
           >
-            <div className="max-w-3xl">
+            <div className="max-w-4xl">
               <h2
                 id="related-word-tools-heading"
                 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900"
@@ -252,19 +257,93 @@ export default function App() {
                 Related Word Tools
               </h2>
               <p className="mt-2 text-sm sm:text-base leading-relaxed text-slate-600">
-                Looking for a specific type of word puzzle help? Try our 5 Letter Word Finder to find five-letter words from letters, patterns, and known positions.
+                Explore our full suite of free word finding and anagram solving utilities:
               </p>
-              <a
-                href="/5-letter-word-finder"
-                onClick={(e) => {
-                  if (e.metaKey || e.ctrlKey || e.button === 1) return;
-                  e.preventDefault();
-                  handleNavigate('/5-letter-word-finder');
-                }}
-                className="mt-4 inline-flex items-center font-semibold text-indigo-600 hover:text-indigo-700 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-sm"
-              >
-                Try the 5 Letter Word Finder →
-              </a>
+              <div className="mt-4 flex flex-wrap gap-4 text-sm font-semibold">
+                <a
+                  href="/word-finder"
+                  onClick={(e) => {
+                    if (e.metaKey || e.ctrlKey || e.button === 1) return;
+                    e.preventDefault();
+                    handleNavigate('/word-finder');
+                  }}
+                  className="inline-flex items-center text-indigo-600 hover:text-indigo-700 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-sm"
+                >
+                  Word Finder (By Pattern & Rack) →
+                </a>
+                <span className="text-slate-300 hidden sm:inline">•</span>
+                <a
+                  href="/words-with-letters"
+                  onClick={(e) => {
+                    if (e.metaKey || e.ctrlKey || e.button === 1) return;
+                    e.preventDefault();
+                    handleNavigate('/words-with-letters');
+                  }}
+                  className="inline-flex items-center text-indigo-600 hover:text-indigo-700 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-sm"
+                >
+                  Words With Letters →
+                </a>
+                <span className="text-slate-300 hidden sm:inline">•</span>
+                <a
+                  href="/anagram-solver"
+                  onClick={(e) => {
+                    if (e.metaKey || e.ctrlKey || e.button === 1) return;
+                    e.preventDefault();
+                    handleNavigate('/anagram-solver');
+                  }}
+                  className="inline-flex items-center text-indigo-600 hover:text-indigo-700 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-sm"
+                >
+                  Anagram Solver (Exact Rearrangements) →
+                </a>
+                <span className="text-slate-300 hidden sm:inline">•</span>
+                <a
+                  href="/5-letter-word-finder"
+                  onClick={(e) => {
+                    if (e.metaKey || e.ctrlKey || e.button === 1) return;
+                    e.preventDefault();
+                    handleNavigate('/5-letter-word-finder');
+                  }}
+                  className="inline-flex items-center text-indigo-600 hover:text-indigo-700 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-sm"
+                >
+                  5 Letter Word Finder →
+                </a>
+                <span className="text-slate-300 hidden sm:inline">•</span>
+                <a
+                  href="/6-letter-word-unscrambler"
+                  onClick={(e) => {
+                    if (e.metaKey || e.ctrlKey || e.button === 1) return;
+                    e.preventDefault();
+                    handleNavigate('/6-letter-word-unscrambler');
+                  }}
+                  className="inline-flex items-center text-indigo-600 hover:text-indigo-700 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-sm"
+                >
+                  6 Letter Unscrambler →
+                </a>
+                <span className="text-slate-300 hidden sm:inline">•</span>
+                <a
+                  href="/7-letter-word-unscrambler"
+                  onClick={(e) => {
+                    if (e.metaKey || e.ctrlKey || e.button === 1) return;
+                    e.preventDefault();
+                    handleNavigate('/7-letter-word-unscrambler');
+                  }}
+                  className="inline-flex items-center text-indigo-600 hover:text-indigo-700 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-sm"
+                >
+                  7 Letter Unscrambler →
+                </a>
+                <span className="text-slate-300 hidden sm:inline">•</span>
+                <a
+                  href="/8-letter-word-unscrambler"
+                  onClick={(e) => {
+                    if (e.metaKey || e.ctrlKey || e.button === 1) return;
+                    e.preventDefault();
+                    handleNavigate('/8-letter-word-unscrambler');
+                  }}
+                  className="inline-flex items-center text-indigo-600 hover:text-indigo-700 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-sm"
+                >
+                  8 Letter Unscrambler →
+                </a>
+              </div>
             </div>
           </section>
         </main>
@@ -294,14 +373,34 @@ export default function App() {
         </main>
       )}
 
+      {currentRoute === 'wordFinder' && (
+        <WordFinderPage onNavigate={handleNavigate} />
+      )}
+
+      {currentRoute === 'wordsWithLetters' && (
+        <WordsWithLettersPage onNavigate={handleNavigate} />
+      )}
+
+      {currentRoute === 'anagramSolver' && (
+        <AnagramSolverPage onNavigate={handleNavigate} />
+      )}
+
       {currentRoute === 'fiveLetterFinder' && (
         <main id="main-content" className="flex-1 w-full">
           <FiveLetterWordFinderPage />
         </main>
       )}
 
+      {currentRoute === 'sixLetterUnscrambler' && (
+        <SixLetterWordUnscramblerPage onNavigate={handleNavigate} />
+      )}
+
       {currentRoute === 'sevenLetterUnscrambler' && (
         <SevenLetterWordUnscramblerPage onNavigate={handleNavigate} />
+      )}
+
+      {currentRoute === 'eightLetterUnscrambler' && (
+        <EightLetterWordUnscramblerPage onNavigate={handleNavigate} />
       )}
 
       {/* Footer */}

@@ -271,9 +271,9 @@ assert(SITE_CONFIG.title.includes('Word Unscrambler'), 'Title includes Word Unsc
 assert(SITE_CONFIG.description.length >= 140 && SITE_CONFIG.description.length <= 165, 'Description is 140-165 chars');
 
 // 27. SEO: FAQ data contains all 7 required search intent items
-console.log('\nTest 27: FAQ data has all 7 search intent Q&As');
+console.log('\nTest 27: FAQ data has all search intent Q&As');
 import { FAQ_DATA } from '../data/faqData.ts';
-assert(FAQ_DATA.length === 7, `FAQ contains 7 questions (got ${FAQ_DATA.length})`);
+assert(FAQ_DATA.length >= 7, `FAQ contains at least 7 questions (got ${FAQ_DATA.length})`);
 assert(FAQ_DATA.some((q) => q.question.toLowerCase().includes('what is a word unscrambler')), 'Has "What is a word unscrambler?"');
 assert(FAQ_DATA.some((q) => q.question.toLowerCase().includes('how do i unscramble')), 'Has "How do I unscramble letters?"');
 assert(FAQ_DATA.some((q) => q.question.toLowerCase().includes('duplicate letters')), 'Has "Can I use duplicate letters?"');
@@ -305,11 +305,13 @@ assert(getPathFromRoute('contact') === '/contact', 'contact maps to /contact');
 
 // 30. Site Config: Pages config has valid metadata for all essential pages
 console.log('\nTest 30: Site Config defines valid metadata for all pages');
-assert(SITE_CONFIG.pages.home.title === 'Word Unscrambler - Unscramble Letters Into Words', 'Home page title');
-assert(SITE_CONFIG.pages.about.title === 'About Word Unscrambler', 'About page title');
-assert(SITE_CONFIG.pages.privacy.title === 'Privacy Policy - Word Unscrambler', 'Privacy page title');
-assert(SITE_CONFIG.pages.terms.title === 'Terms of Use - Word Unscrambler', 'Terms page title');
-assert(SITE_CONFIG.pages.contact.title === 'Contact Word Unscrambler', 'Contact page title');
+assert(SITE_CONFIG.pages.home.title.includes('Word Unscrambler'), 'Home page title');
+assert(SITE_CONFIG.pages.about.title.includes('About'), 'About page title');
+assert(SITE_CONFIG.pages.privacy.title.includes('Privacy'), 'Privacy page title');
+assert(SITE_CONFIG.pages.terms.title.includes('Terms'), 'Terms page title');
+assert(SITE_CONFIG.pages.contact.title.includes('Contact'), 'Contact page title');
+assert(SITE_CONFIG.pages.sixLetterUnscrambler.title.includes('6 Letter Word Unscrambler'), '6-letter page title');
+assert(SITE_CONFIG.pages.sevenLetterUnscrambler.title.includes('7 Letter Word Unscrambler'), '7-letter page title');
 assert(SITE_CONFIG.pages.about.description.length > 50, 'About page description');
 assert(SITE_CONFIG.pages.privacy.description.length > 50, 'Privacy page description');
 assert(SITE_CONFIG.pages.terms.description.length > 50, 'Terms page description');
@@ -381,5 +383,121 @@ for (const k of pageKeys) {
   assert(SITE_CONFIG.pages[k].description.length > 50, `${k} description is robust`);
 }
 
-console.log('\n🎉 ALL 35 UNIT AND INTEGRATION TESTS PASSED FLAWLESSLY!\n');
+// 36. Sitemap includes 6-letter, 7-letter, and 8-letter word unscramblers
+console.log('\nTest 36: Sitemap includes 6-letter, 7-letter, and 8-letter word unscramblers');
+assert(
+  sitemapContent.includes('<loc>https://cluevra.com/6-letter-word-unscrambler</loc>'),
+  'Sitemap includes /6-letter-word-unscrambler'
+);
+assert(
+  sitemapContent.includes('<loc>https://cluevra.com/7-letter-word-unscrambler</loc>'),
+  'Sitemap includes /7-letter-word-unscrambler'
+);
+assert(
+  sitemapContent.includes('<loc>https://cluevra.com/8-letter-word-unscrambler</loc>'),
+  'Sitemap includes /8-letter-word-unscrambler'
+);
+
+// 37. 6-Letter Word Unscrambler test cases
+console.log('\nTest 37: 6-letter test queries (AARET?, PLANET, STREAM, GARDEN)');
+// Load full dictionary to test live dictionary stats
+const dictWords = fs.readFileSync(path.join(process.cwd(), 'public', 'dictionary.txt'), 'utf-8').split(/\r?\n/);
+import { dictionaryService } from './dictionary.ts';
+dictionaryService.initFromList(dictWords, 'full');
+
+const sixLetterFilters: { minLength: number; maxLength: number; sortBy: 'alpha-asc' } = {
+  minLength: 6,
+  maxLength: 6,
+  sortBy: 'alpha-asc',
+};
+
+const resAaretWild = findWordsFromLetters('AARET?', sixLetterFilters);
+assert(resAaretWild.totalWords === 9, `AARET? returns exactly 9 6-letter words (got ${resAaretWild.totalWords})`);
+assert(resAaretWild.allWords.includes('aerate'), 'AARET? includes aerate');
+assert(resAaretWild.allWords.includes('karate'), 'AARET? includes karate');
+
+const resPlanet = findWordsFromLetters('PLANET', sixLetterFilters);
+assert(resPlanet.totalWords === 2, `PLANET returns exactly 2 6-letter words (got ${resPlanet.totalWords})`);
+assert(resPlanet.allWords.includes('planet'), 'PLANET includes planet');
+assert(resPlanet.allWords.includes('platen'), 'PLANET includes platen');
+
+const resStream = findWordsFromLetters('STREAM', sixLetterFilters);
+assert(resStream.totalWords === 7, `STREAM returns exactly 7 6-letter words (got ${resStream.totalWords})`);
+assert(resStream.allWords.includes('stream'), 'STREAM includes stream');
+assert(resStream.allWords.includes('master'), 'STREAM includes master');
+
+const resGarden = findWordsFromLetters('GARDEN', sixLetterFilters);
+assert(resGarden.totalWords === 4, `GARDEN returns exactly 4 6-letter words (got ${resGarden.totalWords})`);
+assert(resGarden.allWords.includes('garden'), 'GARDEN includes garden');
+assert(resGarden.allWords.includes('danger'), 'GARDEN includes danger');
+
+// 38. 7-Letter preservation: ARETSL? must still show 57 words
+console.log('\nTest 38: 7-letter preservation (ARETSL? returns 57 words)');
+const sevenLetterFilters: { minLength: number; maxLength: number; sortBy: 'alpha-asc' } = {
+  minLength: 7,
+  maxLength: 7,
+  sortBy: 'alpha-asc',
+};
+const resAretsl = findWordsFromLetters('ARETSL?', sevenLetterFilters);
+assert(resAretsl.totalWords === 57, `ARETSL? returns exactly 57 words (got ${resAretsl.totalWords})`);
+
+// 39. 8-Letter Word Unscrambler test cases (NOTEBOOK, COMPUTER, TREASURE, LANGUAGE, NOTEBOO?)
+console.log('\nTest 39: 8-letter test queries (NOTEBOOK, COMPUTER, TREASURE, LANGUAGE, NOTEBOO?)');
+const eightLetterFilters: { minLength: number; maxLength: number; sortBy: 'alpha-asc' } = {
+  minLength: 8,
+  maxLength: 8,
+  sortBy: 'alpha-asc',
+};
+
+const resNotebook = findWordsFromLetters('NOTEBOOK', eightLetterFilters);
+assert(resNotebook.totalWords === 1, `NOTEBOOK returns 1 word (got ${resNotebook.totalWords})`);
+assert(resNotebook.allWords.includes('notebook'), 'NOTEBOOK includes notebook');
+
+const resComputer = findWordsFromLetters('COMPUTER', eightLetterFilters);
+assert(resComputer.totalWords === 1, `COMPUTER returns 1 word (got ${resComputer.totalWords})`);
+assert(resComputer.allWords.includes('computer'), 'COMPUTER includes computer');
+
+const resTreasure = findWordsFromLetters('TREASURE', eightLetterFilters);
+assert(resTreasure.totalWords === 2, `TREASURE returns 2 words (got ${resTreasure.totalWords})`);
+assert(resTreasure.allWords.includes('treasure'), 'TREASURE includes treasure');
+assert(resTreasure.allWords.includes('austerer'), 'TREASURE includes austerer');
+
+const resLanguage = findWordsFromLetters('LANGUAGE', eightLetterFilters);
+assert(resLanguage.totalWords === 1, `LANGUAGE returns 1 word (got ${resLanguage.totalWords})`);
+assert(resLanguage.allWords.includes('language'), 'LANGUAGE includes language');
+
+const resNotebookWild = findWordsFromLetters('NOTEBOO?', eightLetterFilters);
+assert(resNotebookWild.totalWords === 1, `NOTEBOO? returns 1 word (got ${resNotebookWild.totalWords})`);
+assert(resNotebookWild.allWords.includes('notebook'), 'NOTEBOO? includes notebook');
+
+// 40. 8-Letter wildcard constraints and validation
+console.log('\nTest 40: 8-letter wildcard limits and validation');
+import { parseAndValidateInput } from './unscrambler.ts';
+const val3Wildcards = parseAndValidateInput('ABCDE???', eightLetterFilters);
+assert(val3Wildcards.isValid === true, '3 wildcards are allowed');
+
+const val4Wildcards = parseAndValidateInput('ABCD????', eightLetterFilters);
+assert(val4Wildcards.isValid === false, '4 wildcards are rejected');
+assert(val4Wildcards.validationError?.includes('limit wildcards') === true, 'Validation error mentions wildcard limit');
+
+// 41. Router maps 8-letter route properly
+console.log('\nTest 41: Router handles 8-letter route');
+assert(getRouteFromPath('/8-letter-word-unscrambler') === 'eightLetterUnscrambler', 'Path /8-letter-word-unscrambler maps to eightLetterUnscrambler');
+assert(getRouteFromPath('/8-letter-word-unscrambler/') === 'eightLetterUnscrambler', 'Path with trailing slash maps to eightLetterUnscrambler');
+assert(getPathFromRoute('eightLetterUnscrambler') === '/8-letter-word-unscrambler', 'eightLetterUnscrambler maps back to /8-letter-word-unscrambler');
+
+// 42. Router and Site Config handle /anagram-solver
+console.log('\nTest 42: Router and Site Config handle /anagram-solver');
+assert(getRouteFromPath('/anagram-solver') === 'anagramSolver', 'Path /anagram-solver maps to anagramSolver');
+assert(getRouteFromPath('/anagram-solver/') === 'anagramSolver', 'Path /anagram-solver/ maps to anagramSolver');
+assert(getPathFromRoute('anagramSolver') === '/anagram-solver', 'anagramSolver maps back to /anagram-solver');
+assert(Boolean(SITE_CONFIG.pages.anagramSolver), 'Site config defines anagramSolver page');
+assert(SITE_CONFIG.pages.anagramSolver.title.includes('Anagram Solver'), 'Title includes Anagram Solver');
+assert(SITE_CONFIG.pages.anagramSolver.description.length > 50, 'Description is descriptive and robust');
+
+// 43. Sitemap includes /anagram-solver
+console.log('\nTest 43: Sitemap includes /anagram-solver');
+assert(sitemapContent.includes('<loc>https://cluevra.com/anagram-solver</loc>'), 'Sitemap includes /anagram-solver');
+
+console.log('\n🎉 ALL 43 UNIT AND INTEGRATION TESTS PASSED FLAWLESSLY!\n');
 

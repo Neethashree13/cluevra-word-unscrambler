@@ -63,6 +63,36 @@ export default function Footer({ onNavigate }: FooterProps) {
                   <ul className="space-y-2 text-xs sm:text-sm font-medium">
                     <li>
                       <a
+                        id="footer-link-words-with-letters"
+                        href="/words-with-letters"
+                        onClick={(e) => handleLinkClick(e, '/words-with-letters')}
+                        className="text-slate-600 hover:text-indigo-600 transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-xs"
+                      >
+                        Words With Letters
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        id="footer-link-word-finder"
+                        href="/word-finder"
+                        onClick={(e) => handleLinkClick(e, '/word-finder')}
+                        className="text-slate-600 hover:text-indigo-600 transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-xs"
+                      >
+                        Word Finder
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        id="footer-link-anagram-solver"
+                        href="/anagram-solver"
+                        onClick={(e) => handleLinkClick(e, '/anagram-solver')}
+                        className="text-slate-600 hover:text-indigo-600 transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-xs"
+                      >
+                        Anagram Solver
+                      </a>
+                    </li>
+                    <li>
+                      <a
                         id="footer-link-word-unscrambler"
                         href="/word-unscrambler"
                         onClick={(e) => handleLinkClick(e, '/word-unscrambler')}
@@ -73,12 +103,32 @@ export default function Footer({ onNavigate }: FooterProps) {
                     </li>
                     <li>
                       <a
+                        id="footer-link-six-letter-unscrambler"
+                        href="/6-letter-word-unscrambler"
+                        onClick={(e) => handleLinkClick(e, '/6-letter-word-unscrambler')}
+                        className="text-slate-600 hover:text-indigo-600 transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-xs"
+                      >
+                        6 Letter Unscrambler
+                      </a>
+                    </li>
+                    <li>
+                      <a
                         id="footer-link-seven-letter-unscrambler"
                         href="/7-letter-word-unscrambler"
                         onClick={(e) => handleLinkClick(e, '/7-letter-word-unscrambler')}
                         className="text-slate-600 hover:text-indigo-600 transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-xs"
                       >
                         7 Letter Unscrambler
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        id="footer-link-eight-letter-unscrambler"
+                        href="/8-letter-word-unscrambler"
+                        onClick={(e) => handleLinkClick(e, '/8-letter-word-unscrambler')}
+                        className="text-slate-600 hover:text-indigo-600 transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-xs"
+                      >
+                        8 Letter Unscrambler
                       </a>
                     </li>
                     <li>

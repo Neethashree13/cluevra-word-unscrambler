@@ -1,6 +1,6 @@
 {
   "name": "Word Unscrambler",
-  "description": "Unscramble letters into words with our free Word Unscrambler. Find words from letters, use wildcards, filter by length, sort results, and copy your answers.",
+  "description": "Unscramble letters and find words with Cluevra tools including Word Unscrambler, Word Finder, Words With Letters, and Anagram Solver. Filter by length, use wildcards, and sort results.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

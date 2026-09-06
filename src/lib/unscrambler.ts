@@ -1,4 +1,5 @@
 import { normalizeWord, dictionaryService, WordDictionary } from './dictionary.ts';
+import { calculateWordScore } from './scoring.ts';
 import type { SortOption, UnscrambleOptions, UnscrambleResult, WordGroup } from '../types.ts';
 
 /**
@@ -119,6 +120,15 @@ export function sortResults(
       return a.localeCompare(b);
     }
 
+    if (sortBy === 'score-desc') {
+      const scoreA = calculateWordScore(a);
+      const scoreB = calculateWordScore(b);
+      if (scoreB !== scoreA) {
+        return scoreB - scoreA;
+      }
+      return a.localeCompare(b);
+    }
+
     // 'alpha-asc'
     const alphaCompare = a.localeCompare(b);
     if (alphaCompare !== 0) {
@@ -145,6 +155,17 @@ export function groupResultsByLength(
       {
         length: 0,
         label: 'Words (A to Z)',
+        words: sorted,
+      },
+    ];
+  }
+
+  // When Score (Highest First) is selected, return words globally in score order.
+  if (sortBy === 'score-desc') {
+    return [
+      {
+        length: 0,
+        label: 'Words by Score (Highest First)',
         words: sorted,
       },
     ];

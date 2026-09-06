@@ -1,21 +1,28 @@
 import { FAQ_DATA } from '../data/faqData.ts';
+import type { FAQItem } from '../types.ts';
 
-export default function FAQ() {
+interface FAQProps {
+  items?: FAQItem[];
+  id?: string;
+  title?: string;
+}
+
+export default function FAQ({ items = FAQ_DATA, id = 'faq', title = 'Frequently Asked Questions' }: FAQProps) {
   return (
     <section
-      id="faq"
-      aria-labelledby="faq-heading"
+      id={id}
+      aria-labelledby={`${id}-heading`}
       className="flex flex-col"
     >
       <h2
-        id="faq-heading"
+        id={`${id}-heading`}
         className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-4"
       >
-        Frequently Asked Questions
+        {title}
       </h2>
 
-      <div id="faq-accordion-list" className="space-y-3">
-        {FAQ_DATA.map((item) => (
+      <div id={`${id}-accordion-list`} className="space-y-3">
+        {items.map((item) => (
           <details
             key={item.id}
             id={item.id}

@@ -1,12 +1,12 @@
 import React from 'react';
-import { SEVEN_LETTER_FAQS } from '../data/sevenLetterFaq.ts';
-import { ArrowRight, SpellCheck, LayoutGrid } from 'lucide-react';
+import { SIX_LETTER_FAQS } from '../data/sixLetterFaq.ts';
+import { ArrowRight, SpellCheck, LayoutGrid, Hash } from 'lucide-react';
 
-interface SevenLetterContentProps {
+interface SixLetterContentProps {
   onNavigate?: (path: string) => void;
 }
 
-export default function SevenLetterContent({ onNavigate }: SevenLetterContentProps) {
+export default function SixLetterContent({ onNavigate }: SixLetterContentProps) {
   const handleToolClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (e.metaKey || e.ctrlKey || e.button === 1) return;
     e.preventDefault();
@@ -20,8 +20,8 @@ export default function SevenLetterContent({ onNavigate }: SevenLetterContentPro
   const steps = [
     {
       num: '1',
-      title: 'Enter up to 7 letters',
-      desc: 'Type or paste up to 7 scrambled letters into the input field in any order.',
+      title: 'Enter up to 6 letters',
+      desc: 'Type or paste up to 6 scrambled letters into the input field in any order.',
     },
     {
       num: '2',
@@ -31,7 +31,7 @@ export default function SevenLetterContent({ onNavigate }: SevenLetterContentPro
     {
       num: '3',
       title: 'Pick your sort preference',
-      desc: 'Choose alphabetical (A-Z) or word length sorting to organize your answers.',
+      desc: 'Choose alphabetical (A-Z) or score sorting to organize your answers.',
     },
     {
       num: '4',
@@ -41,19 +41,19 @@ export default function SevenLetterContent({ onNavigate }: SevenLetterContentPro
     {
       num: '5',
       title: 'Review and copy results',
-      desc: 'Browse matching 7-letter words with letter scores and copy answers with one click.',
+      desc: 'Browse matching 6-letter words with letter scores and copy answers with one click.',
     },
   ];
 
   return (
-    <article id="seven-letter-content" className="space-y-10 mt-12 text-slate-700">
-      {/* 1. How to Use the 7 Letter Word Unscrambler */}
+    <article id="six-letter-content" className="space-y-10 mt-12 text-slate-700">
+      {/* 1. How to Use the 6 Letter Word Unscrambler */}
       <section id="how-to-use" aria-labelledby="how-to-use-heading" className="space-y-4">
         <h2
           id="how-to-use-heading"
           className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight"
         >
-          How to Use the 7 Letter Word Unscrambler
+          How to Use the 6 Letter Word Unscrambler
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
           {steps.map((step) => (
@@ -73,35 +73,35 @@ export default function SevenLetterContent({ onNavigate }: SevenLetterContentPro
         </div>
       </section>
 
-      {/* 2. What 7 Letter Words Can You Make? */}
+      {/* 2. What 6 Letter Words Can You Make? */}
       <section id="what-words-can-you-make" aria-labelledby="what-words-heading" className="space-y-3">
         <h2
           id="what-words-heading"
           className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight"
         >
-          What 7 Letter Words Can You Make?
+          What 6 Letter Words Can You Make?
         </h2>
         <p className="text-sm sm:text-base leading-relaxed text-slate-600">
-          Cluevra checks your entered letters against its loaded English dictionary and identifies every matching 7-letter word that can be constructed. The engine strictly respects duplicate letter counts: a letter will never be used more times than provided in your tile set unless you supply a blank wildcard tile.
+          Cluevra compares your entered letters against its comprehensive English dictionary and finds every matching six-letter word that can be constructed. Duplicate letters are strictly counted: a letter is only used as many times as you have provided it, unless a wildcard tile supplies an extra occurrence.
         </p>
         <p className="text-sm sm:text-base leading-relaxed text-slate-600">
-          By default, this tool filters results to return words with a minimum and maximum length of exactly 7 letters. All words are cross-referenced directly against our loaded dictionary so you can be confident that every result is a valid, recognized English word ready for your puzzle or board game.
+          This tool is calibrated to search specifically for words of exactly 6 letters. All results are verified against standard English lexicon data, ensuring valid answers for your puzzle or word game.
         </p>
       </section>
 
-      {/* 3. 7 Letter Words for Word Games */}
+      {/* 3. 6 Letter Words for Word Games */}
       <section id="word-games" aria-labelledby="word-games-heading" className="space-y-3">
         <h2
           id="word-games-heading"
           className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight"
         >
-          7 Letter Words for Word Games
+          6 Letter Words for Word Games & Puzzles
         </h2>
         <p className="text-sm sm:text-base leading-relaxed text-slate-600">
-          Seven-letter words represent one of the most crucial thresholds in competitive word games and puzzle challenges. In traditional tile games like Scrabble and Words With Friends, playing all seven tiles in a single turn triggers a 50-point &quot;bingo&quot; bonus that can completely turn the match in your favor.
+          Six-letter words are central to many classic and modern word games. In games like Text Twist and Anagrams, unscrambling the 6-letter master word is essential to advance to the next round. In Scrabble and Words With Friends, six-letter words provide reliable high-scoring tile placements across bonus squares.
         </p>
         <p className="text-sm sm:text-base leading-relaxed text-slate-600">
-          In addition to tile-based games, 7-letter anagrams are widely featured in daily newspaper jumbles, mobile word scramble puzzles, and crossword grids. Mastering common prefixes (like <em>RE-</em>, <em>UN-</em>, <em>DE-</em>) and suffixes (like <em>-ING</em>, <em>-ERS</em>, <em>-EST</em>) paired with a rapid unscrambler makes finding elusive 7-letter combinations effortless.
+          Whether you are tackling daily anagram jumbles, solving crosswords, or expanding your vocabulary with common six-letter stems and compound roots, our 6-letter solver provides rapid, distraction-free assistance.
         </p>
       </section>
 
@@ -114,10 +114,10 @@ export default function SevenLetterContent({ onNavigate }: SevenLetterContentPro
           Using Blank or Wildcard Tiles
         </h2>
         <p className="text-sm sm:text-base leading-relaxed text-slate-600">
-          If you are holding blank game tiles or are missing a letter to complete a seven-letter word, you can enter a question mark (<code className="font-mono bg-slate-100 text-indigo-700 font-bold px-1.5 py-0.5 rounded border border-slate-200">?</code>) or an asterisk (<code className="font-mono bg-slate-100 text-indigo-700 font-bold px-1.5 py-0.5 rounded border border-slate-200">*</code>) as a wildcard.
+          If you have blank tiles or want to explore missing letter possibilities, simply type a question mark (<code className="font-mono bg-slate-100 text-indigo-700 font-bold px-1.5 py-0.5 rounded border border-slate-200">?</code>) or asterisk (<code className="font-mono bg-slate-100 text-indigo-700 font-bold px-1.5 py-0.5 rounded border border-slate-200">*</code>) into the input box.
         </p>
         <p className="text-sm sm:text-base leading-relaxed text-slate-600">
-          The solver supports up to 3 wildcards per query. Each wildcard can represent any letter from A through Z, enabling the unscrambler to explore potential high-scoring plays and reveal words you might not have considered.
+          Up to 3 wildcards are supported. Each wildcard represents any letter from A to Z, helping you discover high-scoring 6-letter options that fit your available rack and board conditions.
         </p>
       </section>
 
@@ -129,8 +129,8 @@ export default function SevenLetterContent({ onNavigate }: SevenLetterContentPro
         >
           Frequently Asked Questions
         </h2>
-        <div id="seven-letter-faq-list" className="space-y-3">
-          {SEVEN_LETTER_FAQS.map((faq) => (
+        <div id="six-letter-faq-list" className="space-y-3">
+          {SIX_LETTER_FAQS.map((faq) => (
             <details
               key={faq.id}
               id={faq.id}
@@ -192,26 +192,26 @@ export default function SevenLetterContent({ onNavigate }: SevenLetterContentPro
             </div>
           </a>
 
-          {/* Tool 2: 6 Letter Word Unscrambler */}
+          {/* Tool 2: 7 Letter Word Unscrambler */}
           <a
-            id="related-tool-six-letter-unscrambler"
-            href="/6-letter-word-unscrambler"
-            onClick={(e) => handleToolClick(e, '/6-letter-word-unscrambler')}
+            id="related-tool-seven-letter-unscrambler"
+            href="/7-letter-word-unscrambler"
+            onClick={(e) => handleToolClick(e, '/7-letter-word-unscrambler')}
             className="group p-5 bg-white border border-slate-200 rounded-xl shadow-2xs hover:border-indigo-300 hover:shadow-xs transition-all flex flex-col justify-between focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
           >
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-indigo-600">
                 <SpellCheck className="w-5 h-5" />
                 <span className="font-bold text-sm text-slate-900 group-hover:text-indigo-600 transition-colors">
-                  6 Letter Unscrambler
+                  7 Letter Unscrambler
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                Unscramble six-letter words from up to 6 letters. Perfect for Text Twist, anagram puzzles, and word games.
+                Find seven-letter anagrams and bingo plays from up to 7 letters with wildcard tile support.
               </p>
             </div>
             <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:translate-x-1 transition-transform">
-              <span>Open 6 Letter Unscrambler</span>
+              <span>Open 7 Letter Unscrambler</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </div>
           </a>
@@ -231,11 +231,11 @@ export default function SevenLetterContent({ onNavigate }: SevenLetterContentPro
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                Filter 5-letter words by known tile positions, starting/ending letters, must-contain letters, and excluded letters.
+                Filter 5-letter words by known tile positions, starting/ending letters, and exclusions.
               </p>
             </div>
             <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:translate-x-1 transition-transform">
-              <span>Open 5 Letter Word Finder</span>
+              <span>Open 5 Letter Finder</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </div>
           </a>
@@ -255,7 +255,7 @@ export default function SevenLetterContent({ onNavigate }: SevenLetterContentPro
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                Unscramble letters of any length from 2 to 15 characters. Filter by word length, sort results, and solve anagrams quickly.
+                Unscramble letters of any length from 2 to 15 characters. Filter by length and sort results.
               </p>
             </div>
             <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:translate-x-1 transition-transform">

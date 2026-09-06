@@ -11,6 +11,13 @@ interface ResultsPanelProps {
   result?: UnscrambleResult | null;
   dictStatus?: DictionaryStatus;
   filters?: FilterState;
+  loadedWordsText?: string;
+  summaryLabel?: string;
+  summaryValue?: string;
+  emptyStateTitle?: string;
+  emptyStateDesc?: string;
+  noResultsDesc?: string;
+  filterSummaryText?: string;
 }
 
 export default function ResultsPanel({
@@ -19,6 +26,13 @@ export default function ResultsPanel({
   result = null,
   dictStatus,
   filters,
+  loadedWordsText,
+  summaryLabel,
+  summaryValue,
+  emptyStateTitle,
+  emptyStateDesc,
+  noResultsDesc,
+  filterSummaryText,
 }: ResultsPanelProps) {
   const [copiedWord, setCopiedWord] = useState<string | null>(null);
   const [copyAllStatus, setCopyAllStatus] = useState<boolean>(false);
@@ -111,7 +125,9 @@ export default function ResultsPanel({
     : '';
 
   // Filter description for header
-  const filterSummary = filters
+  const filterSummary = filterSummaryText
+    ? filterSummaryText
+    : filters
     ? filters.minLength === filters.maxLength
       ? `${filters.minLength} letters only`
       : `${filters.minLength} - ${filters.maxLength} letters`
@@ -205,7 +221,7 @@ export default function ResultsPanel({
               ? `${result?.totalWords} ${result?.totalWords === 1 ? 'word' : 'words'} found`
               : isEmptyResult
               ? '0 words found'
-              : `${wordCountFormatted} words loaded`}
+              : loadedWordsText || `${wordCountFormatted} words loaded`}
           </span>
         </div>
       </div>
@@ -220,13 +236,13 @@ export default function ResultsPanel({
           >
             <div>
               <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
-                Unscrambled Letters
+                {summaryLabel || 'Unscrambled Letters'}
               </span>
               <span
                 id="searched-letters-display"
                 className="font-mono text-base sm:text-lg font-bold text-indigo-950 tracking-widest"
               >
-                {displayLetters}
+                {summaryValue !== undefined ? summaryValue : displayLetters}
               </span>
             </div>
 
@@ -362,11 +378,12 @@ export default function ResultsPanel({
             No words found
           </p>
           <p id="no-results-description" className="text-sm text-slate-500 mt-1 max-w-xs leading-relaxed">
-            No words found. Try different letters, use wildcard tiles (?), or adjust your word length.
+            {noResultsDesc ||
+              'No matching words found in the dictionary. Try different letters, use wildcard tiles (?), or adjust your word length.'}
           </p>
           {searchedLetters && (
             <div className="mt-3 px-3 py-1 bg-slate-100 rounded-md border border-slate-200 text-xs font-mono text-slate-600 font-medium">
-              Input: {displayLetters || searchedLetters.toUpperCase()}
+              Input: {summaryValue || displayLetters || searchedLetters.toUpperCase()}
             </div>
           )}
         </div>
@@ -385,10 +402,11 @@ export default function ResultsPanel({
             <Search className="w-8 h-8 text-slate-300" strokeWidth={1.75} aria-hidden="true" />
           </div>
           <p id="empty-results-message" className="text-slate-700 font-bold text-base">
-            Your words will appear here
+            {emptyStateTitle || 'Your words will appear here'}
           </p>
           <p className="text-sm text-slate-400 mt-1 max-w-xs leading-relaxed">
-            Enter letters or wildcards (?) on the left and click Unscramble to find all possible valid words.
+            {emptyStateDesc ||
+              'Enter letters or wildcards (?) on the left and click Unscramble to find matching words from the dictionary.'}
           </p>
           <div className="mt-4 flex items-center gap-1.5 text-xs text-slate-400">
             <Sparkles className="h-3.5 w-3.5 text-indigo-400" aria-hidden="true" />

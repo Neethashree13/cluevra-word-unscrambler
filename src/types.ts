@@ -1,4 +1,4 @@
-export type SortOption = 'length-desc' | 'length-asc' | 'alpha-asc';
+export type SortOption = 'length-desc' | 'length-asc' | 'alpha-asc' | 'score-desc';
 
 export interface FilterState {
   minLength: number;
@@ -68,6 +68,65 @@ export interface FiveLetterResult {
   totalWords: number;
   words: string[];
   patternNormalized: string;
+  validationError?: string | null;
+}
+
+export type WordFinderLength = 'any' | number | '10+';
+
+export interface WordFinderFilterOptions {
+  letters?: string;
+  length?: WordFinderLength;
+  startsWith?: string;
+  endsWith?: string;
+  contains?: string;
+  sortBy?: SortOption;
+}
+
+export interface WordFinderResult {
+  totalWords: number;
+  groups: WordGroup[];
+  allWords: string[];
+  lettersNormalized: string;
+  wildcardCount: number;
+  validationError?: string | null;
+}
+
+export type AnagramLength = 'exact' | 'any' | number | '10+';
+
+export interface AnagramSolverOptions {
+  letters?: string;
+  length?: AnagramLength;
+  sortBy?: SortOption;
+}
+
+export interface AnagramSolverResult {
+  totalWords: number;
+  groups: WordGroup[];
+  allWords: string[];
+  lettersNormalized: string;
+  wildcardCount: number;
+  isExactOnly: boolean;
+  effectiveLength?: number;
+  validationError?: string | null;
+}
+
+export type WordsWithLettersLength = 'any' | number | '10+';
+
+export interface WordsWithLettersOptions {
+  letters?: string;
+  length?: WordsWithLettersLength;
+  startsWith?: string;
+  endsWith?: string;
+  contains?: string;
+  sortBy?: SortOption;
+}
+
+export interface WordsWithLettersResult {
+  totalWords: number;
+  groups: WordGroup[];
+  allWords: string[];
+  lettersNormalized: string;
+  wildcardCount: number;
   validationError?: string | null;
 }
 

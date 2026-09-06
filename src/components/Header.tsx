@@ -8,8 +8,13 @@ interface HeaderProps {
 }
 
 const NAV_ITEMS: NavItem[] = [
+  { label: 'Words With Letters', href: '/words-with-letters' },
+  { label: 'Word Finder', href: '/word-finder' },
+  { label: 'Anagram Solver', href: '/anagram-solver' },
   { label: 'Word Unscrambler', href: '/word-unscrambler' },
+  { label: '6 Letter Unscrambler', href: '/6-letter-word-unscrambler' },
   { label: '7 Letter Unscrambler', href: '/7-letter-word-unscrambler' },
+  { label: '8 Letter Unscrambler', href: '/8-letter-word-unscrambler' },
   { label: '5 Letter Word Finder', href: '/5-letter-word-finder' },
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'FAQ', href: '#faq' },
@@ -36,7 +41,12 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
   };
 
   const isItemActive = (item: NavItem) => {
+    if (currentRoute === 'wordsWithLetters' && item.href === '/words-with-letters') return true;
+    if (currentRoute === 'wordFinder' && item.href === '/word-finder') return true;
+    if (currentRoute === 'anagramSolver' && item.href === '/anagram-solver') return true;
+    if (currentRoute === 'sixLetterUnscrambler' && item.href === '/6-letter-word-unscrambler') return true;
     if (currentRoute === 'sevenLetterUnscrambler' && item.href === '/7-letter-word-unscrambler') return true;
+    if (currentRoute === 'eightLetterUnscrambler' && item.href === '/8-letter-word-unscrambler') return true;
     if (currentRoute === 'fiveLetterFinder' && item.href === '/5-letter-word-finder') return true;
     if (currentRoute === 'home' && item.href === '/word-unscrambler') return true;
     return false;
@@ -63,7 +73,11 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
             id="brand-icon-tile"
             className="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center shrink-0 shadow-xs"
           >
-            <span className="text-white font-bold text-lg leading-none">W</span>
+            <img
+              src="/favicon.png.png"
+              alt=""
+              className="w-full h-full rounded object-cover"
+            />
           </div>
           <span className="text-xl font-bold tracking-tight text-slate-900">
             Word Unscrambler
