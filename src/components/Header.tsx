@@ -80,7 +80,7 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
             />
           </div>
           <span className="text-xl font-bold tracking-tight text-slate-900">
-            Word Unscrambler
+            Cluevra
           </span>
         </a>
 

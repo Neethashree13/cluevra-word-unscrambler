@@ -33,7 +33,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               href="/word-unscrambler"
               onClick={(e) => handleLinkClick(e, '/word-unscrambler')}
               className="inline-flex items-center gap-2.5 text-slate-900 group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-md"
-              aria-label="Word Unscrambler Home"
+              aria-label="Cluevra home"
             >
               <div
                 id="footer-brand-tile"
@@ -43,11 +43,11 @@ export default function Footer({ onNavigate }: FooterProps) {
                 <span className="text-white font-bold text-base leading-none">W</span>
               </div>
               <span className="text-lg font-bold tracking-tight text-slate-900 group-hover:text-indigo-600 transition-colors">
-                Word Unscrambler
+                Cluevra
               </span>
             </a>
             <p className="text-xs sm:text-sm text-slate-500 max-w-md leading-relaxed">
-              Free online tool to unscramble letters, find words, and solve anagrams.
+              Free word tools to unscramble letters, find words, and solve anagrams.
             </p>
           </div>
 

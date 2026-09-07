@@ -141,6 +141,11 @@ export function updatePageSEO(route: AppRoute) {
     twitterDesc.setAttribute('content', pageMeta.description);
   }
 
+  const ogSiteName = document.querySelector('meta[property="og:site_name"]');
+  if (ogSiteName) {
+    ogSiteName.setAttribute('content', SITE_CONFIG.siteName);
+  }
+
   // Update JSON-LD WebApplication schema
   const webAppScript = document.getElementById('schema-webapplication');
   if (webAppScript) {
@@ -168,6 +173,13 @@ export function updatePageSEO(route: AppRoute) {
       description: pageMeta.description,
       applicationCategory: 'UtilitiesApplication',
       operatingSystem: 'All',
+      isAccessibleForFree: true,
+      inLanguage: 'en-US',
+      publisher: {
+        '@type': 'Organization',
+        name: SITE_CONFIG.siteName,
+        url: SITE_CONFIG.productionDomain,
+      },
       offers: {
         '@type': 'Offer',
         price: '0',
