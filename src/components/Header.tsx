@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, SpellCheck } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import type { NavItem } from '../types.ts';
 
 interface HeaderProps {
@@ -16,8 +16,6 @@ const NAV_ITEMS: NavItem[] = [
   { label: '7 Letter Unscrambler', href: '/7-letter-word-unscrambler' },
   { label: '8 Letter Unscrambler', href: '/8-letter-word-unscrambler' },
   { label: '5 Letter Word Finder', href: '/5-letter-word-finder' },
-  { label: 'How It Works', href: '#how-it-works' },
-  { label: 'FAQ', href: '#faq' },
 ];
 
 export default function Header({ currentRoute = 'home', onNavigate }: HeaderProps) {
@@ -73,14 +71,10 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
             id="brand-icon-tile"
             className="w-8 h-8 bg-indigo-600 rounded flex items-center justify-center shrink-0 shadow-xs"
           >
-            <img
-              src="/favicon.png.png"
-              alt=""
-              className="w-full h-full rounded object-cover"
-            />
+            <span className="text-white font-bold text-lg leading-none">W</span>
           </div>
           <span className="text-xl font-bold tracking-tight text-slate-900">
-            Cluevra
+            Word Unscrambler
           </span>
         </a>
 
@@ -110,16 +104,16 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
           })}
         </nav>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile menu button */}
         <div className="flex md:hidden">
           <button
             id="mobile-menu-toggle-btn"
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="inline-flex items-center justify-center rounded-lg p-2 text-slate-600 hover:bg-slate-100 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
+            className="text-slate-500 hover:text-slate-600 p-2 rounded-md focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
             aria-controls="mobile-navigation-menu"
             aria-expanded={mobileMenuOpen}
-            aria-label={mobileMenuOpen ? 'Close main navigation' : 'Open main navigation'}
+            aria-label={mobileMenuOpen ? 'Close main menu' : 'Open main menu'}
           >
             {mobileMenuOpen ? (
               <X className="h-6 w-6" aria-hidden="true" />
@@ -130,11 +124,11 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
         </div>
       </div>
 
-      {/* Mobile Navigation Dropdown */}
+      {/* Mobile menu dropdown */}
       {mobileMenuOpen && (
         <div
           id="mobile-navigation-menu"
-          className="absolute top-16 left-0 right-0 border-b border-slate-200 bg-white px-6 py-4 shadow-md md:hidden"
+          className="absolute top-16 left-0 right-0 border-b border-slate-200 bg-white px-4 py-3 shadow-lg md:hidden"
         >
           <nav aria-label="Mobile Navigation" className="flex flex-col space-y-2">
             {NAV_ITEMS.map((item) => {
@@ -149,9 +143,9 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
                     e.preventDefault();
                     handleNavClick(item.href);
                   }}
-                  className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                  className={`block rounded-md px-3 py-2 text-base font-medium transition-colors ${
                     isActive
-                      ? 'bg-indigo-50 text-indigo-700 font-semibold'
+                      ? 'bg-indigo-50 text-indigo-600 font-semibold'
                       : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                   }`}
                 >
