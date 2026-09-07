@@ -346,6 +346,70 @@ export default function App() {
               </div>
             </div>
           </section>
+
+          <section
+            id="word-game-help"
+            aria-labelledby="word-game-help-heading"
+            className="mt-8 border-t border-slate-200 pt-8"
+          >
+            <div className="max-w-4xl">
+              <h2
+                id="word-game-help-heading"
+                className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900"
+              >
+                Find Words for Any Letter Puzzle
+              </h2>
+              <p className="mt-2 text-sm sm:text-base leading-relaxed text-slate-600">
+                Use Cluevra to explore possible words from a tile rack, solve an exact anagram,
+                or narrow a puzzle by length and letter pattern. Blank tiles are supported with
+                question marks, and results can be sorted and copied for quick reference.
+              </p>
+              <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                <a
+                  href="/words-with-letters"
+                  onClick={(e) => {
+                    if (e.metaKey || e.ctrlKey || e.button === 1) return;
+                    e.preventDefault();
+                    handleNavigate('/words-with-letters');
+                  }}
+                  className="rounded-lg border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
+                >
+                  <span className="text-sm font-bold text-slate-900">Words from your letters</span>
+                  <span className="mt-1 block text-xs leading-relaxed text-slate-500">
+                    Find playable words from the letters you have.
+                  </span>
+                </a>
+                <a
+                  href="/5-letter-word-finder"
+                  onClick={(e) => {
+                    if (e.metaKey || e.ctrlKey || e.button === 1) return;
+                    e.preventDefault();
+                    handleNavigate('/5-letter-word-finder');
+                  }}
+                  className="rounded-lg border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
+                >
+                  <span className="text-sm font-bold text-slate-900">Five-letter patterns</span>
+                  <span className="mt-1 block text-xs leading-relaxed text-slate-500">
+                    Narrow five-letter words by known positions and exclusions.
+                  </span>
+                </a>
+                <a
+                  href="/anagram-solver"
+                  onClick={(e) => {
+                    if (e.metaKey || e.ctrlKey || e.button === 1) return;
+                    e.preventDefault();
+                    handleNavigate('/anagram-solver');
+                  }}
+                  className="rounded-lg border border-slate-200 bg-white p-4 transition-colors hover:border-indigo-300 hover:bg-indigo-50/40 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
+                >
+                  <span className="text-sm font-bold text-slate-900">Solve anagrams</span>
+                  <span className="mt-1 block text-xs leading-relaxed text-slate-500">
+                    Check exact rearrangements and uncover hidden word options.
+                  </span>
+                </a>
+              </div>
+            </div>
+          </section>
         </main>
       )}
 
