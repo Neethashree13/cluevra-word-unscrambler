@@ -5,7 +5,7 @@ export const SEVEN_LETTER_FAQS: FAQItem[] = [
     id: 'faq-what-is-7-letter',
     question: 'What is a 7 letter word unscrambler?',
     answer:
-      'A 7 letter word unscrambler is a specialized anagram solver that checks up to 7 scrambled letters against a comprehensive dictionary to find every valid seven-letter word that can be constructed from your tiles. It is especially useful for board game bingos, anagram challenges, and jumble puzzles.',
+      'A 7 letter word unscrambler is a specialized anagram solver that checks up to 7 scrambled letters against its English word dictionary to find seven-letter words that can be constructed from your tiles. It is especially useful for board game bingos, anagram challenges, and jumble puzzles.',
   },
   {
     id: 'faq-how-to-unscramble-7',
