@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/word-unscrambler",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

@@ -29,6 +29,12 @@ export const SIX_LETTER_FAQS: FAQItem[] = [
     id: 'faq-full-dictionary-6',
     question: 'Does the tool check against a full English dictionary?',
     answer:
-      'Yes. Cluevra verifies your letters against our loaded English dictionary containing over 168,000 words. Every 6-letter word returned is a verified English word suitable for tournament and recreational word games.',
+      'Yes. Cluevra compares your letters with its English word dictionary and finds six-letter words that can be built from the available letters.',
+  },
+  {
+    id: 'faq-diff-unscrambler-word-finder',
+    question: 'What is the difference between a 6 letter word unscrambler and a word finder?',
+    answer:
+      'A 6 letter word unscrambler is designed specifically to rearrange up to six available letters into six-letter words. A word finder is more flexible and lets you search using additional constraints such as word length, starting letters, ending letters, and letter patterns.',
   },
 ];

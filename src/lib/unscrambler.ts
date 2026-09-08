@@ -250,7 +250,7 @@ export function parseAndValidateInput(
   }
 
   // 1. Extract wildcards BEFORE stripping non-alphabetic characters
-  const wildcardMatches = rawInput.match(/\?/g);
+ const wildcardMatches = rawInput.match(/[?*]/g);
   const wildcardCount = wildcardMatches ? wildcardMatches.length : 0;
 
   // 2. Extract standard alphabetic letters [a-z]

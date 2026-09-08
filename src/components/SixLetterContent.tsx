@@ -1,6 +1,6 @@
 import React from 'react';
 import { SIX_LETTER_FAQS } from '../data/sixLetterFaq.ts';
-import { ArrowRight, SpellCheck, LayoutGrid, Hash } from 'lucide-react';
+import { ArrowRight, SpellCheck, LayoutGrid, Search, Shuffle, Type } from 'lucide-react';
 
 interface SixLetterContentProps {
   onNavigate?: (path: string) => void;
@@ -82,10 +82,10 @@ export default function SixLetterContent({ onNavigate }: SixLetterContentProps) 
           What 6 Letter Words Can You Make?
         </h2>
         <p className="text-sm sm:text-base leading-relaxed text-slate-600">
-          Cluevra compares your entered letters against its comprehensive English dictionary and finds every matching six-letter word that can be constructed. Duplicate letters are strictly counted: a letter is only used as many times as you have provided it, unless a wildcard tile supplies an extra occurrence.
+          Cluevra compares your letters with its English word dictionary and finds six-letter words that can be built from the available letters. You can rearrange your scrambled tiles to discover every valid six-letter combination they form.
         </p>
         <p className="text-sm sm:text-base leading-relaxed text-slate-600">
-          This tool is calibrated to search specifically for words of exactly 6 letters. All results are verified against standard English lexicon data, ensuring valid answers for your puzzle or word game.
+          This tool searches specifically for words of exactly 6 letters. Duplicate letters are handled according to how many times they appear: each letter is used only as many times as you enter it, unless a wildcard tile (? or *) provides an extra occurrence.
         </p>
       </section>
 
@@ -98,10 +98,10 @@ export default function SixLetterContent({ onNavigate }: SixLetterContentProps) 
           6 Letter Words for Word Games & Puzzles
         </h2>
         <p className="text-sm sm:text-base leading-relaxed text-slate-600">
-          Six-letter words are central to many classic and modern word games. In games like Text Twist and Anagrams, unscrambling the 6-letter master word is essential to advance to the next round. In Scrabble and Words With Friends, six-letter words provide reliable high-scoring tile placements across bonus squares.
+          Six-letter words are central to many classic and modern word games. In games like Text Twist and Anagrams, unscrambling the 6-letter master word is essential to advance to the next round. In Scrabble and Words With Friends, six-letter words provide reliable tile placements across bonus squares.
         </p>
         <p className="text-sm sm:text-base leading-relaxed text-slate-600">
-          Whether you are tackling daily anagram jumbles, solving crosswords, or expanding your vocabulary with common six-letter stems and compound roots, our 6-letter solver provides rapid, distraction-free assistance.
+          Whether you are tackling daily anagram jumbles, solving crosswords, or sorting results alphabetically or by score, our 6-letter solver provides fast, focused assistance.
         </p>
       </section>
 
@@ -117,7 +117,7 @@ export default function SixLetterContent({ onNavigate }: SixLetterContentProps) 
           If you have blank tiles or want to explore missing letter possibilities, simply type a question mark (<code className="font-mono bg-slate-100 text-indigo-700 font-bold px-1.5 py-0.5 rounded border border-slate-200">?</code>) or asterisk (<code className="font-mono bg-slate-100 text-indigo-700 font-bold px-1.5 py-0.5 rounded border border-slate-200">*</code>) into the input box.
         </p>
         <p className="text-sm sm:text-base leading-relaxed text-slate-600">
-          Up to 3 wildcards are supported. Each wildcard represents any letter from A to Z, helping you discover high-scoring 6-letter options that fit your available rack and board conditions.
+          Up to 3 wildcards are supported. Each wildcard represents any letter from A to Z, helping you discover six-letter words that fit your available rack and puzzle conditions.
         </p>
       </section>
 
@@ -167,80 +167,8 @@ export default function SixLetterContent({ onNavigate }: SixLetterContentProps) 
         >
           Related Word Tools
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Tool 1: 8 Letter Word Unscrambler */}
-          <a
-            id="related-tool-eight-letter-unscrambler"
-            href="/8-letter-word-unscrambler"
-            onClick={(e) => handleToolClick(e, '/8-letter-word-unscrambler')}
-            className="group p-5 bg-white border border-slate-200 rounded-xl shadow-2xs hover:border-indigo-300 hover:shadow-xs transition-all flex flex-col justify-between focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
-          >
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-indigo-600">
-                <SpellCheck className="w-5 h-5" />
-                <span className="font-bold text-sm text-slate-900 group-hover:text-indigo-600 transition-colors">
-                  8 Letter Unscrambler
-                </span>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                Unscramble eight-letter words from up to 8 letters. Perfect for Scrabble board hook bingos and word puzzles.
-              </p>
-            </div>
-            <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:translate-x-1 transition-transform">
-              <span>Open 8 Letter Unscrambler</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </div>
-          </a>
-
-          {/* Tool 2: 7 Letter Word Unscrambler */}
-          <a
-            id="related-tool-seven-letter-unscrambler"
-            href="/7-letter-word-unscrambler"
-            onClick={(e) => handleToolClick(e, '/7-letter-word-unscrambler')}
-            className="group p-5 bg-white border border-slate-200 rounded-xl shadow-2xs hover:border-indigo-300 hover:shadow-xs transition-all flex flex-col justify-between focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
-          >
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-indigo-600">
-                <SpellCheck className="w-5 h-5" />
-                <span className="font-bold text-sm text-slate-900 group-hover:text-indigo-600 transition-colors">
-                  7 Letter Unscrambler
-                </span>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                Find seven-letter anagrams and bingo plays from up to 7 letters with wildcard tile support.
-              </p>
-            </div>
-            <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:translate-x-1 transition-transform">
-              <span>Open 7 Letter Unscrambler</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </div>
-          </a>
-
-          {/* Tool 2: 5 Letter Word Finder */}
-          <a
-            id="related-tool-five-letter-finder"
-            href="/5-letter-word-finder"
-            onClick={(e) => handleToolClick(e, '/5-letter-word-finder')}
-            className="group p-5 bg-white border border-slate-200 rounded-xl shadow-2xs hover:border-indigo-300 hover:shadow-xs transition-all flex flex-col justify-between focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
-          >
-            <div className="space-y-2">
-              <div className="flex items-center gap-2 text-indigo-600">
-                <LayoutGrid className="w-5 h-5" />
-                <span className="font-bold text-sm text-slate-900 group-hover:text-indigo-600 transition-colors">
-                  5 Letter Word Finder
-                </span>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                Filter 5-letter words by known tile positions, starting/ending letters, and exclusions.
-              </p>
-            </div>
-            <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:translate-x-1 transition-transform">
-              <span>Open 5 Letter Finder</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </div>
-          </a>
-
-          {/* Tool 3: Word Unscrambler */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {/* Tool 1: Word Unscrambler */}
           <a
             id="related-tool-word-unscrambler"
             href="/word-unscrambler"
@@ -255,11 +183,155 @@ export default function SixLetterContent({ onNavigate }: SixLetterContentProps) 
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                Unscramble letters of any length from 2 to 15 characters. Filter by length and sort results.
+                Unscramble letters of any length from 2 to 15 characters. Filter by length, sort results, and solve anagrams.
               </p>
             </div>
             <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:translate-x-1 transition-transform">
               <span>Open Word Unscrambler</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </a>
+
+          {/* Tool 2: Word Finder */}
+          <a
+            id="related-tool-word-finder"
+            href="/word-finder"
+            onClick={(e) => handleToolClick(e, '/word-finder')}
+            className="group p-5 bg-white border border-slate-200 rounded-xl shadow-2xs hover:border-indigo-300 hover:shadow-xs transition-all flex flex-col justify-between focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
+          >
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-indigo-600">
+                <Search className="w-5 h-5" />
+                <span className="font-bold text-sm text-slate-900 group-hover:text-indigo-600 transition-colors">
+                  Word Finder
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                Search words using advanced filters including starting letters, ending letters, containing letters, and word length.
+              </p>
+            </div>
+            <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:translate-x-1 transition-transform">
+              <span>Open Word Finder</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </a>
+
+          {/* Tool 3: Words With Letters */}
+          <a
+            id="related-tool-words-with-letters"
+            href="/words-with-letters"
+            onClick={(e) => handleToolClick(e, '/words-with-letters')}
+            className="group p-5 bg-white border border-slate-200 rounded-xl shadow-2xs hover:border-indigo-300 hover:shadow-xs transition-all flex flex-col justify-between focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
+          >
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-indigo-600">
+                <Type className="w-5 h-5" />
+                <span className="font-bold text-sm text-slate-900 group-hover:text-indigo-600 transition-colors">
+                  Words With Letters
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                Discover all valid words that can be made using your specific letters and wildcard tiles.
+              </p>
+            </div>
+            <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:translate-x-1 transition-transform">
+              <span>Open Words With Letters</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </a>
+
+          {/* Tool 4: Anagram Solver */}
+          <a
+            id="related-tool-anagram-solver"
+            href="/anagram-solver"
+            onClick={(e) => handleToolClick(e, '/anagram-solver')}
+            className="group p-5 bg-white border border-slate-200 rounded-xl shadow-2xs hover:border-indigo-300 hover:shadow-xs transition-all flex flex-col justify-between focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
+          >
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-indigo-600">
+                <Shuffle className="w-5 h-5" />
+                <span className="font-bold text-sm text-slate-900 group-hover:text-indigo-600 transition-colors">
+                  Anagram Solver
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                Rearrange letters to find complete anagrams and word game solutions.
+              </p>
+            </div>
+            <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:translate-x-1 transition-transform">
+              <span>Open Anagram Solver</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </a>
+
+          {/* Tool 5: 5 Letter Word Finder */}
+          <a
+            id="related-tool-five-letter-finder"
+            href="/5-letter-word-finder"
+            onClick={(e) => handleToolClick(e, '/5-letter-word-finder')}
+            className="group p-5 bg-white border border-slate-200 rounded-xl shadow-2xs hover:border-indigo-300 hover:shadow-xs transition-all flex flex-col justify-between focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
+          >
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-indigo-600">
+                <LayoutGrid className="w-5 h-5" />
+                <span className="font-bold text-sm text-slate-900 group-hover:text-indigo-600 transition-colors">
+                  5 Letter Word Finder
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                Filter 5-letter words by known tile positions, starting/ending letters, and exclusions for Wordle and daily puzzles.
+              </p>
+            </div>
+            <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:translate-x-1 transition-transform">
+              <span>Open 5 Letter Word Finder</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </a>
+
+          {/* Tool 6: 7 Letter Word Unscrambler */}
+          <a
+            id="related-tool-seven-letter-unscrambler"
+            href="/7-letter-word-unscrambler"
+            onClick={(e) => handleToolClick(e, '/7-letter-word-unscrambler')}
+            className="group p-5 bg-white border border-slate-200 rounded-xl shadow-2xs hover:border-indigo-300 hover:shadow-xs transition-all flex flex-col justify-between focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
+          >
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-indigo-600">
+                <SpellCheck className="w-5 h-5" />
+                <span className="font-bold text-sm text-slate-900 group-hover:text-indigo-600 transition-colors">
+                  7 Letter Unscrambler
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                Unscramble up to 7 letters to find valid seven-letter words and Scrabble bingo plays.
+              </p>
+            </div>
+            <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:translate-x-1 transition-transform">
+              <span>Open 7 Letter Unscrambler</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </a>
+
+          {/* Tool 7: 8 Letter Word Unscrambler */}
+          <a
+            id="related-tool-eight-letter-unscrambler"
+            href="/8-letter-word-unscrambler"
+            onClick={(e) => handleToolClick(e, '/8-letter-word-unscrambler')}
+            className="group p-5 bg-white border border-slate-200 rounded-xl shadow-2xs hover:border-indigo-300 hover:shadow-xs transition-all flex flex-col justify-between focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
+          >
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-indigo-600">
+                <SpellCheck className="w-5 h-5" />
+                <span className="font-bold text-sm text-slate-900 group-hover:text-indigo-600 transition-colors">
+                  8 Letter Unscrambler
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                Unscramble up to 8 letters for eight-letter words, long anagrams, and board hook possibilities.
+              </p>
+            </div>
+            <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-indigo-600 group-hover:translate-x-1 transition-transform">
+              <span>Open 8 Letter Unscrambler</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </div>
           </a>

@@ -51,9 +51,9 @@ export const SITE_CONFIG = {
     },
     sixLetterUnscrambler: {
       path: '/6-letter-word-unscrambler',
-      title: '6 Letter Word Unscrambler - Unscramble 6 Letter Words | Cluevra',
+      title: '6 Letter Word Unscrambler – Unscramble 6 Letter Words | Cluevra',
       description:
-        'Unscramble 6 letter words with Cluevra. Enter up to 6 letters, use wildcard tiles, and find valid 6 letter words quickly.',
+        'Enter up to 6 letters to find 6-letter words you can make from them. Use ? or * as blank tiles to solve anagrams, word games, and puzzles.',
     },
     sevenLetterUnscrambler: {
       path: '/7-letter-word-unscrambler',

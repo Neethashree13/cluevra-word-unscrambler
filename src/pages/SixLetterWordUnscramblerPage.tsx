@@ -105,7 +105,7 @@ export default function SixLetterWordUnscramblerPage({ onNavigate }: SixLetterWo
           id="six-letter-page-description"
           className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed"
         >
-          Enter up to 6 letters and find matching 6-letter words from the loaded dictionary. Use blank or wildcard tiles (<code className="font-mono bg-slate-100 text-indigo-700 font-bold px-1.5 py-0.5 rounded border border-slate-200">?</code> or <code className="font-mono bg-slate-100 text-indigo-700 font-bold px-1.5 py-0.5 rounded border border-slate-200">*</code>) to solve 6-letter anagrams, word games, and puzzles.
+          Enter up to 6 letters to find 6-letter words you can make from them. Use blank or wildcard tiles (<code className="font-mono bg-slate-100 text-indigo-700 font-bold px-1.5 py-0.5 rounded border border-slate-200">?</code> or <code className="font-mono bg-slate-100 text-indigo-700 font-bold px-1.5 py-0.5 rounded border border-slate-200">*</code>) to solve anagrams, word games, and puzzles.
         </p>
       </div>
 
