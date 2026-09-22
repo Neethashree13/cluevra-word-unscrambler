@@ -13,6 +13,18 @@
     }
   ],
   "rewrites": [
+    { "source": "/word-unscrambler", "destination": "/index.html" },
+    { "source": "/word-finder", "destination": "/word-finder/index.html" },
+    { "source": "/words-with-letters", "destination": "/words-with-letters/index.html" },
+    { "source": "/anagram-solver", "destination": "/anagram-solver/index.html" },
+    { "source": "/5-letter-word-finder", "destination": "/5-letter-word-finder/index.html" },
+    { "source": "/6-letter-word-unscrambler", "destination": "/6-letter-word-unscrambler/index.html" },
+    { "source": "/7-letter-word-unscrambler", "destination": "/7-letter-word-unscrambler/index.html" },
+    { "source": "/8-letter-word-unscrambler", "destination": "/8-letter-word-unscrambler/index.html" },
+    { "source": "/about", "destination": "/about/index.html" },
+    { "source": "/privacy-policy", "destination": "/privacy-policy/index.html" },
+    { "source": "/terms", "destination": "/terms/index.html" },
+    { "source": "/contact", "destination": "/contact/index.html" },
     {
       "source": "/((?!ads\\.txt$|robots\\.txt$|sitemap\\.xml$|40f7cda2e340d57cd90c\\.txt$).*)",
       "destination": "/index.html"
