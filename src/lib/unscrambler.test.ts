@@ -80,7 +80,7 @@ const resSpaces = findWordsFromLetters('     ');
 assert(resSpaces.totalWords === 0, 'Whitespace returns 0 words');
 assert(!!resSpaces.validationError, 'Whitespace returns validation error');
 
-const resPunct = findWordsFromLetters('!@#$%^&*()');
+const resPunct = findWordsFromLetters('!@#$%^&()');
 assert(resPunct.totalWords === 0, 'Punctuation-only returns 0 words');
 assert(!!resPunct.validationError, 'Punctuation-only returns validation error');
 

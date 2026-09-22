@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react';
-import type { FiveLetterFilterOptions } from '../types.ts';
+import { useState, useMemo, useEffect } from 'react';
+import type { DictionaryStatus, FiveLetterFilterOptions } from '../types.ts';
 import { findFiveLetterWords } from '../lib/fiveLetterFinder.ts';
 import { dictionaryService } from '../lib/dictionary.ts';
 import FiveLetterTool from '../components/FiveLetterTool.tsx';
@@ -12,11 +12,19 @@ export default function FiveLetterWordFinderPage() {
     pattern: '_____',
     sortBy: 'alpha-asc',
   });
+  const [dictStatus, setDictStatus] = useState<DictionaryStatus>(dictionaryService.getStatus());
+
+  useEffect(() => {
+    const unsubscribe = dictionaryService.subscribe((status) => {
+      setDictStatus(status);
+    });
+    return unsubscribe;
+  }, []);
 
   // Compute 5-letter results using dictionaryService
   const result = useMemo(() => {
     return findFiveLetterWords(filterOptions, dictionaryService);
-  }, [filterOptions]);
+  }, [filterOptions, dictStatus.loaded]);
 
   const handleSearch = (newOptions: FiveLetterFilterOptions) => {
     setFilterOptions(newOptions);
@@ -64,6 +72,15 @@ export default function FiveLetterWordFinderPage() {
         onClear={handleClear}
         initialOptions={filterOptions}
       />
+
+      {dictStatus.loadError && (
+        <div
+          role="alert"
+          className="mb-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900"
+        >
+          The full dictionary could not be loaded. Results may be incomplete. Please refresh and try again.
+        </div>
+      )}
 
       {/* Results Display */}
       <FiveLetterResults

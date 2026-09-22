@@ -236,6 +236,15 @@ export default function ResultsPanel({
           >
             <div>
               <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+
+          {dictStatus?.loadError && (
+            <div
+              role="alert"
+              className="border-b border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900"
+            >
+              The full dictionary could not be loaded. Results may be incomplete. Please refresh and try again.
+            </div>
+          )}
                 {summaryLabel || 'Unscrambled Letters'}
               </span>
               <span

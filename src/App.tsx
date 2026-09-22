@@ -1,21 +1,21 @@
-import { useState, useEffect } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import Header from './components/Header.tsx';
 import UnscramblerTool from './components/UnscramblerTool.tsx';
 import ResultsPanel from './components/ResultsPanel.tsx';
 import HowItWorks from './components/HowItWorks.tsx';
 import FAQ from './components/FAQ.tsx';
 import Footer from './components/Footer.tsx';
-import AboutPage from './pages/AboutPage.tsx';
-import PrivacyPage from './pages/PrivacyPage.tsx';
-import TermsPage from './pages/TermsPage.tsx';
-import ContactPage from './pages/ContactPage.tsx';
-import FiveLetterWordFinderPage from './pages/FiveLetterWordFinderPage.tsx';
-import SixLetterWordUnscramblerPage from './pages/SixLetterWordUnscramblerPage.tsx';
-import SevenLetterWordUnscramblerPage from './pages/SevenLetterWordUnscramblerPage.tsx';
-import EightLetterWordUnscramblerPage from './pages/EightLetterWordUnscramblerPage.tsx';
-import WordFinderPage from './pages/WordFinderPage.tsx';
-import WordsWithLettersPage from './pages/WordsWithLettersPage.tsx';
-import AnagramSolverPage from './pages/AnagramSolverPage.tsx';
+const AboutPage = lazy(() => import('./pages/AboutPage.tsx'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage.tsx'));
+const TermsPage = lazy(() => import('./pages/TermsPage.tsx'));
+const ContactPage = lazy(() => import('./pages/ContactPage.tsx'));
+const FiveLetterWordFinderPage = lazy(() => import('./pages/FiveLetterWordFinderPage.tsx'));
+const SixLetterWordUnscramblerPage = lazy(() => import('./pages/SixLetterWordUnscramblerPage.tsx'));
+const SevenLetterWordUnscramblerPage = lazy(() => import('./pages/SevenLetterWordUnscramblerPage.tsx'));
+const EightLetterWordUnscramblerPage = lazy(() => import('./pages/EightLetterWordUnscramblerPage.tsx'));
+const WordFinderPage = lazy(() => import('./pages/WordFinderPage.tsx'));
+const WordsWithLettersPage = lazy(() => import('./pages/WordsWithLettersPage.tsx'));
+const AnagramSolverPage = lazy(() => import('./pages/AnagramSolverPage.tsx'));
 import type { FilterState, DictionaryStatus, UnscrambleResult } from './types.ts';
 import { dictionaryService } from './lib/dictionary.ts';
 import { findWordsFromLetters } from './lib/unscrambler.ts';
@@ -413,6 +413,13 @@ export default function App() {
         </main>
       )}
 
+      <Suspense
+        fallback={
+          <main id="main-content" className="flex-1 w-full p-8 text-center text-sm text-slate-500">
+            Loading page...
+          </main>
+        }
+      >
       {currentRoute === 'about' && (
         <main id="main-content" className="flex-1 w-full">
           <AboutPage onNavigateHome={() => handleNavigate('/word-unscrambler')} />
@@ -466,6 +473,7 @@ export default function App() {
       {currentRoute === 'eightLetterUnscrambler' && (
         <EightLetterWordUnscramblerPage onNavigate={handleNavigate} />
       )}
+      </Suspense>
 
       {/* Footer */}
       <Footer onNavigate={handleNavigate} />

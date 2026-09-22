@@ -224,6 +224,8 @@ export function updatePageSEO(route: AppRoute) {
         })),
       };
       faqScript.textContent = JSON.stringify(faqSchema, null, 2);
+    } else {
+      faqScript.textContent = '';
     }
   }
 }

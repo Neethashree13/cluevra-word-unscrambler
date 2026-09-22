@@ -49,13 +49,15 @@ export default function FiveLetterTool({
         const newTiles = clean.split('').slice(0, 5).map((c) => (c !== '_' ? c.toUpperCase() : ''));
         while (newTiles.length < 5) newTiles.push('');
         setTiles(newTiles);
+      } else {
+        setTiles(['', '', '', '', '']);
       }
-      if (initialOptions.startsWith) setStartsWith(initialOptions.startsWith);
-      if (initialOptions.endsWith) setEndsWith(initialOptions.endsWith);
-      if (initialOptions.containsLetters) setContainsLetters(initialOptions.containsLetters);
-      if (initialOptions.excludeLetters) setExcludeLetters(initialOptions.excludeLetters);
-      if (initialOptions.availableLetters) setAvailableLetters(initialOptions.availableLetters);
-      if (initialOptions.sortBy) setSortBy(initialOptions.sortBy);
+      setStartsWith(initialOptions.startsWith ?? '');
+      setEndsWith(initialOptions.endsWith ?? '');
+      setContainsLetters(initialOptions.containsLetters ?? '');
+      setExcludeLetters(initialOptions.excludeLetters ?? '');
+      setAvailableLetters(initialOptions.availableLetters ?? '');
+      setSortBy(initialOptions.sortBy ?? 'alpha-asc');
     }
   }, [initialOptions]);
 
@@ -139,7 +141,7 @@ export default function FiveLetterTool({
   return (
     <section
       id="five-letter-tool-section"
-      aria-labelledby="five-letter-tool-heading"
+      aria-labelledby="five-letter-page-title"
       className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-7 shadow-xs mb-8 transition-colors"
     >
       <form onSubmit={handleSubmit} className="space-y-6">

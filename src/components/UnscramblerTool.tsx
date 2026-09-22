@@ -295,7 +295,7 @@ export default function UnscramblerTool({
                   id="clear-recent-searches-btn"
                   type="button"
                   onClick={handleClearHistory}
-                  className="text-[11px] text-slate-400 hover:text-rose-600 flex items-center gap-1 transition-colors"
+                  className="min-h-11 min-w-11 justify-center text-[11px] text-slate-400 hover:text-rose-600 flex items-center gap-1 rounded transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-rose-500"
                   title="Clear search history"
                 >
                   <Trash2 className="w-3 h-3" aria-hidden="true" />
