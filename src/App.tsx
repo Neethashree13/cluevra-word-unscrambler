@@ -5,6 +5,7 @@ import ResultsPanel from './components/ResultsPanel.tsx';
 import HowItWorks from './components/HowItWorks.tsx';
 import FAQ from './components/FAQ.tsx';
 import Footer from './components/Footer.tsx';
+import SeoGuideContent from './components/SeoGuideContent.tsx';
 const AboutPage = lazy(() => import('./pages/AboutPage.tsx'));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage.tsx'));
 const TermsPage = lazy(() => import('./pages/TermsPage.tsx'));
@@ -23,8 +24,24 @@ import { parseShareUrl, buildShareUrl } from './lib/share.ts';
 import { saveRecentSearch } from './lib/recentSearches.ts';
 import { getRouteFromPath, getPathFromRoute, updatePageSEO, type AppRoute } from './lib/router.ts';
 
-export default function App() {
+function trackPageView() {
+  if (typeof window === 'undefined') return;
+  (window as Window & { gtag?: (...args: unknown[]) => void }).gtag?.('event', 'page_view', {
+    page_path: `${window.location.pathname}${window.location.search}`,
+    page_title: document.title,
+    page_location: window.location.href,
+  });
+}
+
+interface AppProps {
+  initialPath?: string;
+}
+
+export default function App({ initialPath }: AppProps) {
   const [currentRoute, setCurrentRoute] = useState<AppRoute>(() => {
+    if (initialPath !== undefined) {
+      return getRouteFromPath(initialPath);
+    }
     if (typeof window !== 'undefined') {
       return getRouteFromPath(window.location.pathname);
     }
@@ -41,9 +58,10 @@ export default function App() {
   });
   const [dictStatus, setDictStatus] = useState<DictionaryStatus>(dictionaryService.getStatus());
 
-  // 1. Initial SEO & URL parameters check (Preserves /word-unscrambler?letters=...)
+  // 1. Initial SEO & URL parameters check
   useEffect(() => {
     updatePageSEO(currentRoute);
+    trackPageView();
 
     if (typeof window !== 'undefined' && window.location.search) {
       const parsed = parseShareUrl(window.location.search);
@@ -81,6 +99,7 @@ export default function App() {
       const route = getRouteFromPath(window.location.pathname);
       setCurrentRoute(route);
       updatePageSEO(route);
+      trackPageView();
 
       // If returning to home with query parameters, re-parse and restore
       if (route === 'home' && window.location.search) {
@@ -123,10 +142,22 @@ export default function App() {
       }
     });
 
-    dictionaryService.loadFullDictionary();
+    const idleWindow = window as Window & {
+      requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number;
+      cancelIdleCallback?: (handle: number) => void;
+    };
+    let idleHandle: number | undefined;
+    let fallbackHandle: number | undefined;
+    if (idleWindow.requestIdleCallback) {
+      idleHandle = idleWindow.requestIdleCallback(() => dictionaryService.loadFullDictionary(), { timeout: 2000 });
+    } else {
+      fallbackHandle = window.setTimeout(() => dictionaryService.loadFullDictionary(), 900);
+    }
 
     return () => {
       unsubscribe();
+      if (idleHandle !== undefined) idleWindow.cancelIdleCallback?.(idleHandle);
+      if (fallbackHandle !== undefined) window.clearTimeout(fallbackHandle);
     };
   }, [searchedLetters, hasTriggeredSearch, activeFilters]);
 
@@ -170,7 +201,7 @@ export default function App() {
       if (currentRoute !== 'home') {
         setCurrentRoute('home');
         updatePageSEO('home');
-        window.history.pushState(null, '', `/word-unscrambler${target}`);
+        window.history.pushState(null, '', `/${target}`);
         setTimeout(() => {
           const el = document.getElementById(targetId);
           if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -200,6 +231,7 @@ export default function App() {
     }
 
     window.history.pushState(null, '', targetUrl);
+    trackPageView();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -210,6 +242,23 @@ export default function App() {
     >
       {/* Header */}
       <Header currentRoute={currentRoute} onNavigate={handleNavigate} />
+
+      {currentRoute !== 'home' && currentRoute !== 'notFound' && (
+        <nav aria-label="Breadcrumb" className="mx-auto w-full max-w-7xl px-4 pt-4 text-sm text-slate-500 sm:px-6 lg:px-8">
+          <ol className="flex flex-wrap items-center gap-2">
+            <li><a href="/" onClick={(event) => { event.preventDefault(); handleNavigate('/'); }} className="hover:text-indigo-700">Home</a></li>
+            <li aria-hidden="true">/</li>
+            <li aria-current="page" className="font-medium text-slate-800">
+              {currentRoute === 'wordFinder' ? 'Word Finder' :
+                currentRoute === 'wordsWithLetters' ? 'Words With Letters' :
+                currentRoute === 'anagramSolver' ? 'Anagram Solver' :
+                currentRoute === 'fiveLetterFinder' ? '5 Letter Word Finder' :
+                currentRoute === 'sixLetterUnscrambler' ? '6 Letter Word Unscrambler' :
+                currentRoute === 'sevenLetterUnscrambler' ? '7 Letter Word Unscrambler' : '8 Letter Word Unscrambler'}
+            </li>
+          </ol>
+        </nav>
+      )}
 
       {/* Dynamic Content Routing */}
       {currentRoute === 'home' && (
@@ -410,6 +459,8 @@ export default function App() {
               </div>
             </div>
           </section>
+
+          <SeoGuideContent pageKey="home" onNavigate={handleNavigate} />
         </main>
       )}
 
@@ -422,25 +473,25 @@ export default function App() {
       >
       {currentRoute === 'about' && (
         <main id="main-content" className="flex-1 w-full">
-          <AboutPage onNavigateHome={() => handleNavigate('/word-unscrambler')} />
+          <AboutPage onNavigateHome={() => handleNavigate('/')} />
         </main>
       )}
 
       {currentRoute === 'privacy' && (
         <main id="main-content" className="flex-1 w-full">
-          <PrivacyPage onNavigateHome={() => handleNavigate('/word-unscrambler')} />
+          <PrivacyPage onNavigateHome={() => handleNavigate('/')} />
         </main>
       )}
 
       {currentRoute === 'terms' && (
         <main id="main-content" className="flex-1 w-full">
-          <TermsPage onNavigateHome={() => handleNavigate('/word-unscrambler')} />
+          <TermsPage onNavigateHome={() => handleNavigate('/')} />
         </main>
       )}
 
       {currentRoute === 'contact' && (
         <main id="main-content" className="flex-1 w-full">
-          <ContactPage onNavigateHome={() => handleNavigate('/word-unscrambler')} />
+          <ContactPage onNavigateHome={() => handleNavigate('/')} />
         </main>
       )}
 
@@ -472,6 +523,14 @@ export default function App() {
 
       {currentRoute === 'eightLetterUnscrambler' && (
         <EightLetterWordUnscramblerPage onNavigate={handleNavigate} />
+      )}
+
+      {currentRoute === 'notFound' && (
+        <main id="not-found-page" className="mx-auto flex-1 px-4 py-20 text-center">
+          <h1 className="text-3xl font-bold text-slate-900">Page not found</h1>
+          <p className="mt-3 text-slate-600">The address may have changed or the page may no longer exist.</p>
+          <a href="/" className="mt-6 inline-flex font-semibold text-indigo-700 underline" onClick={(event) => { event.preventDefault(); handleNavigate('/'); }}>Go to the word unscrambler</a>
+        </main>
       )}
       </Suspense>
 

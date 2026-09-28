@@ -5,7 +5,7 @@ import { dictionaryService } from '../lib/dictionary.ts';
 import { saveRecentSearch } from '../lib/recentSearches.ts';
 import SevenLetterTool from '../components/SevenLetterTool.tsx';
 import ResultsPanel from '../components/ResultsPanel.tsx';
-import SevenLetterContent from '../components/SevenLetterContent.tsx';
+import SeoGuideContent from '../components/SeoGuideContent.tsx';
 import { Sparkles } from 'lucide-react';
 
 interface SevenLetterWordUnscramblerPageProps {
@@ -99,7 +99,7 @@ export default function SevenLetterWordUnscramblerPage({ onNavigate }: SevenLett
           id="seven-letter-page-title"
           className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
         >
-          7 Letter Word Unscrambler
+          7 Letter Words Using These Letters
         </h1>
         <p
           id="seven-letter-page-description"
@@ -135,7 +135,7 @@ export default function SevenLetterWordUnscramblerPage({ onNavigate }: SevenLett
       </div>
 
       {/* Educational & SEO Content Below the Tool */}
-      <SevenLetterContent onNavigate={onNavigate} />
+      <SeoGuideContent pageKey="sevenLetterUnscrambler" onNavigate={onNavigate} />
     </main>
   );
 }

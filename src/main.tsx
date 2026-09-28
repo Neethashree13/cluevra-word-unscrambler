@@ -1,10 +1,13 @@
 import {StrictMode} from 'react';
-import {createRoot} from 'react-dom/client';
+import {hydrateRoot} from 'react-dom/client';
 import App from './App.tsx';
+import {getRouteFromPath} from './lib/router.ts';
 import './index.css';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-);
+if (getRouteFromPath(window.location.pathname) !== 'notFound') {
+  hydrateRoot(document.getElementById('root')!,
+    <StrictMode>
+      <App />
+    </StrictMode>,
+  );
+}

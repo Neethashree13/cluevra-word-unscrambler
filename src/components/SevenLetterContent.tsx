@@ -187,8 +187,8 @@ export default function SevenLetterContent({ onNavigate }: SevenLetterContentPro
           {/* Tool 1: Word Unscrambler */}
           <a
             id="related-tool-word-unscrambler"
-            href="/word-unscrambler"
-            onClick={(e) => handleToolClick(e, '/word-unscrambler')}
+            href="/"
+            onClick={(e) => handleToolClick(e, '/')}
             className="group p-5 bg-white border border-slate-200 rounded-xl shadow-2xs hover:border-indigo-300 hover:shadow-xs transition-all flex flex-col justify-between focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600"
           >
             <div className="space-y-2">

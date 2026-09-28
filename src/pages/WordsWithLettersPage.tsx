@@ -4,7 +4,7 @@ import { dictionaryService } from '../lib/dictionary.ts';
 import { saveRecentSearch } from '../lib/recentSearches.ts';
 import WordsWithLettersTool from '../components/WordsWithLettersTool.tsx';
 import ResultsPanel from '../components/ResultsPanel.tsx';
-import WordsWithLettersContent from '../components/WordsWithLettersContent.tsx';
+import SeoGuideContent from '../components/SeoGuideContent.tsx';
 import {
   findWordsWithLetters,
   type WordsWithLettersOptions,
@@ -265,7 +265,7 @@ export default function WordsWithLettersPage({ onNavigate }: WordsWithLettersPag
       </div>
 
       {/* Educational & SEO Content Below the Tool */}
-      <WordsWithLettersContent onNavigate={onNavigate} />
+      <SeoGuideContent pageKey="wordsWithLetters" onNavigate={onNavigate} />
     </main>
   );
 }

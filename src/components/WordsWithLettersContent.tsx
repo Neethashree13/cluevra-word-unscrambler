@@ -333,8 +333,8 @@ export default function WordsWithLettersContent({ onNavigate }: WordsWithLetters
           </a>
 
           <a
-            href="/word-unscrambler"
-            onClick={(e) => handleToolClick(e, '/word-unscrambler')}
+            href="/"
+            onClick={(e) => handleToolClick(e, '/')}
             className="p-3.5 bg-white rounded-lg border border-slate-200 hover:border-indigo-300 hover:shadow-xs transition-all group"
           >
             <div className="font-bold text-sm text-slate-800 group-hover:text-indigo-600 flex items-center justify-between">

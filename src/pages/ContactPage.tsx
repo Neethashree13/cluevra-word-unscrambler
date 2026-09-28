@@ -121,6 +121,24 @@ export default function ContactPage({ onNavigateHome }: PageProps) {
             Note: We do not operate an automated third-party contact submission form to prevent unsent message errors. Direct email ensures your communication reaches us directly.
           </p>
         </section>
+
+        <section aria-labelledby="contact-troubleshooting" className="space-y-3">
+          <h2 id="contact-troubleshooting" className="text-lg sm:text-xl font-bold text-slate-800">
+            Troubleshooting Before You Write
+          </h2>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            If a search returns no words, check that the letters are correct and that repeated tiles have been entered the right number of times. Confirm the minimum and maximum lengths, and remove any prefix, suffix, or excluded-letter rule that may be too restrictive. A question mark or asterisk represents a blank tile in tools that support wildcards. If the full dictionary is still loading, wait for its status message to finish and search again.
+          </p>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            A word that appears in Cluevra may not be accepted by every game. Scrabble editions, Words With Friends, crossword publishers, and regional word lists can disagree about spellings and inflections. Check the official reference used by your game before reporting a candidate as invalid. Likewise, if you expected a word that is missing, include the exact letters and filters; a difference in dictionary coverage may explain the result.
+          </p>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            For a reproducible bug report, include the page address, the letters and wildcard symbols entered, the selected length or pattern settings, and what you expected compared with what happened. Mention your device, operating system, and browser version, and note whether the issue persists after refreshing. Do not send passwords, payment details, or other sensitive personal information. If the problem is visual, a screenshot can show which controls or results are affected. Please avoid sending private game account information; the letter rack and search settings are generally enough for us to reproduce a word-search issue.
+          </p>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            For a dictionary suggestion, share the spelling and a reputable reference that documents its usage. This helps us assess a word-list request separately from a software bug.
+          </p>
+        </section>
       </article>
     </div>
   );

@@ -1,0 +1,424 @@
+{
+  "home": {
+    "heading": "Word Unscrambler: Find Words From Letters",
+    "intro": "Turn a jumble of letters into a useful list of words with Cluevra's word unscrambler. Enter the letters from a rack, puzzle, or anagram in any order; the solver checks which dictionary words can be made without using more copies of a letter than you entered. Filter by length, add blank-tile wildcards, and sort the matches so you can focus on a promising answer. The tool works in your browser and does not require an account.",
+    "sections": [
+      {
+        "heading": "How to use the word unscrambler",
+        "paragraphs": [
+          "Type or paste your letters into the input. Spaces and punctuation are cleaned up, so a rack written as A R-E T is treated as ARET. Choose a minimum and maximum word length to decide whether you want exact anagrams or shorter words that use only part of your rack. Press Enter or select Unscramble, then scan the results grouped and sorted by your chosen order. Select a word to copy it, or share the search when you want another player to see the same letters and filters.",
+          "Letter counts are important. If you enter one A, the solver will not return a word that needs two As unless you also enter a wildcard. Duplicate tiles are kept distinct, which is useful for board games and anagram puzzles where the supplied letters are fixed. For example, A E R T can make RATE, TARE, and TEAR, while it cannot make TREE because the rack does not contain two Es."
+        ],
+        "items": [
+          "A E R T: try RATE, TARE, TEAR, and shorter combinations such as ARE or ART.",
+          "S T O N E: rearrange the rack to find STONE, NOTES, ONSET, and other valid matches.",
+          "A R E ?: let the blank tile stand for one missing letter and review the expanded matches."
+        ]
+      },
+      {
+        "heading": "Use wildcards and length filters",
+        "paragraphs": [
+          "Enter ? or * for a blank tile or a letter you do not know. Each wildcard supplies one letter, up to the tool's supported limit. A wildcard can reveal possibilities, but it does not allow an ordinary tile to be reused: the known letters still have to match the rack. If your board has a blank tile, remember that its game score may differ from a normal letter even though the solver uses it to discover candidate spellings.",
+          "The length controls are useful when you need a specific kind of answer. Set both ends to five for a five-letter puzzle, or widen the range when you are looking for shorter plays from a larger rack. Longest-first sorting puts full-rack options near the top; alphabetical order is handy when comparing spellings. If the result list is too broad, add a length limit. If it is empty, clear one filter at a time and confirm your letter counts."
+        ]
+      },
+      {
+        "heading": "Word unscrambler tips for games and puzzles",
+        "paragraphs": [
+          "For Scrabble and Words With Friends, use the results as candidates, then inspect the board. A word that uses many tiles may score well, but placement, premium squares, cross-words, and the official game dictionary determine whether it is a legal and useful move. The two games can use different accepted-word lists, so verify uncertain entries for the version you play. This tool helps with letter rearrangement; it does not evaluate board position or game strategy.",
+          "For Wordle, separate confirmed positions from letters that are present in another slot and letters that are absent. The general unscrambler is helpful when you have a rack of letters, while the dedicated five-letter finder is better for exact green, yellow, and excluded-letter patterns. In crossword puzzles, use crossing letters to constrain the answer and consider the clue's meaning before choosing among several possible words."
+        ]
+      },
+      {
+        "heading": "Choosing the right word tool",
+        "paragraphs": [
+          "Use Word Finder when you need to specify a prefix, suffix, contained sequence, or word length. Choose Words With Letters when you want to combine a letter pool with start, end, and length options. The Anagram Solver focuses on exact or partial rearrangements, while the dedicated five-, six-, seven-, and eight-letter pages focus on a particular answer length. Each tool has its own controls, but they share the same basic idea: narrow a dictionary to words that fit known letters and puzzle constraints.",
+          "A word list is only as complete as its dictionary. Regional spellings, specialist vocabulary, and game-specific entries can vary. If a result is missing or disputed, check the official word list for your puzzle. Use the links below to move directly to the tool that matches your letters, pattern, or target length."
+        ]
+      }
+    ],
+    "faqs": [
+      { "question": "How do I unscramble letters into words?", "answer": "Enter your letters in any order, choose a word-length range, and run the search. The solver lists dictionary words that fit your letter counts." },
+      { "question": "Can I use blank tiles?", "answer": "Yes. Enter ? or * for a blank tile. Each wildcard can supply one missing letter, subject to the supported wildcard limit." },
+      { "question": "Does the solver reuse letters?", "answer": "No. A result cannot use more copies of a letter than you entered, unless a wildcard supplies the additional tile." },
+      { "question": "Are results valid in every word game?", "answer": "Not necessarily. Game dictionaries can differ, so verify uncertain words in the official list for your game." }
+    ],
+    "related": [
+      { "href": "/word-finder", "label": "Word Finder" },
+      { "href": "/words-with-letters", "label": "Words With Letters" },
+      { "href": "/anagram-solver", "label": "Anagram Solver" },
+      { "href": "/5-letter-word-finder", "label": "5 letter word finder" },
+      { "href": "/6-letter-word-unscrambler", "label": "6 letter word unscrambler" },
+      { "href": "/7-letter-word-unscrambler", "label": "7 letter word unscrambler" },
+      { "href": "/8-letter-word-unscrambler", "label": "8 letter word unscrambler" }
+    ]
+  },
+  "wordsWithLetters": {
+    "heading": "Words With Letters: Find Words From Your Tiles",
+    "intro": "Find words with letters you already have, then narrow the list by length and letter placement. Words With Letters is designed for a rack or collection of tiles where you may want to use all the letters or only a subset. Add a required beginning, ending, or contained sequence to fit a board connection. The search respects repeated-letter counts and supports blank wildcards, making it useful for word games, anagrams, crossword checks, and vocabulary exploration.",
+    "sections": [
+      {
+        "heading": "Search a letter pool",
+        "paragraphs": [
+          "Enter the available letters in any order. If the pool is A R E T, the finder can return RATE, TARE, TEAR, and shorter matches when your length choice allows them. It cannot return a word that needs a second R unless the input also contains another R or a wildcard. This exact count behavior keeps results tied to the tiles you actually have instead of showing every word that happens to contain one of your letters.",
+          "Choose Any Length to see different-size words that can be assembled from a larger rack, or select a specific length when the puzzle gives you a fixed number of squares. You can sort longer results first, shorter results first, alphabetically, or by score where available. If the list is too long, add a start or end condition to reflect a letter already on your game board."
+        ],
+        "items": [
+          "A E L P P: check whether both copies of P are needed when reviewing APPLE and other matches.",
+          "C A R T E: inspect words that start with C or end in E to fit a board hook.",
+          "S T A R ?: use the wildcard for one blank tile, then compare the matches with your clue."
+        ]
+      },
+      {
+        "heading": "Add starts-with, ends-with, and contains filters",
+        "paragraphs": [
+          "Starts-with and ends-with controls help when a word must connect to an existing tile. Enter a short prefix such as TR to look for words beginning with those letters, or a suffix such as ING when the final squares are fixed. The contains filter requires a sequence somewhere inside the answer. These constraints can be combined with the available letter pool and the length selection to focus the results on a board position or a crossword pattern.",
+          "Use only confirmed constraints. An incorrect prefix, suffix, or contained sequence can exclude every valid answer, so begin with the rack and one reliable filter. Add more rules after checking the candidates. If the search returns nothing, remove the newest filter first and check whether you accidentally counted a board letter as part of your rack."
+        ]
+      },
+      {
+        "heading": "Strategies for Scrabble and Words With Friends",
+        "paragraphs": [
+          "For tile games, combine the letters on your rack with any fixed board letter you need to use. Think about hooks, cross-words, and premium squares before choosing a result. The score shown by a word list cannot account for every board multiplier or game-specific rule, and the accepted vocabulary may differ between Scrabble editions and Words With Friends. Verify a disputed word in the official lexicon for your game and follow any tournament restrictions on outside assistance.",
+          "Shorter words can be strategically useful even when a longer anagram is available. They may fit an open lane, use a premium square, or preserve a valuable tile for later. Switch between word lengths and sorting modes to compare practical choices rather than assuming that the longest result is automatically the best play."
+        ]
+      },
+      {
+        "heading": "Use the tool for puzzles and learning",
+        "paragraphs": [
+          "Anagram puzzles are a natural fit: enter all known letters and scan the results for a word that matches the clue. For crosswords, use a pattern finder when you know which positions are fixed; use Words With Letters when the answer must be built from a limited set of letters. Students can compare how changing one tile changes the available words, and writers can explore combinations and spelling patterns without manually listing permutations.",
+          "A dictionary result is a spelling candidate, not a definition. Consider the puzzle clue, part of speech, and regional spelling before settling on an answer. Game word lists can include uncommon forms and exclude words accepted elsewhere. If the expected answer is absent, verify the input, wildcard count, length, and active filters, then consult the source dictionary used by the puzzle."
+        ]
+      }
+    ],
+    "faqs": [
+      { "question": "Can I find shorter words from a longer rack?", "answer": "Yes. Choose Any Length or set a shorter target length to find words that use a subset of your available tiles." },
+      { "question": "Can I combine my letters with a prefix or suffix?", "answer": "Yes. Add starts-with, ends-with, or contains rules along with your available letters and target length." },
+      { "question": "Does the tool respect duplicate letters?", "answer": "Yes. Each result uses no more copies of a letter than your pool contains, except where wildcards fill missing tiles." },
+      { "question": "Are these words accepted by every game?", "answer": "No single list matches every game. Confirm candidates with the official dictionary and rules for your game." }
+    ],
+    "related": [
+      { "href": "/", "label": "Word Unscrambler" },
+      { "href": "/word-finder", "label": "Word Finder" },
+      { "href": "/anagram-solver", "label": "Anagram Solver" },
+      { "href": "/5-letter-word-finder", "label": "5 letter word finder" },
+      { "href": "/6-letter-word-unscrambler", "label": "6 letter word unscrambler" },
+      { "href": "/7-letter-word-unscrambler", "label": "7 letter word unscrambler" },
+      { "href": "/8-letter-word-unscrambler", "label": "8 letter word unscrambler" }
+    ]
+  },
+  "anagramSolver": {
+    "heading": "Anagram Solver: Rearrange Letters Into Words",
+    "intro": "An anagram solver checks whether a set of letters can be rearranged to form one or more dictionary words. Enter a word, phrase, or tile rack and choose whether you want exact anagrams that use every letter or shorter sub-anagrams that use part of the pool. Cluevra accounts for repeated letters, supports blank wildcards, and sorts results to make comparison easier. It is useful for word games, jumbles, crossword exploration, and learning how different letter combinations can create new words.",
+    "sections": [
+      {
+        "heading": "How to solve an anagram",
+        "paragraphs": [
+          "Type the letters you want to rearrange. The order does not matter, and spaces or punctuation can separate a phrase without changing its letter pool. Select exact mode when the answer must use every supplied letter, or choose a length range to include partial anagrams. The solver compares the letter frequency of each candidate with your input, so a word that needs an extra vowel will not appear unless the input contains that vowel or a wildcard.",
+          "For example, the letters A R E T can form RATE, TARE, and TEAR as exact four-letter anagrams. With shorter results enabled, the same pool may also produce ARE, ART, EAR, EAT, RAT, TAR, and TEA, depending on the dictionary. Compare each candidate with the puzzle's definition or clue; the anagram engine finds arrangements but does not decide which meaning fits."
+        ],
+        "items": [
+          "A E R T: look for RATE, TARE, and TEAR as exact rearrangements.",
+          "S T O N E: compare STONE, NOTES, ONSET, and other words that use all five letters.",
+          "L I S T E N: explore exact anagrams such as SILENT, ENLIST, and TINSEL."
+        ]
+      },
+      {
+        "heading": "Exact anagrams and sub-anagrams",
+        "paragraphs": [
+          "An exact anagram uses every supplied letter the same number of times. This is useful when a jumble specifies a complete answer or when rearranging a phrase into another phrase. A sub-anagram uses only some of the available letters, which is useful in Scrabble-like games where you can play a shorter word from a larger rack. Be clear about which mode you need: a list of shorter matches can be distracting when a clue demands one exact rearrangement.",
+          "Repeated letters deserve special attention. The word LETTERS includes two Ts and two Es; a candidate that uses three Ts cannot be made from that pool. Cluevra checks these counts rather than just asking whether every candidate letter appears somewhere in the input. A wildcard can supply one missing tile, but it does not allow an ordinary tile to be reused freely."
+        ]
+      },
+      {
+        "heading": "Anagrams for games and learning",
+        "paragraphs": [
+          "For Scrabble and Words With Friends, sub-anagrams help you inspect plays from your rack. A long exact anagram is not always the best move: check the board, premium squares, cross-words, and the official accepted-word list. The solver provides spelling candidates and optional score ordering, but it cannot see your current board or account for all game-specific scoring. In competitive settings, follow the rules about outside tools and assistance.",
+          "For daily jumbles and classroom exercises, use the answer clue to choose among plausible results. Students can compare the letter patterns shared by anagrams and notice how prefixes, endings, and vowel placement change the form of a word. Writers may use partial anagrams to explore vocabulary, but should still check definitions and context before using an unfamiliar result in prose."
+        ]
+      },
+      {
+        "heading": "When to use a different word finder",
+        "paragraphs": [
+          "If you know where some letters belong, a pattern-based finder is more direct than an anagram search. Word Finder supports starting letters, ending letters, contained sequences, and lengths. Words With Letters combines a rack with those constraints. The dedicated five-letter finder is suited to five-slot puzzles, while the six-, seven-, and eight-letter unscramblers narrow the search to an exact word size. Choose the page that best matches the information you already know.",
+          "If no exact anagram appears, check for a missing or duplicated letter, try a wildcard for a genuinely unknown tile, and make sure your selected mode matches the clue. Different dictionaries include different inflections, regional forms, and specialist terms. Confirm any disputed answer with the source or game list that governs your puzzle."
+        ]
+      }
+    ],
+    "faqs": [
+      { "question": "What is an exact anagram?", "answer": "An exact anagram rearranges every supplied letter exactly once, preserving repeated-letter counts." },
+      { "question": "Can I find shorter words from the same letters?", "answer": "Yes. Select sub-anagram or a word-length range to see valid words made from part of your letter pool." },
+      { "question": "Can the solver rearrange a phrase?", "answer": "Yes. Enter the letters from the phrase; spaces and punctuation do not affect the letter matching." },
+      { "question": "Why is my answer missing?", "answer": "Check repeated letters, selected mode, and wildcard use. The word may also be outside the dictionary's coverage." }
+    ],
+    "related": [
+      { "href": "/", "label": "Word Unscrambler" },
+      { "href": "/words-with-letters", "label": "Words With Letters" },
+      { "href": "/word-finder", "label": "Word Finder" },
+      { "href": "/5-letter-word-finder", "label": "5 letter word finder" },
+      { "href": "/6-letter-word-unscrambler", "label": "6 letter word unscrambler" },
+      { "href": "/7-letter-word-unscrambler", "label": "7 letter word unscrambler" },
+      { "href": "/8-letter-word-unscrambler", "label": "8 letter word unscrambler" }
+    ]
+  },
+  "fiveLetterFinder": {
+    "heading": "5 Letter Words From Letters: Word Finder",
+    "intro": "Use this five-letter word finder to turn clues, known tiles, and a rack of letters into a focused list of possible answers. It is designed for the common moment when you know some of a five-letter word but need help checking the remaining positions. Enter fixed letters where they belong, then add letters that must appear or letters that cannot appear. The results are drawn from the site's dictionary and narrowed to exactly five characters, so a broad search becomes a practical shortlist instead of a page of unrelated word lengths.",
+    "sections": [
+      {
+        "heading": "How to search for a five-letter word",
+        "paragraphs": [
+          "Start with what you know, not what you hope to find. Put confirmed green letters in their exact slots, such as C _ A _ E for a pattern like CRANE when only the first, third, and fifth positions are established. Leave every uncertain position blank. Next, add any known letters that must be included somewhere in the answer. Use the excluded-letter field for letters ruled out by your clues. The tool applies these conditions together and returns matching five-letter entries.",
+          "For an anagram-style search, use the available letters rather than fixed slots. A rack such as A, E, R, S, and T can form words including STARE, TEARS, RATES, and TARES, depending on the dictionary. Letter counts matter: one A in the rack cannot produce a word requiring two A tiles. If your game supplies a blank tile, represent it with a wildcard so the search can test possible substitutions."
+        ],
+        "items": [
+          "_ A _ E R: place A second and E fourth, then compare matches such as LATER or PAPER against your other clues.",
+          "S T _ _ E: check five-letter words beginning ST and ending E, including STAGE, STAKE, STALE, and STONE.",
+          "Letters A E R T S: explore anagrams such as STARE, TEARS, RATES, and TARES."
+        ]
+      },
+      {
+        "heading": "Use patterns and letter positions carefully",
+        "paragraphs": [
+          "A pattern is most useful when every position comes from reliable information. In Wordle, a green tile fixes a letter in place; a yellow tile tells you the letter is present but not in that position; a gray tile usually excludes it unless the same letter has already appeared elsewhere in the guess. Keep those clues separate as you enter them. If you are uncertain whether a letter can repeat, leave the duplicate question open and inspect the results rather than excluding the letter entirely.",
+          "Try narrowing the search in stages. Begin with confirmed positions and required letters, review the candidate words, and then add exclusions only when you are certain. This avoids removing a valid answer because a clue was interpreted too strictly. For crosswords, the same method works with crossing letters: enter the letters already supplied by intersecting answers and scan the remaining words for a definition that fits."
+        ],
+        "items": [
+          "Words beginning with B often include BASIC, BEACH, and BREAD; use a known second or final letter to narrow that family.",
+          "Words beginning with C include CHAIR, CLEAR, and CROWN; positions and excluded letters separate otherwise similar candidates.",
+          "Words beginning with S include SHARE, SHINE, and STORM; check repeated letters before ruling out a match."
+        ]
+      },
+      {
+        "heading": "Examples for Wordle, Scrabble, and other games",
+        "paragraphs": [
+          "For Wordle and similar daily puzzles, treat the finder as a way to organize clues and study possible spellings, not as a substitute for the rules of a particular game. Choose a candidate that tests useful new letters while respecting the feedback already on the board. A list of matches can also help you notice common combinations, such as SH, CH, TH, or a final E, that are easy to overlook when guessing from memory.",
+          "For Scrabble and Words With Friends, use the available-letter search to inspect playable five-letter words from your rack. A valid dictionary entry is not automatically the best play: board multipliers, hooks, blocked squares, and the game's own word list all matter. Compare the displayed choices with the board and verify disputed words in the official word authority for your game. For crosswords and spelling practice, fixed positions and excluded letters are often more useful than score sorting."
+        ]
+      },
+      {
+        "heading": "Common questions about five-letter searches",
+        "paragraphs": [
+          "The finder checks the conditions you provide against its dictionary; it does not infer a clue definition or guarantee that every result is accepted by every game. Regional spellings, inflections, proper nouns, and game-specific dictionaries can differ. Treat results as candidates and confirm the final choice against the puzzle or competition rules you are using.",
+          "When a search returns too many words, add a reliable position or a required letter. When it returns none, remove one restriction at a time, check for a mistaken excluded letter, and verify that the pattern contains exactly five slots. This quick troubleshooting usually reveals whether the issue is a clue interpretation or a genuinely uncommon answer."
+        ]
+      }
+    ],
+    "faqs": [
+      { "question": "How do I find a five-letter word from clues?", "answer": "Enter known letters in their positions, add letters that must appear, and exclude only letters your clues rule out. The finder returns matching five-letter words." },
+      { "question": "Can I use this as a Wordle helper?", "answer": "Yes. Use confirmed positions and present or absent letters to make a candidate list, then choose a guess that follows the rules of your puzzle." },
+      { "question": "Does it find words from a rack of letters?", "answer": "Yes. Enter available tiles for an anagram-style search. Results respect the number of each letter supplied, with wildcard support for blanks." },
+      { "question": "Are all results accepted in Scrabble or Words With Friends?", "answer": "Game dictionaries can differ. Check a candidate against the official word list and current rules for the game you are playing." }
+    ],
+    "related": [
+      { "href": "/6-letter-word-unscrambler", "label": "6 letter word unscrambler" },
+      { "href": "/7-letter-word-unscrambler", "label": "7 letter word unscrambler" },
+      { "href": "/8-letter-word-unscrambler", "label": "8 letter words using these letters" },
+      { "href": "/word-finder", "label": "Word Finder" }
+    ]
+  },
+  "sixLetterUnscrambler": {
+    "heading": "6 Letter Words Using These Letters",
+    "intro": "This six-letter word unscrambler finds words that can be made from the letters you enter. Type up to six tiles in any order and the solver checks their letter counts against its dictionary, returning words that use no tile more times than you supplied. It is useful for anagrams, timed word games, crossword checks, and moments when a familiar set of letters refuses to settle into a word. You can enter a full six-tile rack for exact-length results or use a blank wildcard when one tile is unknown.",
+    "sections": [
+      {
+        "heading": "How to unscramble six letters",
+        "paragraphs": [
+          "Enter the letters exactly as they appear on your tiles; their order does not matter. A rack such as A C E R T S can be rearranged into words such as CAREST, CARTES, and caster-like forms when they are present in the selected dictionary. The solver checks each candidate against the available letter inventory. If the rack contains one R, a result cannot quietly use two; repeated letters must be represented by repeated tiles.",
+          "Set the target length to six when you need a word that uses every tile. If your puzzle accepts shorter plays, adjust the minimum and maximum lengths to inspect useful subwords too. Sort alphabetically when you are comparing spellings, or by score when you are weighing a board-game move. Copying a result makes it easy to test a candidate in your puzzle without retyping it."
+        ],
+        "items": [
+          "A C E R T S can reveal six-letter anagrams such as CAREST and CARTES when included in the word list.",
+          "A E I L N T can be rearranged into ELATIN or other dictionary candidates; verify accepted forms for your game.",
+          "Adding ? to a five-letter rack asks the solver to test possible letters for the missing sixth tile."
+        ]
+      },
+      {
+        "heading": "Make the most of wildcard tiles",
+        "paragraphs": [
+          "A question mark or asterisk represents a blank tile and can stand for one letter. For example, entering T R A C E ? keeps the five known tiles fixed while the solver tests possible sixth letters. Wildcards expand the candidate set, so use them only for genuinely unknown or blank tiles. If a result looks surprising, compare it letter by letter with your rack to see which character the wildcard supplied.",
+          "The tool supports up to three wildcards, though each one can produce many possible combinations. Narrow the results with the exact length setting and sort choices to make review manageable. Wildcards do not mean that any letter can be reused without limit: each blank fills one missing tile, while your ordinary letters still obey their supplied counts."
+        ]
+      },
+      {
+        "heading": "Six-letter words in Scrabble, Wordle, and puzzles",
+        "paragraphs": [
+          "In Scrabble and Words With Friends, six-letter words can create useful board connections, reach premium squares, or extend an existing word. The highest-scoring dictionary result is not necessarily the strongest move. Check the board geometry, leave useful tiles for your next turn, and confirm that the word is accepted in the game's official lexicon. A solver can suggest spellings; it cannot see blocked squares or judge the strategic value of a placement.",
+          "Wordle itself uses five-letter answers, but six-letter tools can still help with longer variants, anagram modes, and related daily challenges. For a five-letter board, switch to the dedicated five-letter finder so you can enter green positions and excluded letters directly. Crossword solvers can use a six-letter rack when all crossing letters are known, or combine the rack with a separate pattern search when placement matters."
+        ]
+      },
+      {
+        "heading": "Common six-letter word patterns",
+        "paragraphs": [
+          "Looking for familiar beginnings and endings can make a scrambled rack easier to read. Six-letter words often contain common starts such as re-, un-, and dis-, and endings such as -ed, -er, -es, and -ing when the total length permits them. Try grouping a likely pair or short sequence before rearranging the remaining tiles. This is a thinking aid rather than a filter requirement: the solver will still search all matching arrangements from the letters you entered.",
+          "If no answer appears, first check for a typo or an accidentally duplicated tile. Then confirm that the word must use exactly six letters; many games allow a shorter play from a larger rack. Finally, remove a wildcard or length restriction temporarily to see whether the problem is the rack or the requested word size."
+        ]
+      }
+    ],
+    "faqs": [
+      { "question": "How do I make a six-letter word from my tiles?", "answer": "Enter your letters in any order and keep the target length at six. The results use only the tile counts and wildcards in your input." },
+      { "question": "Can a wildcard represent any letter?", "answer": "Yes. Enter ? or * for a blank tile. Each wildcard supplies one missing letter, up to the tool's supported limit." },
+      { "question": "Can I use the six-letter solver for Scrabble?", "answer": "Use it to explore candidate plays, then check the board and confirm each word in the official dictionary for your game." },
+      { "question": "Why are there no results for my letters?", "answer": "Check spelling, repeated tile counts, wildcard symbols, and the selected word length. Your game may also use a different dictionary." }
+    ],
+    "related": [
+      { "href": "/5-letter-word-finder", "label": "5 letter word finder" },
+      { "href": "/7-letter-word-unscrambler", "label": "7 letter words using these letters" },
+      { "href": "/8-letter-word-unscrambler", "label": "8 letter words using these letters" },
+      { "href": "/word-finder", "label": "Word Finder" }
+    ]
+  },
+  "sevenLetterUnscrambler": {
+    "heading": "7 Letter Words Using These Letters",
+    "intro": "Find a seven-letter word using the letters on your rack, in a jumble, or in a puzzle clue. Enter up to seven known letters in any order and the unscrambler searches for dictionary entries that can be built without exceeding the count of any tile. Seven-letter searches are especially useful when you want to use a full rack or check a possible bingo play, but the same letter matching also helps with anagrams, spelling practice, and word scrambles. Add a wildcard for a blank tile, then compare the resulting words with your game's rules.",
+    "sections": [
+      {
+        "heading": "How to find a seven-letter word",
+        "paragraphs": [
+          "Type your letters into the input, leaving them in whatever order they were dealt. The solver rearranges them and displays matching seven-letter words. For example, A C E L N R T can be checked for combinations such as CENTRAL, while A E I N R S T may suggest NASTIER or RETAINS if those entries occur in the dictionary. These examples show why it helps to scan both the beginning and ending of a candidate instead of trying every permutation mentally.",
+          "Keep the length filter set to seven for exact full-rack answers. If you have more tiles than you want to play, change the filter to include shorter results and look for a strong six- or five-letter move. Results can be sorted alphabetically for spelling checks or by score where the interface offers that option. A blank tile is entered as ? or *, and the solver tests possible substitutions while still respecting the rest of your letter counts."
+        ],
+        "items": [
+          "A C E L N R T: try recognizable chunks such as CENTRAL, then compare every tile against the rack.",
+          "A E I N R S T: look for endings such as -ER, -EST, or -S before reviewing words like NASTIER and RETAINS.",
+          "Six known letters plus ?: let a blank represent the unknown seventh tile and inspect the candidates."
+        ]
+      },
+      {
+        "heading": "Patterns that reveal seven-letter words",
+        "paragraphs": [
+          "Prefixes and suffixes can help you spot a structure in a row of mixed letters. Try separating common beginnings such as RE-, UN-, DIS-, and OUT- from the remaining tiles. Then check endings such as -ER, -ERS, -EST, -ING, and -TION when the letter count allows them. These are useful mental patterns, not a guarantee that a word exists; the dictionary search checks the full combination and prevents a familiar-looking fragment from leading to an impossible spelling.",
+          "Compound words are another useful angle. Look for two short chunks that can join naturally, or a familiar four-letter base with a common ending. When none of those patterns stands out, let the solver generate options and read them aloud. The goal is to make a difficult rack easier to inspect, not to rely on one prefix or ending as the only way to find an answer."
+        ]
+      },
+      {
+        "heading": "Seven-letter plays in Scrabble and Words With Friends",
+        "paragraphs": [
+          "In classic Scrabble, using all seven tiles in a rack earns a bingo bonus when the play is legal. A seven-letter word can therefore be valuable even when its face value is modest, but the board still decides whether it fits. Check that the opening square and connected letters allow the placement, calculate premium-square effects, and verify that every cross-word is valid. Words With Friends has its own scoring and accepted-word list, so never assume that identical rules or results apply to both games.",
+          "The solver only sees the letters you type. It cannot account for occupied squares, a required hook, or the distribution of tiles left in the bag. Use it to uncover spellings you may have missed, then make the strategic decision on the board. If you have fewer than seven tiles or only need a short answer, the six-letter tool or general Word Finder can be a better fit."
+        ]
+      },
+      {
+        "heading": "Using seven-letter results for puzzles",
+        "paragraphs": [
+          "For anagram contests and word jumbles, start with all confirmed letters and check whether any tile is repeated. If the puzzle gives a definition, use that meaning to select among the returned spellings rather than assuming the first result is correct. In crosswords, combine known crossing letters with a pattern-oriented finder: an anagram solver works best when the available letters are known, while positional filters help when the grid determines where each letter belongs.",
+          "When the result list is empty, remove one restriction at a time. Confirm that the input has seven usable characters, that punctuation has not replaced a letter, and that a blank is represented by a supported wildcard. Some puzzles use proper nouns or specialist vocabulary that may not be in a general word list, so a missing answer can reflect dictionary scope rather than a mistake in your reasoning."
+        ]
+      }
+    ],
+    "faqs": [
+      { "question": "How can I find a seven-letter word from my letters?", "answer": "Enter up to seven tiles in any order and search at length seven. The solver checks letter counts and lists valid dictionary matches." },
+      { "question": "Can I find a Scrabble bingo with this tool?", "answer": "It can identify seven-letter candidates from your rack. Check placement, cross-words, score, and the official game dictionary before playing." },
+      { "question": "Can I include a blank tile?", "answer": "Yes. Use ? or * to represent one blank. The solver tries possible letters for the wildcard while preserving your other tile counts." },
+      { "question": "Why might a familiar word be missing?", "answer": "The word may be absent from this dictionary or the game may use a different word list. Check your input and the game's official source." }
+    ],
+    "related": [
+      { "href": "/5-letter-word-finder", "label": "5 letter word finder" },
+      { "href": "/6-letter-word-unscrambler", "label": "6 letter words using these letters" },
+      { "href": "/8-letter-word-unscrambler", "label": "8 letter words using these letters" },
+      { "href": "/word-finder", "label": "Word Finder" }
+    ]
+  },
+  "eightLetterUnscrambler": {
+    "heading": "8 Letter Words Using These Letters",
+    "intro": "Search for an eight-letter word using the tiles you already have. Enter up to eight letters in any order and this word unscrambler checks which dictionary entries can be formed without using a letter more often than it appears in your input. It is built for long anagrams, word jumbles, and tile-game racks where a full-length answer can be hard to see at a glance. If one tile is blank or unknown, add a wildcard and compare the resulting candidates with your puzzle clues and the rules of your game.",
+    "sections": [
+      {
+        "heading": "How to find eight-letter words from letters",
+        "paragraphs": [
+          "Enter your known letters, then keep the minimum and maximum length at eight when the answer must use every tile. The order of your input does not matter. A set such as A B E K N O O T can form NOTEBOOK, while a different rack may reveal words that are less obvious because their letters do not arrive in familiar order. The solver handles that rearrangement and returns matching eight-letter entries so you can spend time checking meaning and fit instead of manually exploring permutations.",
+          "If your rack includes a blank, enter ? or * in place of the missing tile. A wildcard stands for one letter; it does not remove the limits on your other tiles. Use score sorting when comparing board-game options, or alphabetical sorting when checking spellings. If you have more than eight physical tiles, search for shorter words as well and compare the best available play with your board position."
+        ],
+        "items": [
+          "N O T E B O O K makes NOTEBOOK, a clear example of grouping two familiar four-letter chunks.",
+          "A rack with a likely -ING ending can be easier to scan by setting aside I, N, and G before arranging the remaining letters.",
+          "Seven known tiles plus ? lets a blank stand for the eighth letter; confirm the suggested word fits your clue."
+        ]
+      },
+      {
+        "heading": "A practical method for solving long anagrams",
+        "paragraphs": [
+          "Long anagrams become easier when you look for useful chunks rather than treating every character as separate. Check for common prefixes such as RE-, UN-, DIS-, and OVER-, or endings such as -ING, -ERS, and -TION when the exact length permits. A familiar chunk reduces the number of letters you need to rearrange. Compound words can help too: two recognizable short words may form one eight-letter answer, as NOTE plus BOOK forms NOTEBOOK.",
+          "Do not force a pattern if the letters do not support it. Compare repeated letters carefully, especially when the rack has two of one vowel or consonant. The search engine tracks each occurrence, so a candidate that requires an extra E or O will not match unless a wildcard supplies it. Read the results slowly, grouping likely beginnings and endings, and use any definition or crossing letter from the puzzle to decide which candidate makes sense."
+        ]
+      },
+      {
+        "heading": "Eight-letter words for Scrabble and word games",
+        "paragraphs": [
+          "Scrabble racks hold seven tiles, so an eight-letter play normally uses all seven rack tiles plus a letter already on the board. That play can earn a bingo bonus, but it must connect legally and leave every formed cross-word valid. Check the shared board letter, premium squares, and the game's current dictionary before committing. Words With Friends has different scoring and word acceptance in some cases, so confirm candidates in the rules and lexicon for the version you are playing.",
+          "For Wordle-style puzzles, ordinary Wordle answers contain five letters; eight-letter tools are intended for longer variants, anagram modes, and other word games. Use the five-letter finder for standard Wordle patterns. For a general crossword clue, this eight-letter search is most useful when you already know the available letters; if you know exact positions, use a pattern-based word finder to constrain the grid instead."
+        ]
+      },
+      {
+        "heading": "Check examples and troubleshoot empty results",
+        "paragraphs": [
+          "Suppose your letters are N O T E B O O K. Set the search to eight letters and look for NOTEBOOK; the doubled O is valid because the rack contains three O tiles, while the remaining letters are each used once. If you enter only one O by mistake, that result should not appear. This makes the tool useful not only for finding answers but also for checking whether a remembered spelling can actually be built from a particular set of tiles.",
+          "When no result appears, confirm the number of characters, repeated letters, and wildcard symbol. Try a broader length range if your game allows a shorter answer. Some game dictionaries omit ordinary-looking words or include specialist forms, so a missing result does not prove that a word is invalid everywhere. Verify uncertain entries with the official list for your game."
+        ]
+      }
+    ],
+    "faqs": [
+      { "question": "How do I find an eight-letter word using my letters?", "answer": "Enter up to eight tiles in any order and set the search to eight letters. The solver returns dictionary words that fit your tile counts." },
+      { "question": "Can I use this for an eight-letter Wordle?", "answer": "Yes, for longer Wordle-style variants. Standard Wordle uses five-letter answers, so use the five-letter finder for that game." },
+      { "question": "Can an eight-letter Scrabble play use a board letter?", "answer": "An eight-letter play can use seven rack tiles and one existing board tile. Check the placement and game dictionary before playing." },
+      { "question": "How do wildcards work?", "answer": "Enter ? or * for a blank tile. Each wildcard supplies one letter; all other letters still follow the counts in your rack." }
+    ],
+    "related": [
+      { "href": "/5-letter-word-finder", "label": "5 letter word finder" },
+      { "href": "/6-letter-word-unscrambler", "label": "6 letter words using these letters" },
+      { "href": "/7-letter-word-unscrambler", "label": "7 letter words using these letters" },
+      { "href": "/word-finder", "label": "Word Finder" }
+    ]
+  },
+  "wordFinder": {
+    "heading": "Word Finder - Find Words From Letters",
+    "intro": "Use Word Finder when you need more control than a basic anagram search. Enter available letters, choose a word length, and add optional rules for what a word must start with, end with, or contain. You can also search by pattern when some letters are already fixed on a board or in a crossword grid. Combining these conditions creates a smaller, more useful list of candidates for word games, daily puzzles, and vocabulary practice. Leave the available-letter field empty when you want to search by pattern alone.",
+    "sections": [
+      {
+        "heading": "Find words from a rack of letters",
+        "paragraphs": [
+          "Enter the letters available to you and choose whether you want any length or an exact number of characters. The finder respects duplicate counts: input A R E T can produce RATE, TARE, and TEAR, but it cannot produce a word that needs two R tiles. When your rack contains a blank, use a wildcard for that tile and review the extra matches it creates. Sorting by length can surface longer plays first, while alphabetical order is useful when checking a spelling or comparing similar answers.",
+          "This search is helpful in Scrabble, Words With Friends, Bananagrams, and other tile games, but the list is only a starting point. Your board may require a particular hook, a cross-word, or a placement over a premium square. Check every candidate against the board and the official dictionary for the game you are playing. Scores and accepted words can differ across games, editions, and regional word lists."
+        ],
+        "items": [
+          "Letters A R E T: look for RATE, TARE, TEAR, and other valid combinations that use no extra tiles.",
+          "Starts with TR: examples include TREE, TRAIN, TRACE, and TRAVEL, depending on the selected length.",
+          "Ends with ING: narrow longer results to words with a useful suffix such as PLAYING or SPRING."
+        ]
+      },
+      {
+        "heading": "Search by prefix, suffix, and included pattern",
+        "paragraphs": [
+          "A prefix is a sequence that must appear at the beginning of the answer; a suffix must appear at the end. Use these fields when a board tile constrains how your word can connect, or when a clue suggests a familiar ending. The contains field checks for a sequence anywhere inside the word. For example, requiring TION can find entries such as ACTION, MOTION, PORTION, and STATION when the requested length and dictionary match.",
+          "Combine pattern rules with available letters when you know both the rack and the board connection. If your word must begin with TR and your rack supplies the remaining letters, set the prefix and enter only the tiles you can use. If you are unsure about a condition, remove it and compare the broader result list. A single mistaken restriction can hide every valid answer, so build a search from confirmed facts and add optional filters one at a time."
+        ]
+      },
+      {
+        "heading": "Use Word Finder for Wordle and crosswords",
+        "paragraphs": [
+          "For standard Wordle, choose a five-letter length and enter the letters that are confirmed in their positions. Use excluded letters for feedback that rules out a tile, while remembering that duplicate letters can complicate gray clues. A candidate list can help you plan a guess that tests new letters, but it does not provide the puzzle's hidden answer or determine which guess is strategically best. Longer Wordle-style games may use other word lengths, so set the length to match the version you are playing.",
+          "For crosswords, the grid itself supplies a pattern. Enter the known crossing letters in their correct slots, select the answer length, and use available letters only when the clue or puzzle provides them. Word Finder can check spelling possibilities, but it cannot interpret the clue's wordplay or decide which definition fits. Treat results as options to evaluate against the clue and its crossings."
+        ]
+      },
+      {
+        "heading": "Choose the right related word tool",
+        "paragraphs": [
+          "Use the dedicated five-letter page when you are solving a five-letter pattern and want fixed-position controls. Choose the six-, seven-, or eight-letter unscrambler when your target answer has an exact length and you are rearranging a known set of tiles. The general Word Finder is the flexible option for starts-with, ends-with, contains, and length rules across a wider range of words. A separate anagram solver is useful when the central task is comparing exact or partial rearrangements of a phrase.",
+          "If a search gives no matches, make sure your available letters do not include spaces or punctuation, check each repeated tile, and verify that the prefix and suffix do not overlap beyond the chosen word length. Then remove one optional rule at a time. This makes it clear whether a result is being excluded by the rack, the pattern, the length, or the scope of the dictionary."
+        ]
+      }
+    ],
+    "faqs": [
+      { "question": "Can I find words from letters and a pattern together?", "answer": "Yes. Enter your available tiles, set a length, and add known starting, ending, or contained letter sequences." },
+      { "question": "Does Word Finder work for Scrabble and Words With Friends?", "answer": "It can suggest words from your rack and board constraints. Confirm legal plays in the official dictionary and rules for your game." },
+      { "question": "Can I search without entering available letters?", "answer": "Yes. Leave the letter pool empty and search using length, prefix, suffix, or contained-pattern filters." },
+      { "question": "Why is my expected answer missing?", "answer": "Check the letter counts, length, and every active filter. The answer may also be outside this dictionary's coverage." }
+    ],
+    "related": [
+      { "href": "/5-letter-word-finder", "label": "5 letter word finder" },
+      { "href": "/6-letter-word-unscrambler", "label": "6 letter words using these letters" },
+      { "href": "/7-letter-word-unscrambler", "label": "7 letter words using these letters" },
+      { "href": "/8-letter-word-unscrambler", "label": "8 letter words using these letters" }
+    ]
+  }
+}

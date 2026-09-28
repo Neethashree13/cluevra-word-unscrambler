@@ -20,7 +20,8 @@ export type AppRoute =
   | 'about'
   | 'privacy'
   | 'terms'
-  | 'contact';
+  | 'contact'
+  | 'notFound';
 
 /**
  * Normalizes window.location.pathname into an AppRoute identifier.
@@ -55,10 +56,13 @@ export function getRouteFromPath(pathname: string): AppRoute {
       return 'terms';
     case '/contact':
       return 'contact';
+    case '/404':
+      return 'notFound';
     case '/word-unscrambler':
     case '/':
-    default:
       return 'home';
+    default:
+      return 'notFound';
   }
 }
 
@@ -89,9 +93,11 @@ export function getPathFromRoute(route: AppRoute): string {
       return '/terms';
     case 'contact':
       return '/contact';
+    case 'notFound':
+      return '/404';
     case 'home':
     default:
-      return '/word-unscrambler';
+      return '/';
   }
 }
 
@@ -101,44 +107,65 @@ export function getPathFromRoute(route: AppRoute): string {
 export function updatePageSEO(route: AppRoute) {
   if (typeof document === 'undefined') return;
 
-  const pageMeta = SITE_CONFIG.pages[route] || SITE_CONFIG.pages.home;
+  const pageMeta = route === 'notFound' ? SITE_CONFIG.pages.home : SITE_CONFIG.pages[route];
   const canonicalUrl = `${SITE_CONFIG.productionDomain}${pageMeta.path}`;
 
-  document.title = pageMeta.title;
+  const pageTitle = route === 'notFound' ? 'Page Not Found | Cluevra' : pageMeta.title;
+  const pageDescription = route === 'notFound'
+    ? 'The requested Cluevra page could not be found.'
+    : pageMeta.description;
+  document.title = pageTitle;
 
   const canonicalLink = document.querySelector('link[rel="canonical"]');
-  if (canonicalLink) {
+  if (canonicalLink && route !== 'notFound') {
     canonicalLink.setAttribute('href', canonicalUrl);
+  } else if (canonicalLink) {
+    canonicalLink.remove();
+  }
+
+  const robotsMeta = document.querySelector('meta[name="robots"]');
+  if (robotsMeta) {
+    robotsMeta.setAttribute('content', route === 'notFound' ? 'noindex,follow' : 'index, follow, max-image-preview:large');
   }
 
   const metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc) {
-    metaDesc.setAttribute('content', pageMeta.description);
+    metaDesc.setAttribute('content', pageDescription);
   }
 
   const ogTitle = document.querySelector('meta[property="og:title"]');
   if (ogTitle) {
-    ogTitle.setAttribute('content', pageMeta.title);
+    ogTitle.setAttribute('content', pageTitle);
   }
 
   const ogDesc = document.querySelector('meta[property="og:description"]');
   if (ogDesc) {
-    ogDesc.setAttribute('content', pageMeta.description);
+    ogDesc.setAttribute('content', pageDescription);
   }
 
   const ogUrl = document.querySelector('meta[property="og:url"]');
   if (ogUrl) {
-    ogUrl.setAttribute('content', canonicalUrl);
+    ogUrl.setAttribute('content', route === 'notFound' ? window.location.href : canonicalUrl);
   }
 
   const twitterTitle = document.querySelector('meta[name="twitter:title"]');
   if (twitterTitle) {
-    twitterTitle.setAttribute('content', pageMeta.title);
+    twitterTitle.setAttribute('content', pageTitle);
   }
 
   const twitterDesc = document.querySelector('meta[name="twitter:description"]');
   if (twitterDesc) {
-    twitterDesc.setAttribute('content', pageMeta.description);
+    twitterDesc.setAttribute('content', pageDescription);
+  }
+
+  const twitterCard = document.querySelector('meta[name="twitter:card"]');
+  if (twitterCard) {
+    twitterCard.setAttribute('content', 'summary_large_image');
+  }
+
+  const socialImage = `${SITE_CONFIG.productionDomain}/favicon.png.png`;
+  for (const selector of ['meta[property="og:image"]', 'meta[name="twitter:image"]']) {
+    document.querySelector(selector)?.setAttribute('content', socialImage);
   }
 
   const ogSiteName = document.querySelector('meta[property="og:site_name"]');
@@ -146,9 +173,30 @@ export function updatePageSEO(route: AppRoute) {
     ogSiteName.setAttribute('content', SITE_CONFIG.siteName);
   }
 
+  const breadcrumbScript = document.getElementById('schema-breadcrumbs');
+  if (breadcrumbScript) {
+    const label = pageMeta.title.replace(/\s*[|–-]\s*Cluevra$/, '');
+    const breadcrumbs = route === 'notFound'
+      ? []
+      : route === 'home'
+      ? [{ '@type': 'ListItem', position: 1, name: 'Home', item: canonicalUrl }]
+      : [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_CONFIG.canonicalUrl },
+          { '@type': 'ListItem', position: 2, name: label, item: canonicalUrl },
+        ];
+    breadcrumbScript.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs,
+    });
+  }
+
   // Update JSON-LD WebApplication schema
   const webAppScript = document.getElementById('schema-webapplication');
   if (webAppScript) {
+    if (route === 'notFound') {
+      webAppScript.textContent = '';
+    } else {
     const webAppName =
       route === 'wordFinder'
         ? 'Word Finder'
@@ -187,6 +235,7 @@ export function updatePageSEO(route: AppRoute) {
       },
     };
     webAppScript.textContent = JSON.stringify(webAppSchema, null, 2);
+    }
   }
 
   // Update JSON-LD FAQPage schema (matches visible on-page content exactly)

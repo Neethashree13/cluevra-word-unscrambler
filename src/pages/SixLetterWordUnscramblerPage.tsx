@@ -5,7 +5,7 @@ import { dictionaryService } from '../lib/dictionary.ts';
 import { saveRecentSearch } from '../lib/recentSearches.ts';
 import SixLetterTool from '../components/SixLetterTool.tsx';
 import ResultsPanel from '../components/ResultsPanel.tsx';
-import SixLetterContent from '../components/SixLetterContent.tsx';
+import SeoGuideContent from '../components/SeoGuideContent.tsx';
 import { Sparkles } from 'lucide-react';
 
 interface SixLetterWordUnscramblerPageProps {
@@ -99,7 +99,7 @@ export default function SixLetterWordUnscramblerPage({ onNavigate }: SixLetterWo
           id="six-letter-page-title"
           className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
         >
-          6 Letter Word Unscrambler
+          6 Letter Words Using These Letters
         </h1>
         <p
           id="six-letter-page-description"
@@ -136,7 +136,7 @@ export default function SixLetterWordUnscramblerPage({ onNavigate }: SixLetterWo
       </div>
 
       {/* Educational & SEO Content Below the Tool */}
-      <SixLetterContent onNavigate={onNavigate} />
+      <SeoGuideContent pageKey="sixLetterUnscrambler" onNavigate={onNavigate} />
     </main>
   );
 }

@@ -12,7 +12,7 @@ export const SITE_CONFIG = {
   siteName: 'Cluevra',
   // Configurable production domain
   productionDomain: 'https://cluevra.com',
-  productionPath: '/word-unscrambler',
+  productionPath: '/',
   // Support contact email
   contactEmail: 'neethashree13@gmail.com',
   get canonicalUrl(): string {
@@ -20,7 +20,7 @@ export const SITE_CONFIG = {
   },
   pages: {
     home: {
-      path: '/word-unscrambler',
+      path: '/',
       title: 'Word Unscrambler – Unscramble Letters & Find Words | Cluevra',
       description:
         "Unscramble letters instantly with Cluevra's free word unscrambler. Find words from your letters, use blank tiles, filter by word length, and solve word puzzles faster.",
@@ -45,25 +45,25 @@ export const SITE_CONFIG = {
     },
     fiveLetterFinder: {
       path: '/5-letter-word-finder',
-      title: '5 Letter Word Finder | Cluevra',
+      title: '5 Letter Word Finder From Letters & Patterns | Cluevra',
       description:
         'Find 5 letter words from letters, patterns, and known positions. Use our free 5 letter word finder for Wordle, word games, puzzles, and more.',
     },
     sixLetterUnscrambler: {
       path: '/6-letter-word-unscrambler',
-      title: '6 Letter Word Unscrambler – Unscramble 6 Letter Words | Cluevra',
+      title: '6 Letter Words Using These Letters | Cluevra',
       description:
         'Enter up to 6 letters to find 6-letter words you can make from them. Use ? or * as blank tiles to solve anagrams, word games, and puzzles.',
     },
     sevenLetterUnscrambler: {
       path: '/7-letter-word-unscrambler',
-      title: '7 Letter Word Unscrambler | Cluevra',
+      title: '7 Letter Words Using These Letters | Cluevra',
       description:
         'Unscramble up to 7 letters into valid words with our free 7 Letter Word Unscrambler. Find matching 7-letter words, use wildcard tiles, sort results, and solve word puzzles.',
     },
     eightLetterUnscrambler: {
       path: '/8-letter-word-unscrambler',
-      title: '8 Letter Word Unscrambler - Unscramble 8 Letter Words | Cluevra',
+      title: '8 Letter Words Using These Letters | Cluevra',
       description:
         'Unscramble 8 letter words with Cluevra. Enter up to 8 letters, use wildcard tiles, and quickly find valid words for word games and puzzles.',
     },

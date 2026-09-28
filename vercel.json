@@ -1,19 +1,26 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
   "redirects": [
+    {
+      "source": "/word-unscrambler",
+      "has": [{ "type": "host", "value": "www.cluevra.com" }],
+      "destination": "https://cluevra.com/",
+      "statusCode": 301
+    },
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "www.cluevra.com" }],
       "destination": "https://cluevra.com/:path*",
-      "permanent": true
+      "statusCode": 301
     },
     {
-      "source": "/",
-      "destination": "/word-unscrambler",
-      "permanent": true
+      "source": "/word-unscrambler",
+      "destination": "https://cluevra.com/",
+      "statusCode": 301
     }
   ],
   "rewrites": [
-    { "source": "/word-unscrambler", "destination": "/index.html" },
     { "source": "/word-finder", "destination": "/word-finder/index.html" },
     { "source": "/words-with-letters", "destination": "/words-with-letters/index.html" },
     { "source": "/anagram-solver", "destination": "/anagram-solver/index.html" },
@@ -24,10 +31,6 @@
     { "source": "/about", "destination": "/about/index.html" },
     { "source": "/privacy-policy", "destination": "/privacy-policy/index.html" },
     { "source": "/terms", "destination": "/terms/index.html" },
-    { "source": "/contact", "destination": "/contact/index.html" },
-    {
-      "source": "/((?!ads\\.txt$|robots\\.txt$|sitemap\\.xml$|40f7cda2e340d57cd90c\\.txt$).*)",
-      "destination": "/index.html"
-    }
+    { "source": "/contact", "destination": "/contact/index.html" }
   ]
 }

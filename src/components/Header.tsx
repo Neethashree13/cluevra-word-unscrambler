@@ -11,7 +11,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Words With Letters', href: '/words-with-letters' },
   { label: 'Word Finder', href: '/word-finder' },
   { label: 'Anagram Solver', href: '/anagram-solver' },
-  { label: 'Word Unscrambler', href: '/word-unscrambler' },
+  { label: 'Word Unscrambler', href: '/' },
   { label: '6 Letter Unscrambler', href: '/6-letter-word-unscrambler' },
   { label: '7 Letter Unscrambler', href: '/7-letter-word-unscrambler' },
   { label: '8 Letter Unscrambler', href: '/8-letter-word-unscrambler' },
@@ -46,7 +46,7 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
     if (currentRoute === 'sevenLetterUnscrambler' && item.href === '/7-letter-word-unscrambler') return true;
     if (currentRoute === 'eightLetterUnscrambler' && item.href === '/8-letter-word-unscrambler') return true;
     if (currentRoute === 'fiveLetterFinder' && item.href === '/5-letter-word-finder') return true;
-    if (currentRoute === 'home' && item.href === '/word-unscrambler') return true;
+    if (currentRoute === 'home' && item.href === '/') return true;
     return false;
   };
 
@@ -59,11 +59,11 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
         {/* Brand / Logo */}
         <a
           id="header-brand-logo"
-          href="/word-unscrambler"
+          href="/"
           onClick={(e) => {
             if (e.metaKey || e.ctrlKey || e.button === 1) return;
             e.preventDefault();
-            handleNavClick('/word-unscrambler');
+            handleNavClick('/');
           }}
           className="flex items-center gap-2.5 text-slate-900 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-md"
         >

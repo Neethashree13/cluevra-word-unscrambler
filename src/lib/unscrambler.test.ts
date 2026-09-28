@@ -253,10 +253,10 @@ assert(parsedWordUnscrambler.maxLength === 4, 'Parses maxLength from /word-unscr
 assert(parsedWordUnscrambler.sortBy === 'length-desc', 'Parses sortBy from /word-unscrambler path');
 assert(parsedWordUnscrambler.hasParams === true, 'hasParams is true for /word-unscrambler path');
 
-// 25. SEO: buildShareUrl with /word-unscrambler base preserves path
-console.log('\nTest 25: SEO buildShareUrl preserves /word-unscrambler path');
-const seoShareUrl = buildShareUrl('aret', { minLength: 3, maxLength: 6, sortBy: 'alpha-asc' }, 'https://cluevra.com/word-unscrambler');
-assert(seoShareUrl.startsWith('https://cluevra.com/word-unscrambler?'), 'Share URL retains /word-unscrambler path');
+// 25. SEO: buildShareUrl uses the canonical homepage path
+console.log('\nTest 25: SEO buildShareUrl uses the canonical homepage path');
+const seoShareUrl = buildShareUrl('aret', { minLength: 3, maxLength: 6, sortBy: 'alpha-asc' }, 'https://cluevra.com/');
+assert(seoShareUrl.startsWith('https://cluevra.com/?'), 'Share URL uses the canonical homepage path');
 assert(seoShareUrl.includes('letters=aret'), 'Share URL contains letters=aret');
 assert(seoShareUrl.includes('min=3'), 'Share URL contains min=3');
 assert(seoShareUrl.includes('max=6'), 'Share URL contains max=6');
@@ -265,8 +265,8 @@ assert(seoShareUrl.includes('sort=alpha-asc'), 'Share URL contains sort=alpha-as
 // 26. SEO: SITE_CONFIG canonical URL is properly structured
 console.log('\nTest 26: SITE_CONFIG canonical URL is structured correctly');
 import { SITE_CONFIG } from '../config/site.ts';
-assert(SITE_CONFIG.canonicalUrl === 'https://cluevra.com/word-unscrambler', 'Canonical URL is https://cluevra.com/word-unscrambler');
-assert(SITE_CONFIG.productionPath === '/word-unscrambler', 'Production path is /word-unscrambler');
+assert(SITE_CONFIG.canonicalUrl === 'https://cluevra.com/', 'Canonical URL is https://cluevra.com/');
+assert(SITE_CONFIG.productionPath === '/', 'Production path is /');
 assert(SITE_CONFIG.title.includes('Word Unscrambler'), 'Title includes Word Unscrambler');
 assert(SITE_CONFIG.description.length >= 140 && SITE_CONFIG.description.length <= 165, 'Description is 140-165 chars');
 
@@ -286,18 +286,19 @@ assert(FAQ_DATA.some((q) => q.question.toLowerCase().includes('is the word unscr
 console.log('\nTest 28: Router maps paths correctly to AppRoute');
 import { getRouteFromPath, getPathFromRoute } from './router.ts';
 assert(getRouteFromPath('/') === 'home', 'Path / maps to home');
-assert(getRouteFromPath('/word-unscrambler') === 'home', 'Path /word-unscrambler maps to home');
-assert(getRouteFromPath('/word-unscrambler/') === 'home', 'Path /word-unscrambler/ maps to home');
+assert(getRouteFromPath('/word-unscrambler') === 'home', 'Legacy path /word-unscrambler maps to home');
+assert(getRouteFromPath('/word-unscrambler/') === 'home', 'Legacy path /word-unscrambler/ maps to home');
 assert(getRouteFromPath('/about') === 'about', 'Path /about maps to about');
 assert(getRouteFromPath('/about/') === 'about', 'Path /about/ maps to about');
 assert(getRouteFromPath('/privacy-policy') === 'privacy', 'Path /privacy-policy maps to privacy');
 assert(getRouteFromPath('/terms') === 'terms', 'Path /terms maps to terms');
 assert(getRouteFromPath('/contact') === 'contact', 'Path /contact maps to contact');
-assert(getRouteFromPath('/unknown-path') === 'home', 'Unknown path defaults to home');
+assert(getRouteFromPath('/unknown-path') === 'notFound', 'Unknown paths resolve to notFound');
+assert(getRouteFromPath('/404') === 'notFound', '/404 resolves to notFound');
 
 // 29. Router: Path mapping from AppRoute
 console.log('\nTest 29: Router maps AppRoute back to canonical paths');
-assert(getPathFromRoute('home') === '/word-unscrambler', 'home maps to /word-unscrambler');
+assert(getPathFromRoute('home') === '/', 'home maps to /');
 assert(getPathFromRoute('about') === '/about', 'about maps to /about');
 assert(getPathFromRoute('privacy') === '/privacy-policy', 'privacy maps to /privacy-policy');
 assert(getPathFromRoute('terms') === '/terms', 'terms maps to /terms');
@@ -310,8 +311,8 @@ assert(SITE_CONFIG.pages.about.title.includes('About'), 'About page title');
 assert(SITE_CONFIG.pages.privacy.title.includes('Privacy'), 'Privacy page title');
 assert(SITE_CONFIG.pages.terms.title.includes('Terms'), 'Terms page title');
 assert(SITE_CONFIG.pages.contact.title.includes('Contact'), 'Contact page title');
-assert(SITE_CONFIG.pages.sixLetterUnscrambler.title.includes('6 Letter Word Unscrambler'), '6-letter page title');
-assert(SITE_CONFIG.pages.sevenLetterUnscrambler.title.includes('7 Letter Word Unscrambler'), '7-letter page title');
+assert(SITE_CONFIG.pages.sixLetterUnscrambler.title.includes('6 Letter Words Using These Letters'), '6-letter page title');
+assert(SITE_CONFIG.pages.sevenLetterUnscrambler.title.includes('7 Letter Words Using These Letters'), '7-letter page title');
 assert(SITE_CONFIG.pages.about.description.length > 50, 'About page description');
 assert(SITE_CONFIG.pages.privacy.description.length > 50, 'Privacy page description');
 assert(SITE_CONFIG.pages.terms.description.length > 50, 'Terms page description');
@@ -326,7 +327,7 @@ console.log('\nTest 32: Sitemap contains all 5 existing pages');
 import fs from 'node:fs';
 import path from 'node:path';
 const sitemapContent = fs.readFileSync(path.join(process.cwd(), 'public', 'sitemap.xml'), 'utf-8');
-assert(sitemapContent.includes('<loc>https://cluevra.com/word-unscrambler</loc>'), 'Sitemap includes /word-unscrambler');
+assert(sitemapContent.includes('<loc>https://cluevra.com/</loc>'), 'Sitemap includes canonical homepage');
 assert(sitemapContent.includes('<loc>https://cluevra.com/about</loc>'), 'Sitemap includes /about');
 assert(sitemapContent.includes('<loc>https://cluevra.com/privacy-policy</loc>'), 'Sitemap includes /privacy-policy');
 assert(sitemapContent.includes('<loc>https://cluevra.com/terms</loc>'), 'Sitemap includes /terms');

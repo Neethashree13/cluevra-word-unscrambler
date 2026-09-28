@@ -30,8 +30,8 @@ export default function Footer({ onNavigate }: FooterProps) {
           <div className="md:col-span-6 space-y-3">
             <a
               id="footer-brand-link"
-              href="/word-unscrambler"
-              onClick={(e) => handleLinkClick(e, '/word-unscrambler')}
+              href="/"
+              onClick={(e) => handleLinkClick(e, '/')}
               className="inline-flex items-center gap-2.5 text-slate-900 group focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-md"
               aria-label="Cluevra Home"
             >
@@ -94,8 +94,8 @@ export default function Footer({ onNavigate }: FooterProps) {
                     <li>
                       <a
                         id="footer-link-word-unscrambler"
-                        href="/word-unscrambler"
-                        onClick={(e) => handleLinkClick(e, '/word-unscrambler')}
+                        href="/"
+                        onClick={(e) => handleLinkClick(e, '/')}
                         className="text-slate-600 hover:text-indigo-600 transition-colors focus:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-xs"
                       >
                         Word Unscrambler

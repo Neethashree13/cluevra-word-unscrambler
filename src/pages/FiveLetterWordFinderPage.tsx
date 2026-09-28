@@ -4,7 +4,7 @@ import { findFiveLetterWords } from '../lib/fiveLetterFinder.ts';
 import { dictionaryService } from '../lib/dictionary.ts';
 import FiveLetterTool from '../components/FiveLetterTool.tsx';
 import FiveLetterResults from '../components/FiveLetterResults.tsx';
-import FiveLetterContent from '../components/FiveLetterContent.tsx';
+import SeoGuideContent from '../components/SeoGuideContent.tsx';
 import { Sparkles } from 'lucide-react';
 
 export default function FiveLetterWordFinderPage() {
@@ -56,7 +56,7 @@ export default function FiveLetterWordFinderPage() {
           id="five-letter-page-title"
           className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
         >
-          5 Letter Word Finder
+          5 Letter Words From Letters: Word Finder
         </h1>
         <p
           id="five-letter-page-description"
@@ -90,7 +90,7 @@ export default function FiveLetterWordFinderPage() {
       />
 
       {/* In-depth Educational & SEO Content */}
-      <FiveLetterContent />
+      <SeoGuideContent pageKey="fiveLetterFinder" />
     </div>
   );
 }

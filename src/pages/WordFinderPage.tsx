@@ -4,7 +4,7 @@ import { dictionaryService } from '../lib/dictionary.ts';
 import { saveRecentSearch } from '../lib/recentSearches.ts';
 import WordFinderTool from '../components/WordFinderTool.tsx';
 import ResultsPanel from '../components/ResultsPanel.tsx';
-import WordFinderContent from '../components/WordFinderContent.tsx';
+import SeoGuideContent from '../components/SeoGuideContent.tsx';
 import { findWords, type WordFinderFilterOptions, type WordFinderResult, type WordFinderLength } from '../lib/wordFinder.ts';
 import { Search, Sparkles } from 'lucide-react';
 
@@ -248,7 +248,7 @@ export default function WordFinderPage({ onNavigate }: WordFinderPageProps) {
       </div>
 
       {/* Educational & SEO Content Below the Tool */}
-      <WordFinderContent onNavigate={onNavigate} />
+      <SeoGuideContent pageKey="wordFinder" onNavigate={onNavigate} />
     </main>
   );
 }

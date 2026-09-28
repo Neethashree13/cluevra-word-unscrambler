@@ -124,6 +124,21 @@ export default function AboutPage({ onNavigateHome }: PageProps) {
             Word Unscrambler was created with a clear focus: to deliver a straightforward, clutter-free, and accessible word-solving tool that works immediately in your browser without paywalls, signups, or distractions.
           </p>
         </section>
+
+        <section aria-labelledby="about-matching" className="space-y-3">
+          <h2 id="about-matching" className="text-lg sm:text-xl font-bold text-slate-800">
+            How the Word Matching Works
+          </h2>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            The solver normalizes the characters you enter, counts each available letter, and compares those counts with candidate words in its dictionary. The order of your tiles does not matter, but the number of each tile does. This distinction prevents a result from using a second E or a third R when your rack only contains one. When you enter a blank marker, the search can account for a missing character while continuing to honor the counts of your ordinary letters.
+          </p>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Search filters are applied to help you move from a large dictionary to a relevant shortlist. Word-length limits can remove answers that do not fit a puzzle, and letter-position or prefix rules can help when some squares are already known. Sorting changes how candidates are presented; it does not change whether a spelling is present in the word list. These controls are intended to make the search easier to review, not to determine the meaning of a clue or predict a game's best move.
+          </p>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            Dictionaries are not universal. A classroom spelling list, crossword source, Scrabble edition, and mobile word game may each accept different entries. Regional variants, inflected forms, abbreviations, and specialist vocabulary can also vary. Cluevra provides candidate words from its loaded English word list, so players should check a disputed answer against the official reference for their puzzle or game. If a familiar word is missing, review the spelling and filters first, then consider whether the source uses a different vocabulary list.
+          </p>
+        </section>
       </article>
     </div>
   );

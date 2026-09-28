@@ -225,8 +225,8 @@ export default function AnagramSolverContent({ onNavigate }: AnagramSolverConten
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
           <a
-            href="/word-unscrambler"
-            onClick={(e) => handleToolClick(e, '/word-unscrambler')}
+            href="/"
+            onClick={(e) => handleToolClick(e, '/')}
             className="p-3.5 bg-white hover:bg-slate-50 border border-slate-200 hover:border-indigo-300 rounded-lg transition-all group flex items-center justify-between"
           >
             <div>

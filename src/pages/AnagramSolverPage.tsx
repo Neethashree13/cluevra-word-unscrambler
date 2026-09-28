@@ -4,7 +4,7 @@ import { dictionaryService } from '../lib/dictionary.ts';
 import { saveRecentSearch } from '../lib/recentSearches.ts';
 import AnagramSolverTool from '../components/AnagramSolverTool.tsx';
 import ResultsPanel from '../components/ResultsPanel.tsx';
-import AnagramSolverContent from '../components/AnagramSolverContent.tsx';
+import SeoGuideContent from '../components/SeoGuideContent.tsx';
 import {
   solveAnagrams,
   type AnagramSolverOptions,
@@ -243,7 +243,7 @@ export default function AnagramSolverPage({ onNavigate }: AnagramSolverPageProps
       </div>
 
       {/* Educational & SEO Content Below the Tool */}
-      <AnagramSolverContent onNavigate={onNavigate} />
+      <SeoGuideContent pageKey="anagramSolver" onNavigate={onNavigate} />
     </main>
   );
 }

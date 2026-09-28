@@ -5,7 +5,7 @@ import { dictionaryService } from '../lib/dictionary.ts';
 import { saveRecentSearch } from '../lib/recentSearches.ts';
 import EightLetterTool from '../components/EightLetterTool.tsx';
 import ResultsPanel from '../components/ResultsPanel.tsx';
-import EightLetterContent from '../components/EightLetterContent.tsx';
+import SeoGuideContent from '../components/SeoGuideContent.tsx';
 import { Sparkles } from 'lucide-react';
 
 interface EightLetterWordUnscramblerPageProps {
@@ -99,7 +99,7 @@ export default function EightLetterWordUnscramblerPage({ onNavigate }: EightLett
           id="eight-letter-page-title"
           className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight"
         >
-          8 Letter Word Unscrambler
+          8 Letter Words Using These Letters
         </h1>
         <p
           id="eight-letter-page-description"
@@ -136,7 +136,7 @@ export default function EightLetterWordUnscramblerPage({ onNavigate }: EightLett
       </div>
 
       {/* Educational & SEO Content Below the Tool */}
-      <EightLetterContent onNavigate={onNavigate} />
+      <SeoGuideContent pageKey="eightLetterUnscrambler" onNavigate={onNavigate} />
     </main>
   );
 }
