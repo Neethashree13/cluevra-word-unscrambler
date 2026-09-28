@@ -444,7 +444,9 @@ export default function WordFinderTool({
       <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
         <span>Dictionary Lexicon</span>
         <span className="font-semibold text-slate-600">
-          {dictStatus?.totalWords ? dictStatus.totalWords.toLocaleString() : '168,551'} words
+          {dictStatus?.source === 'full'
+            ? `Full dictionary loaded — ${dictStatus.totalWords.toLocaleString()} words`
+            : `Loading full dictionary — ${dictStatus?.totalWords.toLocaleString() || '12,000'} preliminary words available`}
         </span>
       </div>
     </div>

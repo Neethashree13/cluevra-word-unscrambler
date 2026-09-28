@@ -74,7 +74,7 @@ export default function Header({ currentRoute = 'home', onNavigate }: HeaderProp
             <span className="text-white font-bold text-lg leading-none">W</span>
           </div>
           <span className="text-xl font-bold tracking-tight text-slate-900">
-            Word Unscrambler
+            Cluevra
           </span>
         </a>
 

@@ -41,6 +41,9 @@ export default function ResultsPanel({
   const wordCountFormatted = dictStatus?.totalWords
     ? dictStatus.totalWords.toLocaleString()
     : '168,551';
+  const dictionaryStatusText = dictStatus?.source === 'full'
+    ? loadedWordsText || `${wordCountFormatted} words loaded`
+    : `Loading full dictionary — ${wordCountFormatted} preliminary words available`;
 
   const handleCopyWord = (word: string) => {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
@@ -221,7 +224,7 @@ export default function ResultsPanel({
               ? `${result?.totalWords} ${result?.totalWords === 1 ? 'word' : 'words'} found`
               : isEmptyResult
               ? '0 words found'
-              : loadedWordsText || `${wordCountFormatted} words loaded`}
+              : dictionaryStatusText}
           </span>
         </div>
       </div>

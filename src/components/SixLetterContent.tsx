@@ -82,7 +82,7 @@ export default function SixLetterContent({ onNavigate }: SixLetterContentProps) 
           What 6 Letter Words Can You Make?
         </h2>
         <p className="text-sm sm:text-base leading-relaxed text-slate-600">
-          Cluevra compares your letters with its English word dictionary and finds six-letter words that can be built from the available letters. You can rearrange your scrambled tiles to discover every valid six-letter combination they form.
+          Cluevra compares your letters with its English word dictionary and finds six-letter words that can be built from the available letters. For the rack A C E R T S, examples include CRATES, CASTER, RECAST, REACTS, TRACES, and CARETS. You can rearrange your scrambled tiles to discover other valid six-letter combinations they form.
         </p>
         <p className="text-sm sm:text-base leading-relaxed text-slate-600">
           This tool searches specifically for words of exactly 6 letters. Duplicate letters are handled according to how many times they appear: each letter is used only as many times as you enter it, unless a wildcard tile (? or *) provides an extra occurrence.

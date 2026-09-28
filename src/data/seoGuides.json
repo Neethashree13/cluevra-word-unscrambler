@@ -224,12 +224,12 @@
       {
         "heading": "How to unscramble six letters",
         "paragraphs": [
-          "Enter the letters exactly as they appear on your tiles; their order does not matter. A rack such as A C E R T S can be rearranged into words such as CAREST, CARTES, and caster-like forms when they are present in the selected dictionary. The solver checks each candidate against the available letter inventory. If the rack contains one R, a result cannot quietly use two; repeated letters must be represented by repeated tiles.",
+          "Enter the letters exactly as they appear on your tiles; their order does not matter. A rack such as A C E R T S can be rearranged into words such as CRATES, CASTER, RECAST, REACTS, TRACES, and CARETS when they are present in the selected dictionary. The solver checks each candidate against the available letter inventory. If the rack contains one R, a result cannot quietly use two; repeated letters must be represented by repeated tiles.",
           "Set the target length to six when you need a word that uses every tile. If your puzzle accepts shorter plays, adjust the minimum and maximum lengths to inspect useful subwords too. Sort alphabetically when you are comparing spellings, or by score when you are weighing a board-game move. Copying a result makes it easy to test a candidate in your puzzle without retyping it."
         ],
         "items": [
-          "A C E R T S can reveal six-letter anagrams such as CAREST and CARTES when included in the word list.",
-          "A E I L N T can be rearranged into ELATIN or other dictionary candidates; verify accepted forms for your game.",
+          "A C E R T S can reveal six-letter anagrams such as CRATES, CASTER, RECAST, REACTS, TRACES, and CARETS when included in the word list.",
+          "A E I L N T can be rearranged into ENTAIL or other dictionary candidates; verify accepted forms for your game.",
           "Adding ? to a five-letter rack asks the solver to test possible letters for the missing sixth tile."
         ]
       },
@@ -326,11 +326,11 @@
       {
         "heading": "How to find eight-letter words from letters",
         "paragraphs": [
-          "Enter your known letters, then keep the minimum and maximum length at eight when the answer must use every tile. The order of your input does not matter. A set such as A B E K N O O T can form NOTEBOOK, while a different rack may reveal words that are less obvious because their letters do not arrive in familiar order. The solver handles that rearrangement and returns matching eight-letter entries so you can spend time checking meaning and fit instead of manually exploring permutations.",
+          "Enter your known letters, then keep the minimum and maximum length at eight when the answer must use every tile. The order of your input does not matter. The rack N O T E B O O K can form NOTEBOOK, while a different rack may reveal words that are less obvious because their letters do not arrive in familiar order. The solver handles that rearrangement and returns matching eight-letter entries so you can spend time checking meaning and fit instead of manually exploring permutations.",
           "If your rack includes a blank, enter ? or * in place of the missing tile. A wildcard stands for one letter; it does not remove the limits on your other tiles. Use score sorting when comparing board-game options, or alphabetical sorting when checking spellings. If you have more than eight physical tiles, search for shorter words as well and compare the best available play with your board position."
         ],
         "items": [
-          "N O T E B O O K makes NOTEBOOK, a clear example of grouping two familiar four-letter chunks.",
+          "N O T E B O O K makes NOTEBOOK, a clear example of grouping two familiar four-letter chunks; the rack contains three O's.",
           "A rack with a likely -ING ending can be easier to scan by setting aside I, N, and G before arranging the remaining letters.",
           "Seven known tiles plus ? lets a blank stand for the eighth letter; confirm the suggested word fits your clue."
         ]

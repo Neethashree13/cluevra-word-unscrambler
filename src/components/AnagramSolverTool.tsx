@@ -181,12 +181,12 @@ export default function AnagramSolverTool({
             >
               <span
                 className={`w-1.5 h-1.5 rounded-full mr-1.5 ${
-                  dictStatus.loaded ? 'bg-emerald-500' : 'bg-amber-500 animate-pulse'
+                  dictStatus.source === 'full' ? 'bg-emerald-500' : 'bg-amber-500 animate-pulse'
                 }`}
               />
-              {dictStatus.loaded
-                ? `${dictStatus.totalWords.toLocaleString()} words`
-                : 'Loading Lexicon...'}
+              {dictStatus.source === 'full'
+                ? `Full dictionary loaded — ${dictStatus.totalWords.toLocaleString()} words`
+                : `Loading full dictionary — ${dictStatus.totalWords.toLocaleString()} preliminary words`}
             </span>
           </div>
         )}

@@ -245,10 +245,9 @@ export default function App({ initialPath }: AppProps) {
 
       {currentRoute !== 'home' && currentRoute !== 'notFound' && (
         <nav aria-label="Breadcrumb" className="mx-auto w-full max-w-7xl px-4 pt-4 text-sm text-slate-500 sm:px-6 lg:px-8">
-          <ol className="flex flex-wrap items-center gap-2">
+          <ol className="flex flex-wrap items-center">
             <li><a href="/" onClick={(event) => { event.preventDefault(); handleNavigate('/'); }} className="hover:text-indigo-700">Home</a></li>
-            <li aria-hidden="true">/</li>
-            <li aria-current="page" className="font-medium text-slate-800">
+              <li aria-current="page" className="before:content-['/'] before:px-2 before:text-slate-300 font-medium text-slate-800">
               {currentRoute === 'wordFinder' ? 'Word Finder' :
                 currentRoute === 'wordsWithLetters' ? 'Words With Letters' :
                 currentRoute === 'anagramSolver' ? 'Anagram Solver' :
@@ -464,13 +463,7 @@ export default function App({ initialPath }: AppProps) {
         </main>
       )}
 
-      <Suspense
-        fallback={
-          <main id="main-content" className="flex-1 w-full p-8 text-center text-sm text-slate-500">
-            Loading page...
-          </main>
-        }
-      >
+      <Suspense fallback={null}>
       {currentRoute === 'about' && (
         <main id="main-content" className="flex-1 w-full">
           <AboutPage onNavigateHome={() => handleNavigate('/')} />
@@ -533,7 +526,6 @@ export default function App({ initialPath }: AppProps) {
         </main>
       )}
       </Suspense>
-
       {/* Footer */}
       <Footer onNavigate={handleNavigate} />
     </div>

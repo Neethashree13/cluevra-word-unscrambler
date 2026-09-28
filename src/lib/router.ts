@@ -163,7 +163,7 @@ export function updatePageSEO(route: AppRoute) {
     twitterCard.setAttribute('content', 'summary_large_image');
   }
 
-  const socialImage = `${SITE_CONFIG.productionDomain}/favicon.png.png`;
+  const socialImage = `${SITE_CONFIG.productionDomain}/social-card.png`;
   for (const selector of ['meta[property="og:image"]', 'meta[name="twitter:image"]']) {
     document.querySelector(selector)?.setAttribute('content', socialImage);
   }

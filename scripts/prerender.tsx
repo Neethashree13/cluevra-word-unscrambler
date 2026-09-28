@@ -11,7 +11,7 @@ import type { AppRoute } from '../src/lib/router.ts';
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.resolve(scriptDir, '..', 'dist');
 const domain = SITE_CONFIG.productionDomain;
-const imageUrl = `${domain}/favicon.png.png`;
+const imageUrl = `${domain}/social-card.png`;
 const outputRoutes: Record<keyof typeof SITE_CONFIG.pages, string> = {
   home: 'index.html',
   wordFinder: 'word-finder/index.html',
@@ -102,6 +102,9 @@ async function main() {
     if (renderedWords < 500) {
       throw new Error(`${pathname} renders only ${renderedWords} words; at least 500 are required`);
     }
+    if (appMarkup.includes('Loading page...')) {
+      throw new Error(`${pathname} contains a loading placeholder in rendered HTML`);
+    }
     const h1 = (appMarkup.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || '').replace(/<[^>]*>/g, '').trim();
     if (titles.has(page.title) || headings.has(h1)) {
       throw new Error(`${pathname} has a duplicate title or H1`);
@@ -142,6 +145,12 @@ async function main() {
     const root = /<div id="root"><\/div>/;
     if (!root.test(html)) throw new Error(`React root is missing from the HTML template for ${pathname}`);
     html = html.replace(root, `<div id="root">${appMarkup}</div>`);
+    if ((html.match(/<h1\b/gi) || []).length !== 1) {
+      throw new Error(`${pathname} must contain exactly one H1 in the complete HTML document`);
+    }
+    if (html.includes('Loading page...')) {
+      throw new Error(`${pathname} contains a loading placeholder in the complete HTML document`);
+    }
     const outPath = path.join(distDir, outputRoutes[key]);
     await fs.mkdir(path.dirname(outPath), { recursive: true });
     await fs.writeFile(outPath, html, 'utf-8');
@@ -157,6 +166,13 @@ async function main() {
   }
   for (const loc of sitemapRoutes) {
     if (!sitemapUrls.includes(loc)) throw new Error(`Sitemap is missing a canonical page: ${loc}`);
+  }
+
+  const socialImage = await fs.readFile(path.resolve(scriptDir, '../public/social-card.png'));
+  const imageWidth = socialImage.readUInt32BE(16);
+  const imageHeight = socialImage.readUInt32BE(20);
+  if (imageWidth !== 1200 || imageHeight !== 630) {
+    throw new Error(`Social card must be 1200x630; found ${imageWidth}x${imageHeight}`);
   }
 
   let notFound = replaceTitle(template, 'Page Not Found | Cluevra');

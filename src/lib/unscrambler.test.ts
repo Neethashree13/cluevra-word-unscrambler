@@ -400,7 +400,7 @@ assert(
 );
 
 // 37. 6-Letter Word Unscrambler test cases
-console.log('\nTest 37: 6-letter test queries (AARET?, PLANET, STREAM, GARDEN)');
+console.log('\nTest 37: 6-letter test queries (ACERTS, AARET?, PLANET, STREAM, GARDEN)');
 // Load full dictionary to test live dictionary stats
 const dictWords = fs.readFileSync(path.join(process.cwd(), 'public', 'dictionary.txt'), 'utf-8').split(/\r?\n/);
 import { dictionaryService } from './dictionary.ts';
@@ -416,6 +416,10 @@ const resAaretWild = findWordsFromLetters('AARET?', sixLetterFilters);
 assert(resAaretWild.totalWords === 9, `AARET? returns exactly 9 6-letter words (got ${resAaretWild.totalWords})`);
 assert(resAaretWild.allWords.includes('aerate'), 'AARET? includes aerate');
 assert(resAaretWild.allWords.includes('karate'), 'AARET? includes karate');
+
+const resAcerts = findWordsFromLetters('ACERTS', sixLetterFilters);
+const expectedAcerts = ['carets', 'caster', 'caters', 'crates', 'recast', 'reacts', 'traces'];
+assert(expectedAcerts.every((word) => resAcerts.allWords.includes(word)), 'ACERTS includes CARETS, CASTER, CATERS, CRATES, RECAST, REACTS, and TRACES');
 
 const resPlanet = findWordsFromLetters('PLANET', sixLetterFilters);
 assert(resPlanet.totalWords === 2, `PLANET returns exactly 2 6-letter words (got ${resPlanet.totalWords})`);

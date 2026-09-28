@@ -82,7 +82,7 @@ export default function EightLetterContent({ onNavigate }: EightLetterContentPro
           What 8 Letter Words Can You Make?
         </h2>
         <p className="text-sm sm:text-base leading-relaxed text-slate-600">
-          Cluevra compares your entered letter set directly against our loaded English lexicon of 168,551 words to uncover every valid 8-letter anagram. The algorithm strictly respects letter counts: duplicate letters are only used as many times as they are supplied in your input or substituted by wildcard tiles.
+          Cluevra compares your entered letter set directly against its English word list to uncover valid 8-letter anagrams. For example, N O T E B O O K spells NOTEBOOK and contains three O's. The search strictly respects letter counts: duplicate letters are only used as many times as they are supplied in your input or substituted by wildcard tiles.
         </p>
         <p className="text-sm sm:text-base leading-relaxed text-slate-600">
           Because this page is specifically calibrated for eight-letter queries, the length filter defaults to exactly 8 letters (Min: 8, Max: 8). Every solution returned is an authentic dictionary entry, giving you instant confidence during fast-paced word games and competitive puzzles.

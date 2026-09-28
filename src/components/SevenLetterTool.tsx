@@ -155,8 +155,8 @@ export default function SevenLetterTool({
         {/* Dictionary Status Bar */}
         <div className="flex items-center justify-between pb-3 border-b border-slate-100 text-xs text-slate-500">
           <div className="flex items-center gap-1.5 font-medium text-slate-600">
-            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-            <span>Dictionary Loaded ({wordCountFormatted} words)</span>
+            <span className={`w-2 h-2 rounded-full ${dictStatus?.source === 'full' ? 'bg-emerald-500' : 'bg-amber-400 animate-pulse'}`}></span>
+            <span>{dictStatus?.source === 'full' ? `Full dictionary loaded — ${wordCountFormatted} words` : `Loading full dictionary — ${wordCountFormatted} preliminary words available`}</span>
           </div>
           <span className="bg-indigo-50 text-indigo-700 font-semibold px-2 py-0.5 rounded-full text-[11px] border border-indigo-100">
             Target: 7 Letters

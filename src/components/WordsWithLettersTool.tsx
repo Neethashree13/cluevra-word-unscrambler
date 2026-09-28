@@ -431,12 +431,12 @@ export default function WordsWithLettersTool({
             <div className="flex items-center gap-1.5 text-[11px] text-slate-400">
               <span
                 className={`inline-block w-2 h-2 rounded-full ${
-                  dictStatus.loaded ? 'bg-emerald-500' : 'bg-amber-400 animate-pulse'
+                  dictStatus.source === 'full' ? 'bg-emerald-500' : 'bg-amber-400 animate-pulse'
                 }`}
               />
-              {dictStatus.loaded
-                ? `${dictStatus.totalWords.toLocaleString()} words loaded`
-                : 'Loading Lexicon...'}
+              {dictStatus.source === 'full'
+                ? `Full dictionary loaded — ${dictStatus.totalWords.toLocaleString()} words`
+                : `Loading full dictionary — ${dictStatus.totalWords.toLocaleString()} preliminary words available`}
             </div>
           )}
         </div>
